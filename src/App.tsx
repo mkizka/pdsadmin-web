@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { InviteCodeForm } from "./components/InviteCodeForm";
+import { Navbar } from "./components/Navbar";
 
 export function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <h1>Vite + React</h1>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-    </div>
+    <>
+      <Navbar />
+      <div className="container mx-auto p-4 max-w-md">
+        <InviteCodeForm />
+      </div>
+    </>
   );
 }
