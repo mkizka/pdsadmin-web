@@ -1,6 +1,7 @@
 import type React from "react";
 import { useState } from "react";
 
+import { cx } from "../utils/cx";
 import { ErrorAlert, SuccessAlert } from "./AlertMessage";
 
 interface InviteCodeResponse {
@@ -78,7 +79,7 @@ export const InviteCodeForm: React.FC = () => {
 
         <div className="card-actions justify-end mt-4">
           <button
-            className={`btn btn-primary ${loading ? "loading" : ""}`}
+            className={cx("btn btn-primary", loading && "loading")}
             onClick={handleCreateInviteCode}
             disabled={loading || !hostname || !password}
           >
