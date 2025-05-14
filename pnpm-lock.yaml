@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@atcute/client':
+        specifier: ^4.0.0
+        version: 4.0.0
       '@tailwindcss/vite':
         specifier: ^4.1.6
         version: 4.1.6(vite@6.3.5(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
@@ -27,6 +30,9 @@ importers:
         specifier: ^4.1.6
         version: 4.1.6
     devDependencies:
+      '@atcute/atproto':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@mkizka/eslint-config':
         specifier: ^6.0.1
         version: 6.0.1(@typescript-eslint/eslint-plugin@8.32.1(@typescript-eslint/parser@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
@@ -72,6 +78,18 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@atcute/atproto@3.0.0':
+    resolution: {integrity: sha512-qfgW5Eph+FR1abdbyDbvqEi7RizkEwMBtz0bheraKP3jZmiEY468s3yx840fdkCk5pwe9IixElINk1XhyLmFPA==}
+
+  '@atcute/client@4.0.0':
+    resolution: {integrity: sha512-SajmgxE+78gDgqV0ps1JmPBuU04I7INp6WxLt3/1cXm1sFXDjYeWTgM6XuiMHeiErAIEdtLyJ/BVfc0KAnX2TQ==}
+
+  '@atcute/identity@1.0.0':
+    resolution: {integrity: sha512-m2cKNBS3DZCz0722OSCJfpTpoYoOyCb0dJqg5HmqJTJaIkKHoCEXe4hou4RnMZ2JI+KXWbfKE6tg/jAq7D1JKw==}
+
+  '@atcute/lexicons@1.0.0':
+    resolution: {integrity: sha512-PWw+WNVOTYOQBLmgwoIK0kjI2rRGD0d6HHsenjq0+iWYFqOdrM8LQ4EJpZ5hT5sEwwXXEPcaUD1UHWptXCfe+A==}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -135,6 +153,10 @@ packages:
   '@babel/types@7.27.1':
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
+
+  '@badrap/valita@0.4.4':
+    resolution: {integrity: sha512-GEhUCk9c4XbNxi+0YZHZsV4fYNd6HejfWuN4Ti4c02DauX+LyX5WY1Y3WfyZ8Pxxl0zqhs+MLtW98cMh86vv6g==}
+    engines: {node: '>= 18'}
 
   '@dword-design/dedent@0.7.0':
     resolution: {integrity: sha512-OFmAmzKiDUh9m7WRMYcoEOPI7b5tS5hdqQmtKDwF+ZssVJv8a+GHo9VOtFsmlw3h8Roh/9QzFWIsjSFZyQUMdg==}
@@ -2304,6 +2326,22 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
+  '@atcute/atproto@3.0.0':
+    dependencies:
+      '@atcute/lexicons': 1.0.0
+
+  '@atcute/client@4.0.0':
+    dependencies:
+      '@atcute/identity': 1.0.0
+      '@atcute/lexicons': 1.0.0
+
+  '@atcute/identity@1.0.0':
+    dependencies:
+      '@atcute/lexicons': 1.0.0
+      '@badrap/valita': 0.4.4
+
+  '@atcute/lexicons@1.0.0': {}
+
   '@babel/code-frame@7.27.1':
     dependencies:
       '@babel/helper-validator-identifier': 7.27.1
@@ -2401,6 +2439,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
+
+  '@badrap/valita@0.4.4': {}
 
   '@dword-design/dedent@0.7.0':
     dependencies:

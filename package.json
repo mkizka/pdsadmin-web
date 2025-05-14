@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@atcute/client": "^4.0.0",
     "@tailwindcss/vite": "^4.1.6",
     "clsx": "^2.1.1",
     "react": "^19.1.0",
@@ -21,6 +22,7 @@
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
+    "@atcute/atproto": "^3.0.0",
     "@mkizka/eslint-config": "^6.0.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",

@@ -2,11 +2,8 @@ import type React from "react";
 import { useState } from "react";
 
 import { cx } from "../utils/cx";
+import { PDS } from "../utils/pds";
 import { ErrorAlert, SuccessAlert } from "./AlertMessage";
-
-interface InviteCodeResponse {
-  code: string;
-}
 
 export const InviteCodeForm: React.FC = () => {
   const [password, setPassword] = useState("");
@@ -21,23 +18,11 @@ export const InviteCodeForm: React.FC = () => {
     setInviteCode("");
 
     try {
-      const response = await fetch(
-        `https://${hostname}/xrpc/com.atproto.server.createInviteCode`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Basic ${btoa(`admin:${password}`)}`,
-          },
-          body: JSON.stringify({ useCount: 1 }),
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error(`リクエストに失敗しました (${response.status})`);
+      const pds = new PDS(hostname, password);
+      const { ok, data } = await pds.createInviteCode();
+      if (!ok) {
+        throw new Error(`リクエストに失敗しました (${data.message})`);
       }
-
-      const data = (await response.json()) as InviteCodeResponse;
       setInviteCode(data.code);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
