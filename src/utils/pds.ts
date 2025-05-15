@@ -11,19 +11,17 @@ export class PDS {
     service: string;
     adminPassword: string;
   }) {
-    const handler = simpleFetchHandler({
-      service: service,
-    });
+    const handler = simpleFetchHandler({ service });
     this.#rpc = new Client({ handler });
     this.#headers = {
       Authorization: `Basic ${btoa(`admin:${adminPassword}`)}`,
     };
   }
 
-  async getAccountInfo({ limit = 10 }: { limit?: number }) {
+  async getAccounts(params?: { limit?: number }) {
     const { data, ok } = await this.#rpc.get("com.atproto.sync.listRepos", {
       params: {
-        limit,
+        limit: params?.limit ?? 10,
       },
       headers: this.#headers,
     });
