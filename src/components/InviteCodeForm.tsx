@@ -37,8 +37,15 @@ export const InviteCodeForm: React.FC = () => {
             招待コードを生成
           </button>
         </div>
-        <ErrorAlert message={error} />
-        <SuccessAlert inviteCode={inviteCode} />
+        {error && <ErrorAlert>{error}</ErrorAlert>}
+        {inviteCode && (
+          <SuccessAlert>
+            <div>
+              <div className="text-sm">招待コード：</div>
+              <code className="text-lg font-bold">{inviteCode}</code>
+            </div>
+          </SuccessAlert>
+        )}
       </div>
     </div>
   );

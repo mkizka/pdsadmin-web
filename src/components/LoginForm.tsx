@@ -41,42 +41,13 @@ const requireHttps = (maybeUrl: string) => {
   return maybeUrl.startsWith("https://") ? maybeUrl : `https://${maybeUrl}`;
 };
 
-interface LoginSuccessAlertProps {
-  isSuccess: boolean;
-}
-
-const LoginSuccessAlert: React.FC<LoginSuccessAlertProps> = ({ isSuccess }) => {
-  if (!isSuccess) return null;
-
-  return (
-    <div className="alert alert-success mt-4">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="stroke-current shrink-0 h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-      <span>ログインに成功しました！</span>
-    </div>
-  );
-};
-
 export const LoginForm: React.FC = () => {
   const form = useForm();
   const setSession = useSetSession();
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleLogin = async () => {
     form.setLoading(true);
     form.setError("");
-    setIsSuccess(false);
 
     try {
       const session = {
@@ -86,11 +57,9 @@ export const LoginForm: React.FC = () => {
       const pds = new PDS(session);
       await pds.getAccounts();
       setSession(session);
-      setIsSuccess(true);
       form.resetForm();
     } catch (error) {
       form.setError(String(error));
-      setIsSuccess(false);
     } finally {
       form.setLoading(false);
     }
@@ -133,8 +102,7 @@ export const LoginForm: React.FC = () => {
             ログイン
           </button>
         </div>
-        <ErrorAlert message={form.state.error} />
-        <LoginSuccessAlert isSuccess={isSuccess} />
+        {form.state.error && <ErrorAlert>{form.state.error}</ErrorAlert>}
       </div>
     </div>
   );
