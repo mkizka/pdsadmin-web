@@ -1,8 +1,8 @@
 import { Client, simpleFetchHandler } from "@atcute/client";
 
 export class PDS {
-  private readonly rpc;
-  private readonly adminPassword;
+  readonly #rpc;
+  readonly #headers;
 
   constructor({
     service,
@@ -14,20 +14,54 @@ export class PDS {
     const handler = simpleFetchHandler({
       service: service,
     });
-    this.rpc = new Client({ handler });
-    this.adminPassword = adminPassword;
+    this.#rpc = new Client({ handler });
+    this.#headers = {
+      Authorization: `Basic ${btoa(`admin:${adminPassword}`)}`,
+    };
+  }
+
+  async getAccountInfo({ limit = 10 }: { limit?: number }) {
+    const { data, ok } = await this.#rpc.get("com.atproto.sync.listRepos", {
+      params: {
+        limit,
+      },
+      headers: this.#headers,
+    });
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
+    const results = [];
+    for (const repo of data.repos) {
+      const accountInfo = await this.#getAccountInfo(repo.did);
+      results.push(accountInfo);
+    }
+    return results;
+  }
+
+  async #getAccountInfo(did: `did:${string}:${string}`) {
+    const { data, ok } = await this.#rpc.get(
+      "com.atproto.admin.getAccountInfo",
+      {
+        params: {
+          did,
+        },
+        headers: this.#headers,
+      },
+    );
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
+    return data;
   }
 
   async createInviteCode() {
-    const { data, ok } = await this.rpc.post(
+    const { data, ok } = await this.#rpc.post(
       "com.atproto.server.createInviteCode",
       {
         input: {
           useCount: 1,
         },
-        headers: {
-          Authorization: `Basic ${btoa(`admin:${this.adminPassword}`)}`,
-        },
+        headers: this.#headers,
       },
     );
     if (!ok) {
