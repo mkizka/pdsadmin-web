@@ -23,6 +23,32 @@ function SkeltonListRaw() {
   );
 }
 
+function AccountModal({ account }: { account: AccountInfo }) {
+  return (
+    <dialog id={`account-modal_${account.did}`} className="modal">
+      <div className="modal-box">
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-lg">Account Info</h3>
+          <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
+            <code>{JSON.stringify(account, null, 2)}</code>
+          </pre>
+          <a
+            href={`https://pdsls.dev/at://${account.did}`}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-link w-full"
+          >
+            Open in pdsls.dev
+          </a>
+        </div>
+      </div>
+      <form method="dialog" className="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  );
+}
+
 function AccountListRaw({ account }: { account: AccountInfo | null }) {
   if (!account) {
     return (
@@ -33,14 +59,20 @@ function AccountListRaw({ account }: { account: AccountInfo | null }) {
       </li>
     );
   }
+
+  const handleModalOpen = () => {
+    const modal = document.getElementById(
+      `account-modal_${account.did}`,
+    ) as HTMLDialogElement | null;
+    modal?.showModal();
+  };
+
   return (
     <li className="list-row place-items-center">
       <div className="list-col-grow w-full">
-        <a
+        <button
           className="btn btn-ghost gap-4 h-16 w-full"
-          href={`https://pdsls.dev/at://${account.did}`}
-          target="_blank"
-          rel="noreferrer"
+          onClick={handleModalOpen}
         >
           <div className="avatar avatar-placeholder">
             <div className="bg-neutral text-neutral-content size-10 rounded-full">
@@ -53,7 +85,7 @@ function AccountListRaw({ account }: { account: AccountInfo | null }) {
               at://{account.did}
             </div>
           </div>
-        </a>
+        </button>
       </div>
       <div className="tooltip" data-tip="Takedown">
         <button className="btn btn-error">
@@ -65,6 +97,7 @@ function AccountListRaw({ account }: { account: AccountInfo | null }) {
           <span className="i-lucide-trash-2 size-6"></span>
         </button>
       </div>
+      <AccountModal account={account} />
     </li>
   );
 }
