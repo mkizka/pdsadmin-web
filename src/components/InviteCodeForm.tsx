@@ -1,11 +1,10 @@
-import type React from "react";
 import { useState } from "react";
 
 import { cx } from "../utils/cx";
 import { usePDS } from "../utils/session";
 import { ErrorAlert, SuccessAlert } from "./AlertMessage";
 
-export const InviteCodeForm: React.FC = () => {
+export function InviteCodeForm() {
   const pds = usePDS();
   const [inviteCode, setInviteCode] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,4 +48,4 @@ export const InviteCodeForm: React.FC = () => {
       </div>
     </div>
   );
-};
+}

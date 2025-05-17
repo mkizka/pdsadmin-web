@@ -1,6 +1,6 @@
-import type React from "react";
+import type { ReactNode } from "react";
 
-export function SuccessAlert({ children }: React.PropsWithChildren) {
+export function SuccessAlert({ children }: { children: ReactNode }) {
   return (
     <div className="alert alert-success">
       <svg
@@ -21,7 +21,7 @@ export function SuccessAlert({ children }: React.PropsWithChildren) {
   );
 }
 
-export function ErrorAlert({ children }: React.PropsWithChildren) {
+export function ErrorAlert({ children }: { children: ReactNode }) {
   return (
     <div className="alert alert-error">
       <svg

@@ -1,4 +1,3 @@
-import type React from "react";
 import { type FormEvent, useState } from "react";
 
 import { cx } from "../utils/cx";
@@ -41,7 +40,7 @@ const requireHttps = (maybeUrl: string) => {
   return maybeUrl.startsWith("https://") ? maybeUrl : `https://${maybeUrl}`;
 };
 
-export const LoginForm: React.FC = () => {
+export function LoginForm() {
   const form = useForm();
   const setSession = useSetSession();
 
@@ -106,4 +105,4 @@ export const LoginForm: React.FC = () => {
       </div>
     </form>
   );
-};
+}
