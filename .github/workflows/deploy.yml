@@ -15,7 +15,7 @@ jobs:
           corepack enable pnpm
           pnpm i
       - run: pnpm build
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
   deploy:
@@ -28,5 +28,5 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v4
         id: deployment
