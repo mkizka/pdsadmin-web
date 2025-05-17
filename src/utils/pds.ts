@@ -21,7 +21,7 @@ export class PDS {
   async listRepos(params?: { limit?: number; cursor?: string }) {
     const { data, ok } = await this.#rpc.get("com.atproto.sync.listRepos", {
       params: {
-        limit: params?.limit ?? 10,
+        limit: params?.limit,
         cursor: params?.cursor,
       },
       headers: this.#headers,

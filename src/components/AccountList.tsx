@@ -3,8 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
 
-const PAGE_SIZE = 10;
-
 function SkeltonListRaw() {
   return (
     <li className="list-row place-items-center">
@@ -17,8 +15,8 @@ function SkeltonListRaw() {
           </div>
         </span>
       </div>
-      <div className="btn skeleton w-16 h-10"></div>
-      <div className="btn skeleton w-16 h-10"></div>
+      <div className="btn skeleton w-14 h-10"></div>
+      <div className="btn skeleton w-14 h-10"></div>
     </li>
   );
 }
@@ -88,12 +86,12 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
         </button>
       </div>
       <div className="tooltip" data-tip="Takedown">
-        <button className="btn btn-error">
+        <button className="btn btn-error w-14">
           <span className="i-lucide-circle-alert size-6"></span>
         </button>
       </div>
       <div className="tooltip" data-tip="Delete">
-        <button className="btn btn-error">
+        <button className="btn btn-error w-14">
           <span className="i-lucide-trash-2 size-6"></span>
         </button>
       </div>
@@ -102,28 +100,50 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   );
 }
 
+const INIT_PAGE_SIZE = 3;
+const FETCH_PAGE_SIZE = 10;
+
 export function AccountList() {
   const [repositories, setRepositories] = useState<Repository[]>([]);
-  const [cursor, setCursor] = useState<string | null>(null);
+  const [cursor, setCursor] = useState<string>();
   const pds = usePDS();
-  const [loading, setLoading] = useState(true);
+  const [initLoading, setInitLoading] = useState(true);
+  const [fetchLoading, setFetchLoading] = useState(false);
 
-  const updateAccountList = useCallback(async () => {
-    setLoading(true);
-    const { repos, cursor } = await pds.listRepos();
+  const initAccountList = useCallback(async () => {
+    setInitLoading(true);
+    const { repos, cursor: newCursor } = await pds.listRepos({
+      limit: INIT_PAGE_SIZE,
+    });
     setRepositories(repos);
-    setCursor(cursor ?? null);
-    setLoading(false);
+    setCursor(newCursor);
+    setInitLoading(false);
   }, [pds]);
 
-  useEffect(() => {
-    void updateAccountList();
-  }, [updateAccountList]);
+  const fetchAccountList = useCallback(async () => {
+    setFetchLoading(true);
+    const { repos: newRepos, cursor: newCursor } = await pds.listRepos({
+      limit: FETCH_PAGE_SIZE,
+      cursor,
+    });
+    setRepositories((prev) => [...prev, ...newRepos]);
+    setCursor(newCursor);
+    setFetchLoading(false);
+  }, [cursor, pds]);
 
-  const skeltonRepositories = Array.from({ length: PAGE_SIZE }).map(() => null);
+  useEffect(() => {
+    void initAccountList();
+  }, [initAccountList]);
+
+  const skeltonRepositories = Array.from({ length: INIT_PAGE_SIZE }).map(
+    () => null,
+  );
+
   const listedRepositories = [
     ...repositories,
-    ...Array.from({ length: PAGE_SIZE - repositories.length }).map(() => null),
+    ...Array.from({ length: INIT_PAGE_SIZE - repositories.length }).map(
+      () => null,
+    ),
   ];
 
   return (
@@ -132,17 +152,33 @@ export function AccountList() {
         <div className="font-bold flex-1">Repositories</div>
         <button
           className="btn btn-ghost btn-square"
-          onClick={updateAccountList}
-          disabled={loading}
+          onClick={() => initAccountList()}
+          disabled={initLoading}
         >
           <span className="i-lucide-refresh-ccw size-6"></span>
         </button>
       </li>
-      {loading
+      {initLoading
         ? skeltonRepositories.map((_, i) => <SkeltonListRaw key={i} />)
         : listedRepositories.map((repo, i) => (
             <AccountListRaw key={repo?.did ?? i} repo={repo} />
           ))}
+      {cursor && (
+        <li className="p-4 pt-2">
+          <div className="list-col-grow w-full">
+            <button
+              className="btn btn-primary w-full"
+              onClick={() => fetchAccountList()}
+              disabled={fetchLoading}
+            >
+              {fetchLoading && (
+                <span className="loading loading-spinner"></span>
+              )}
+              Load More
+            </button>
+          </div>
+        </li>
+      )}
     </ul>
   );
 }

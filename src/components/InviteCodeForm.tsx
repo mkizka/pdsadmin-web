@@ -25,7 +25,7 @@ export const InviteCodeForm: React.FC = () => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card shadow-md">
       <div className="card-body">
         <h2 className="card-title">招待コード生成</h2>
         <div className="card-actions justify-end mt-4">

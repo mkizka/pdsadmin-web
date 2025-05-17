@@ -12,10 +12,10 @@ export function App() {
       <div className="container mx-auto p-4 max-w-lg">
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && (
-          <>
-            <AccountList />
+          <div className="flex flex-col gap-4">
             <InviteCodeForm />
-          </>
+            <AccountList />
+          </div>
         )}
       </div>
     </>
