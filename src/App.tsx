@@ -9,7 +9,7 @@ export function App() {
     <>
       <Navbar />
       <div className="container mx-auto p-4 max-w-md">
-        <LoginForm />
+        {!isLoggedIn && <LoginForm />}
         {isLoggedIn && <InviteCodeForm />}
       </div>
     </>

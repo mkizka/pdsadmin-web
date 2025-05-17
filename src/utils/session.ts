@@ -12,6 +12,11 @@ const sessionAtom = atomWithStorage<Session | null>("session", null);
 
 export const useSetSession = () => useSetAtom(sessionAtom);
 
+export const useLogout = () => {
+  const setSession = useSetSession();
+  return () => setSession(null);
+};
+
 export const useIsLoggedIn = () => {
   const session = useAtomValue(sessionAtom);
   return session !== null;
