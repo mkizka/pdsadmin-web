@@ -11,7 +11,7 @@ export const Navbar: React.FC = () => {
       <div className="flex-1">
         <div className="flex">
           <img
-            src="/icon.png"
+            src={import.meta.env.BASE_URL + "icon.png"}
             alt="PDS WebUI Icon"
             className="h-8 w-8 mr-2 brightness-0"
           />
