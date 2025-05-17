@@ -1,5 +1,5 @@
 import type React from "react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 import { cx } from "../utils/cx";
 import { PDS } from "../utils/pds";
@@ -45,10 +45,10 @@ export const LoginForm: React.FC = () => {
   const form = useForm();
   const setSession = useSetSession();
 
-  const handleLogin = async () => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     form.setLoading(true);
     form.setError("");
-
     try {
       const session = {
         service: requireHttps(form.state.service),
@@ -66,7 +66,7 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <form className="card bg-base-100 shadow-xl" onSubmit={handleSubmit}>
       <div className="card-body">
         <h2 className="card-title">管理者ログイン</h2>
         <div className="form-control w-full">
@@ -95,8 +95,8 @@ export const LoginForm: React.FC = () => {
         </div>
         <div className="card-actions justify-end mt-4">
           <button
+            type="submit"
             className={cx("btn btn-primary", form.state.loading && "loading")}
-            onClick={handleLogin}
             disabled={!form.canSubmit}
           >
             ログイン
@@ -104,6 +104,6 @@ export const LoginForm: React.FC = () => {
         </div>
         {form.state.error && <ErrorAlert>{form.state.error}</ErrorAlert>}
       </div>
-    </div>
+    </form>
   );
 };
