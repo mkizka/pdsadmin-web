@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import type { AccountInfo } from "../utils/pds";
+import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
 
 const PAGE_SIZE = 10;
@@ -23,17 +23,17 @@ function SkeltonListRaw() {
   );
 }
 
-function AccountModal({ account }: { account: AccountInfo }) {
+function AccountModal({ repo }: { repo: Repository }) {
   return (
-    <dialog id={`account-modal_${account.did}`} className="modal">
+    <dialog id={`account-modal_${repo.did}`} className="modal">
       <div className="modal-box">
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Account Info</h3>
           <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
-            <code>{JSON.stringify(account, null, 2)}</code>
+            <code>{JSON.stringify(repo, null, 2)}</code>
           </pre>
           <a
-            href={`https://pdsls.dev/at://${account.did}`}
+            href={`https://pdsls.dev/at://${repo.did}`}
             target="_blank"
             rel="noreferrer"
             className="btn btn-link w-full"
@@ -49,8 +49,8 @@ function AccountModal({ account }: { account: AccountInfo }) {
   );
 }
 
-function AccountListRaw({ account }: { account: AccountInfo | null }) {
-  if (!account) {
+function AccountListRaw({ repo }: { repo: Repository | null }) {
+  if (!repo) {
     return (
       <li className="list-row place-items-center">
         <div className="list-col-grow w-full">
@@ -62,7 +62,7 @@ function AccountListRaw({ account }: { account: AccountInfo | null }) {
 
   const handleModalOpen = () => {
     const modal = document.getElementById(
-      `account-modal_${account.did}`,
+      `account-modal_${repo.did}`,
     ) as HTMLDialogElement | null;
     modal?.showModal();
   };
@@ -80,9 +80,9 @@ function AccountListRaw({ account }: { account: AccountInfo | null }) {
             </div>
           </div>
           <div className="flex-1 text-start">
-            <div className="font-bold">@{account.handle}</div>
+            <div className="font-bold">@{repo.accountInfo.handle}</div>
             <div className="text-xs font-semibold opacity-60">
-              at://{account.did}
+              at://{repo.did}
             </div>
           </div>
         </button>
@@ -97,20 +97,22 @@ function AccountListRaw({ account }: { account: AccountInfo | null }) {
           <span className="i-lucide-trash-2 size-6"></span>
         </button>
       </div>
-      <AccountModal account={account} />
+      <AccountModal repo={repo} />
     </li>
   );
 }
 
 export function AccountList() {
-  const [accounts, setAccounts] = useState<AccountInfo[]>([]);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [cursor, setCursor] = useState<string | null>(null);
   const pds = usePDS();
   const [loading, setLoading] = useState(true);
 
   const updateAccountList = useCallback(async () => {
     setLoading(true);
-    const accounts = await pds.getAccounts();
-    setAccounts(accounts);
+    const { repos, cursor } = await pds.listRepos();
+    setRepositories(repos);
+    setCursor(cursor ?? null);
     setLoading(false);
   }, [pds]);
 
@@ -118,10 +120,10 @@ export function AccountList() {
     void updateAccountList();
   }, [updateAccountList]);
 
-  const skeltonAccounts = Array.from({ length: PAGE_SIZE }).map(() => null);
-  const listedAccounts = [
-    ...accounts,
-    ...Array.from({ length: PAGE_SIZE - accounts.length }).map(() => null),
+  const skeltonRepositories = Array.from({ length: PAGE_SIZE }).map(() => null);
+  const listedRepositories = [
+    ...repositories,
+    ...Array.from({ length: PAGE_SIZE - repositories.length }).map(() => null),
   ];
 
   return (
@@ -137,9 +139,9 @@ export function AccountList() {
         </button>
       </li>
       {loading
-        ? skeltonAccounts.map((_, i) => <SkeltonListRaw key={i} />)
-        : listedAccounts.map((account, i) => (
-            <AccountListRaw key={account?.did ?? i} account={account} />
+        ? skeltonRepositories.map((_, i) => <SkeltonListRaw key={i} />)
+        : listedRepositories.map((repo, i) => (
+            <AccountListRaw key={repo?.did ?? i} repo={repo} />
           ))}
     </ul>
   );

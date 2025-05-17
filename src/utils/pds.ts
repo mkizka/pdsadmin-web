@@ -18,22 +18,23 @@ export class PDS {
     };
   }
 
-  async getAccounts(params?: { limit?: number }) {
+  async listRepos(params?: { limit?: number; cursor?: string }) {
     const { data, ok } = await this.#rpc.get("com.atproto.sync.listRepos", {
       params: {
         limit: params?.limit ?? 10,
+        cursor: params?.cursor,
       },
       headers: this.#headers,
     });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
-    const results = [];
+    const repos = [];
     for (const repo of data.repos) {
       const accountInfo = await this.#getAccountInfo(repo.did);
-      results.push(accountInfo);
+      repos.push({ ...repo, accountInfo });
     }
-    return results;
+    return { repos, cursor: data.cursor };
   }
 
   async #getAccountInfo(did: `did:${string}:${string}`) {
@@ -69,6 +70,6 @@ export class PDS {
   }
 }
 
-export type AccountInfo = Awaited<
-  ReturnType<typeof PDS.prototype.getAccounts>
->[number];
+export type Repository = Awaited<
+  ReturnType<typeof PDS.prototype.listRepos>
+>["repos"][number];

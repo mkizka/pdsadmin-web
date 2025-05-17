@@ -55,7 +55,7 @@ export const LoginForm: React.FC = () => {
         adminPassword: form.state.adminPassword,
       };
       const pds = new PDS(session);
-      await pds.getAccounts();
+      await pds.listRepos();
       setSession(session);
       form.resetForm();
     } catch (error) {
