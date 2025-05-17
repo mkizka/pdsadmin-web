@@ -1,5 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
+import { useMemo } from "react";
 
 import { PDS } from "./pds";
 
@@ -27,5 +28,5 @@ export const usePDS = () => {
   if (!session) {
     throw new Error("Session not found");
   }
-  return new PDS(session);
+  return useMemo(() => new PDS(session), [session]);
 };

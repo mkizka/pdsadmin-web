@@ -1,3 +1,4 @@
+import { AccountList } from "./components/AccountList";
 import { InviteCodeForm } from "./components/InviteCodeForm";
 import { LoginForm } from "./components/LoginForm";
 import { Navbar } from "./components/Navbar";
@@ -8,9 +9,14 @@ export function App() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-4 max-w-md">
+      <div className="container mx-auto p-4 max-w-lg">
         {!isLoggedIn && <LoginForm />}
-        {isLoggedIn && <InviteCodeForm />}
+        {isLoggedIn && (
+          <>
+            <AccountList />
+            <InviteCodeForm />
+          </>
+        )}
       </div>
     </>
   );

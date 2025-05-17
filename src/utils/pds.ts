@@ -68,3 +68,7 @@ export class PDS {
     return data.code;
   }
 }
+
+export type AccountInfo = Awaited<
+  ReturnType<typeof PDS.prototype.getAccounts>
+>[number];

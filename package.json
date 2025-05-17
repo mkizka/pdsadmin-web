@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "@atcute/atproto": "^3.0.0",
+    "@egoist/tailwindcss-icons": "^1.9.0",
+    "@iconify-json/lucide": "^1.2.44",
     "@mkizka/eslint-config": "^6.0.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
