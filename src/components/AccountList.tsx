@@ -164,17 +164,18 @@ export function AccountList() {
             <AccountListRaw key={repo?.did ?? i} repo={repo} />
           ))}
       {cursor && (
-        <li className="p-4 pt-2">
+        <li>
           <div className="list-col-grow w-full">
             <button
-              className="btn btn-primary w-full"
+              className="btn btn-primary h-12 w-full"
               onClick={() => fetchAccountList()}
               disabled={fetchLoading}
             >
-              {fetchLoading && (
+              {fetchLoading ? (
                 <span className="loading loading-spinner"></span>
+              ) : (
+                <span>Load More</span>
               )}
-              Load More
             </button>
           </div>
         </li>
