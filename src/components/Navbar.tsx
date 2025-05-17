@@ -1,9 +1,11 @@
 import type React from "react";
 
+import { useIsLoggedIn } from "../utils/session";
 import { LogoutButton } from "./LogoutButton";
 import { SessionStatus } from "./SessionStatus";
 
 export const Navbar: React.FC = () => {
+  const isLoggedIn = useIsLoggedIn();
   return (
     <div className="navbar gap-4 bg-primary shadow-sm text-primary-content">
       <div className="flex-1">
@@ -16,8 +18,8 @@ export const Navbar: React.FC = () => {
           <span className="text-xl font-bold">PDS Admin</span>
         </div>
       </div>
-      <SessionStatus />
-      <LogoutButton />
+      {isLoggedIn && <SessionStatus />}
+      {isLoggedIn && <LogoutButton />}
     </div>
   );
 };
