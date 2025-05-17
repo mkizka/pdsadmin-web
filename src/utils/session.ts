@@ -9,7 +9,14 @@ type Session = {
   adminPassword: string;
 };
 
-const sessionAtom = atomWithStorage<Session | null>("session", null);
+const sessionAtom = atomWithStorage<Session | null>(
+  "session",
+  null,
+  undefined,
+  {
+    getOnInit: true,
+  },
+);
 
 export const useSetSession = () => useSetAtom(sessionAtom);
 
