@@ -1,10 +1,11 @@
 import type React from "react";
 
 import { LogoutButton } from "./LogoutButton";
+import { SessionStatus } from "./SessionStatus";
 
 export const Navbar: React.FC = () => {
   return (
-    <div className="navbar bg-primary shadow-sm text-primary-content">
+    <div className="navbar gap-4 bg-primary shadow-sm text-primary-content">
       <div className="flex-1">
         <div className="flex">
           <img
@@ -15,6 +16,7 @@ export const Navbar: React.FC = () => {
           <span className="text-xl font-bold">PDS Admin</span>
         </div>
       </div>
+      <SessionStatus />
       <LogoutButton />
     </div>
   );

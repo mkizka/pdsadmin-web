@@ -23,6 +23,14 @@ export const useIsLoggedIn = () => {
   return session !== null;
 };
 
+export const useSession = () => {
+  const session = useAtomValue(sessionAtom);
+  if (!session) {
+    throw new Error("Session not found");
+  }
+  return session;
+};
+
 export const usePDS = () => {
   const session = useAtomValue(sessionAtom);
   if (!session) {
