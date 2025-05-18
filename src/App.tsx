@@ -1,5 +1,4 @@
 import { AccountList } from "./components/AccountList";
-import { InviteCodeForm } from "./components/InviteCodeForm";
 import { LoginForm } from "./components/LoginForm";
 import { Navbar } from "./components/Navbar";
 import { useIsLoggedIn } from "./utils/session";
@@ -11,12 +10,7 @@ export function App() {
       <Navbar />
       <div className="container mx-auto p-4 max-w-md">
         {!isLoggedIn && <LoginForm />}
-        {isLoggedIn && (
-          <div className="flex flex-col gap-4">
-            <InviteCodeForm />
-            <AccountList />
-          </div>
-        )}
+        {isLoggedIn && <AccountList />}
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { type MouseEvent } from "react";
 
 import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
+import { InviteCodeButton } from "./InviteCodeButton";
 
 function SkeltonListRaw() {
   return (
@@ -167,13 +168,7 @@ export function AccountList() {
     <ul className="list rounded-box shadow-md">
       <li className="p-4 pb-2 flex items-center">
         <div className="font-bold flex-1">Repositories</div>
-        <button
-          className="btn btn-ghost btn-square"
-          onClick={() => initAccountList()}
-          disabled={initLoading}
-        >
-          <span className="i-lucide-refresh-ccw size-6"></span>
-        </button>
+        <InviteCodeButton />
       </li>
       {initLoading
         ? skeltonRepositories.map((_, i) => <SkeltonListRaw key={i} />)
