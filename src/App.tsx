@@ -3,9 +3,11 @@ import { AccountList } from "./components/account-list";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
 import { ResetPasswordModal } from "./components/reset-password";
+import { Toaster } from "./components/toaster";
 
 export function App() {
   const isLoggedIn = useIsLoggedIn();
+
   return (
     <>
       <Navbar />
@@ -14,6 +16,7 @@ export function App() {
         {isLoggedIn && <AccountList />}
       </div>
       {isLoggedIn && <ResetPasswordModal />}
+      <Toaster />
     </>
   );
 }
