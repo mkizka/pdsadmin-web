@@ -1,7 +1,7 @@
 import { type FormEvent, useState } from "react";
 
 import { useSetSession } from "../atoms/session";
-import { cx } from "../utils/cx";
+import { cn } from "../utils/cn";
 import { PDS } from "../utils/pds";
 import { ErrorAlert } from "./alert-message";
 
@@ -95,7 +95,7 @@ export function LoginForm() {
         <div className="card-actions justify-end mt-4">
           <button
             type="submit"
-            className={cx("btn btn-primary", form.state.loading && "loading")}
+            className={cn("btn btn-primary", form.state.loading && "loading")}
             disabled={!form.canSubmit}
           >
             ログイン

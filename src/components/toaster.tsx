@@ -1,5 +1,5 @@
 import { useToasts } from "../atoms/toast";
-import { cx } from "../utils/cx";
+import { cn } from "../utils/cn";
 
 export function Toaster() {
   const toasts = useToasts();
@@ -8,7 +8,7 @@ export function Toaster() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={cx("alert", {
+          className={cn("alert", {
             "alert-success": toast.level === "success",
             "alert-error": toast.level === "error",
           })}

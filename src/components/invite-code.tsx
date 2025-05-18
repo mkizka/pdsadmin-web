@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { usePDS } from "../atoms/session";
-import { cx } from "../utils/cx";
+import { cn } from "../utils/cn";
 
 const INVITE_CODE_DIALOG_ID = "create-invite-code";
 
@@ -47,7 +47,7 @@ export function InviteCodeButton() {
         {loading && (
           <div className="loading loading-spinner loading-sm absolute"></div>
         )}
-        <span className={cx(loading && "opacity-0")}>Create Invite Code</span>
+        <span className={cn(loading && "opacity-0")}>Create Invite Code</span>
       </button>
       <dialog id={INVITE_CODE_DIALOG_ID} className="modal">
         <div className="modal-box flex flex-col gap-2">
@@ -63,7 +63,7 @@ export function InviteCodeButton() {
               onClick={copyToClipboard}
             >
               <span
-                className={cx(
+                className={cn(
                   copySuccess ? "i-lucide-check" : "i-lucide-clipboard",
                   "size-5",
                 )}
