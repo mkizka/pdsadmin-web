@@ -1,5 +1,5 @@
+import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
-import { type MouseEvent } from "react";
 
 import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
@@ -53,17 +53,15 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
     );
   }
 
-  const handleModalOpen = (e: MouseEvent) => {
-    if (
-      e.target instanceof HTMLDivElement &&
-      e.target.classList.contains("dropdown")
-    ) {
-      return;
-    }
+  const handleModalOpen = () => {
     const modal = document.getElementById(
       `account-modal_${repo.did}`,
     ) as HTMLDialogElement | null;
     modal?.showModal();
+  };
+
+  const preventClickPropagation = (e: MouseEvent) => {
+    e.stopPropagation();
   };
 
   return (
@@ -81,7 +79,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
         <div className="font-bold">@{repo.accountInfo.handle}</div>
         <div className="text-xs font-semibold opacity-60">at://{repo.did}</div>
       </div>
-      <div className="dropdown dropdown-end">
+      <div className="dropdown dropdown-end" onClick={preventClickPropagation}>
         <div
           tabIndex={0}
           role="button"
@@ -92,21 +90,31 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
         <ul
           tabIndex={0}
           className="menu dropdown-content bg-base-100 rounded-box w-48 shadow-md"
+          onClick={preventClickPropagation}
         >
           <li>
-            <a className="h-12 content-center">
+            <a
+              className="h-12 content-center"
+              onClick={preventClickPropagation}
+            >
               <span className="i-lucide-key-round size-4"></span>
               Reset Password
             </a>
           </li>
           <li>
-            <a className="h-12 text-error content-center">
+            <a
+              className="h-12 text-error content-center"
+              onClick={preventClickPropagation}
+            >
               <span className="i-lucide-ban size-4"></span>
               Takedown
             </a>
           </li>
           <li>
-            <a className="h-12 text-error content-center">
+            <a
+              className="h-12 text-error content-center"
+              onClick={preventClickPropagation}
+            >
               <span className="i-lucide-trash-2 size-4"></span>
               Delete
             </a>
