@@ -5,7 +5,7 @@ import { usePDS } from "../utils/session";
 
 function SkeltonListRaw() {
   return (
-    <li className="list-row place-items-center">
+    <li className="list-row place-items-center gap-2">
       <div className="list-col-grow w-full">
         <span className="btn btn-ghost gap-4 h-16 w-full">
           <div className="skeleton size-10 rounded-full"></div>
@@ -15,8 +15,7 @@ function SkeltonListRaw() {
           </div>
         </span>
       </div>
-      <div className="btn skeleton w-14 h-10"></div>
-      <div className="btn skeleton w-14 h-10"></div>
+      <div className="btn skeleton size-10"></div>
     </li>
   );
 }
@@ -66,7 +65,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   };
 
   return (
-    <li className="list-row place-items-center">
+    <li className="list-row place-items-center gap-2">
       <div className="list-col-grow w-full">
         <button
           className="btn btn-ghost gap-4 h-16 w-full"
@@ -85,15 +84,33 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           </div>
         </button>
       </div>
-      <div className="tooltip" data-tip="Takedown">
-        <button className="btn btn-error w-14">
-          <span className="i-lucide-circle-alert size-6"></span>
-        </button>
-      </div>
-      <div className="tooltip" data-tip="Delete">
-        <button className="btn btn-error w-14">
-          <span className="i-lucide-trash-2 size-6"></span>
-        </button>
+      <div className="dropdown dropdown-end">
+        <div tabIndex={0} role="button" className="btn btn-square size-10">
+          <span className="i-lucide-more-vertical size-6"></span>
+        </div>
+        <ul
+          tabIndex={0}
+          className="menu dropdown-content bg-base-100 rounded-box w-48 shadow-md"
+        >
+          <li>
+            <a className="h-12 content-center">
+              <span className="i-lucide-key-round size-4"></span>
+              Reset Password
+            </a>
+          </li>
+          <li>
+            <a className="h-12 text-error content-center">
+              <span className="i-lucide-ban size-4"></span>
+              Takedown
+            </a>
+          </li>
+          <li>
+            <a className="h-12 text-error content-center">
+              <span className="i-lucide-trash-2 size-4"></span>
+              Delete
+            </a>
+          </li>
+        </ul>
       </div>
       <AccountModal repo={repo} />
     </li>
