@@ -9,7 +9,7 @@ export function App() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-4 max-w-lg">
+      <div className="container mx-auto p-4 max-w-md">
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && (
           <div className="flex flex-col gap-4">

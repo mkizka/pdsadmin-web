@@ -1,21 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
+import { type MouseEvent } from "react";
 
 import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
 
 function SkeltonListRaw() {
   return (
-    <li className="list-row place-items-center gap-2">
-      <div className="list-col-grow w-full">
-        <span className="btn btn-ghost gap-4 h-16 w-full">
-          <div className="skeleton size-10 rounded-full"></div>
-          <div className="flex flex-col gap-2 flex-1">
-            <div className="skeleton w-full h-4"></div>
-            <div className="skeleton w-full h-2"></div>
-          </div>
-        </span>
+    <li className="list-row h-20 place-items-center gap-2">
+      <div className="skeleton size-10 rounded-full"></div>
+      <div className="flex flex-col gap-2 w-full">
+        <div className="skeleton w-full h-4"></div>
+        <div className="skeleton w-full h-2"></div>
       </div>
-      <div className="btn skeleton size-10"></div>
+      <div className="btn skeleton rounded-full size-8"></div>
     </li>
   );
 }
@@ -49,15 +46,19 @@ function AccountModal({ repo }: { repo: Repository }) {
 function AccountListRaw({ repo }: { repo: Repository | null }) {
   if (!repo) {
     return (
-      <li className="list-row place-items-center">
-        <div className="list-col-grow w-full">
-          <span className="btn btn-ghost h-16 w-full">No account</span>
-        </div>
+      <li className="list-row place-items-center h-20">
+        <div className="list-col-grow text-center">No account</div>
       </li>
     );
   }
 
-  const handleModalOpen = () => {
+  const handleModalOpen = (e: MouseEvent) => {
+    if (
+      e.target instanceof HTMLDivElement &&
+      e.target.classList.contains("dropdown")
+    ) {
+      return;
+    }
     const modal = document.getElementById(
       `account-modal_${repo.did}`,
     ) as HTMLDialogElement | null;
@@ -65,28 +66,27 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   };
 
   return (
-    <li className="list-row place-items-center gap-2">
-      <div className="list-col-grow w-full">
-        <button
-          className="btn btn-ghost gap-4 h-16 w-full"
-          onClick={handleModalOpen}
-        >
-          <div className="avatar avatar-placeholder">
-            <div className="bg-neutral text-neutral-content size-10 rounded-full">
-              <span className="i-lucide-circle-user size-6"></span>
-            </div>
-          </div>
-          <div className="flex-1 text-start">
-            <div className="font-bold">@{repo.accountInfo.handle}</div>
-            <div className="text-xs font-semibold opacity-60">
-              at://{repo.did}
-            </div>
-          </div>
-        </button>
+    <li
+      className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
+      onClick={handleModalOpen}
+    >
+      <div className="avatar avatar-placeholder">
+        <div className="bg-neutral text-neutral-content size-10 rounded-full">
+          <span className="i-lucide-circle-user size-6"></span>
+        </div>
+      </div>
+      {/* palce-items-centerで全アイテムを縦横中央揃えした上で、2列目のみ横軸startに上書きする */}
+      <div className="justify-self-start">
+        <div className="font-bold">@{repo.accountInfo.handle}</div>
+        <div className="text-xs font-semibold opacity-60">at://{repo.did}</div>
       </div>
       <div className="dropdown dropdown-end">
-        <div tabIndex={0} role="button" className="btn btn-square size-10">
-          <span className="i-lucide-more-vertical size-6"></span>
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn btn-circle btn-ghost size-8"
+        >
+          <span className="i-lucide-more-horizontal size-6"></span>
         </div>
         <ul
           tabIndex={0}
