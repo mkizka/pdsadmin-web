@@ -1,6 +1,7 @@
 import { AccountList } from "./components/AccountList";
 import { LoginForm } from "./components/LoginForm";
 import { Navbar } from "./components/Navbar";
+import { ResetPasswordModal } from "./components/ResetPasswordButton";
 import { useIsLoggedIn } from "./utils/session";
 
 export function App() {
@@ -12,6 +13,7 @@ export function App() {
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && <AccountList />}
       </div>
+      {isLoggedIn && <ResetPasswordModal />}
     </>
   );
 }

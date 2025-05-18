@@ -1,5 +1,7 @@
 import { Client, simpleFetchHandler } from "@atcute/client";
 
+import type { Did } from "./types";
+
 export class PDS {
   readonly #rpc;
   readonly #headers;
@@ -37,7 +39,7 @@ export class PDS {
     return { repos, cursor: data.cursor };
   }
 
-  async #getAccountInfo(did: `did:${string}:${string}`) {
+  async #getAccountInfo(did: Did) {
     const { data, ok } = await this.#rpc.get(
       "com.atproto.admin.getAccountInfo",
       {
@@ -67,6 +69,23 @@ export class PDS {
       throw new Error(data.message ?? data.error);
     }
     return data.code;
+  }
+
+  async resetPassword(did: Did, password: string) {
+    const { data, ok } = await this.#rpc.post(
+      "com.atproto.admin.updateAccountPassword",
+      {
+        input: {
+          did,
+          password,
+        },
+        headers: this.#headers,
+        as: "json",
+      },
+    );
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
   }
 }
 

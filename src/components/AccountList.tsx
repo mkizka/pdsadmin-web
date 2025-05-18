@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
 import { InviteCodeButton } from "./InviteCodeButton";
+import { ResetPasswordButton } from "./ResetPasswordButton";
 
 function SkeltonListRaw() {
   return (
@@ -93,13 +94,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           onClick={preventClickPropagation}
         >
           <li>
-            <a
-              className="h-12 content-center"
-              onClick={preventClickPropagation}
-            >
-              <span className="i-lucide-key-round size-4"></span>
-              Reset Password
-            </a>
+            <ResetPasswordButton did={repo.did} />
           </li>
           <li>
             <a
