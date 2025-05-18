@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 
 import type { Repository } from "../utils/pds";
 import { usePDS } from "../utils/session";
-import { InviteCodeButton } from "./InviteCodeButton";
-import { ResetPasswordButton } from "./ResetPasswordButton";
+import { InviteCodeButton } from "./invite-code";
+import { ResetPasswordButton } from "./reset-password";
 
 function SkeltonListRaw() {
   return (

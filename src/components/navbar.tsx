@@ -1,6 +1,5 @@
 import { useIsLoggedIn } from "../utils/session";
-import { LogoutButton } from "./LogoutButton";
-import { SessionStatus } from "./SessionStatus";
+import { LogoutButton } from "./logout-button";
 
 export function Navbar() {
   const isLoggedIn = useIsLoggedIn();
@@ -16,7 +15,6 @@ export function Navbar() {
           <span className="text-xl font-bold">PDS Admin</span>
         </div>
       </div>
-      {isLoggedIn && <SessionStatus />}
       {isLoggedIn && <LogoutButton />}
     </div>
   );

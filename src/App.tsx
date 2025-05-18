@@ -1,7 +1,7 @@
-import { AccountList } from "./components/AccountList";
-import { LoginForm } from "./components/LoginForm";
-import { Navbar } from "./components/Navbar";
-import { ResetPasswordModal } from "./components/ResetPasswordButton";
+import { AccountList } from "./components/account-list";
+import { LoginForm } from "./components/login-form";
+import { Navbar } from "./components/navbar";
+import { ResetPasswordModal } from "./components/reset-password";
 import { useIsLoggedIn } from "./utils/session";
 
 export function App() {
