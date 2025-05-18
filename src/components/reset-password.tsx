@@ -5,8 +5,8 @@ import {
   RESET_PASSWORD_DIALOG_ID,
   useOpenResetPasswordModal,
   useResetPasswordForm,
-} from "../utils/reset-password";
-import { usePDS } from "../utils/session";
+} from "../atoms/reset-password";
+import { usePDS } from "../atoms/session";
 import type { Did } from "../utils/types";
 
 export function ResetPasswordModal() {

@@ -1,8 +1,8 @@
+import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account-list";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
 import { ResetPasswordModal } from "./components/reset-password";
-import { useIsLoggedIn } from "./utils/session";
 
 export function App() {
   const isLoggedIn = useIsLoggedIn();

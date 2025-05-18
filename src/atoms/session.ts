@@ -2,23 +2,18 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { useMemo } from "react";
 
-import { PDS } from "./pds";
+import { PDS } from "../utils/pds";
 
 type Session = {
   service: string;
   adminPassword: string;
 };
 
-const sessionAtom = atomWithStorage<Session | null>(
-  "session",
-  null,
-  undefined,
-  {
-    getOnInit: true,
-  },
-);
+const baseAtom = atomWithStorage<Session | null>("session", null, undefined, {
+  getOnInit: true,
+});
 
-export const useSetSession = () => useSetAtom(sessionAtom);
+export const useSetSession = () => useSetAtom(baseAtom);
 
 export const useLogout = () => {
   const setSession = useSetSession();
@@ -26,12 +21,12 @@ export const useLogout = () => {
 };
 
 export const useIsLoggedIn = () => {
-  const session = useAtomValue(sessionAtom);
+  const session = useAtomValue(baseAtom);
   return session !== null;
 };
 
 export const useSession = () => {
-  const session = useAtomValue(sessionAtom);
+  const session = useAtomValue(baseAtom);
   if (!session) {
     throw new Error("Session not found");
   }
@@ -39,7 +34,7 @@ export const useSession = () => {
 };
 
 export const usePDS = () => {
-  const session = useAtomValue(sessionAtom);
+  const session = useAtomValue(baseAtom);
   if (!session) {
     throw new Error("Session not found");
   }

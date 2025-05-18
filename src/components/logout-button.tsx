@@ -1,4 +1,4 @@
-import { useLogout } from "../utils/session";
+import { useLogout } from "../atoms/session";
 
 export function LogoutButton() {
   const logout = useLogout();

@@ -1,4 +1,4 @@
-import { useIsLoggedIn } from "../utils/session";
+import { useIsLoggedIn } from "../atoms/session";
 import { LogoutButton } from "./logout-button";
 
 export function Navbar() {

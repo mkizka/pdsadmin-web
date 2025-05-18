@@ -1,8 +1,8 @@
 import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
+import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
-import { usePDS } from "../utils/session";
 import { InviteCodeButton } from "./invite-code";
 import { ResetPasswordButton } from "./reset-password";
 
