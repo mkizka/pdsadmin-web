@@ -110,6 +110,29 @@ export class PDS {
       throw new Error(data.message ?? data.error);
     }
   }
+
+  async untakedown(did: Did, ref: string) {
+    const { data, ok } = await this.#rpc.post(
+      "com.atproto.admin.updateSubjectStatus",
+      {
+        input: {
+          subject: {
+            $type: "com.atproto.admin.defs#repoRef",
+            did,
+          },
+          takedown: {
+            applied: false,
+            ref,
+          },
+        },
+        headers: this.#headers,
+        as: "json",
+      },
+    );
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
+  }
 }
 
 export type Repository = Awaited<
