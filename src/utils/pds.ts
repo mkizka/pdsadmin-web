@@ -88,7 +88,7 @@ export class PDS {
     }
   }
 
-  async takedown(did: Did, ref: string) {
+  async takedown(did: Did) {
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.updateSubjectStatus",
       {
@@ -99,7 +99,6 @@ export class PDS {
           },
           takedown: {
             applied: true,
-            ref,
           },
         },
         headers: this.#headers,
@@ -111,7 +110,7 @@ export class PDS {
     }
   }
 
-  async untakedown(did: Did, ref: string) {
+  async untakedown(did: Did) {
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.updateSubjectStatus",
       {
@@ -122,7 +121,6 @@ export class PDS {
           },
           takedown: {
             applied: false,
-            ref,
           },
         },
         headers: this.#headers,

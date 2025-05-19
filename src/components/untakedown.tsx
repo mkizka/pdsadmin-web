@@ -22,8 +22,7 @@ export function UntakedownModal() {
     }
     setLoading(true);
     try {
-      const timestamp = Math.floor(Date.now() / 1000).toString();
-      await pds.untakedown(form.did, timestamp);
+      await pds.untakedown(form.did);
     } catch (error) {
       alert("Error: " + String(error));
     } finally {
