@@ -1,4 +1,3 @@
-import type { FormEvent } from "react";
 import { useState } from "react";
 
 import { usePDS } from "../atoms/session";
@@ -15,14 +14,17 @@ export function UntakedownModal() {
   const form = useUntakedownForm();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleClick = async () => {
     if (!form) {
       throw new Error("Form is missing");
     }
     setLoading(true);
     try {
       await pds.untakedown(form.did);
+      const dialog = document.getElementById(
+        UNTAKEDOWN_DIALOG_ID,
+      ) as HTMLDialogElement | null;
+      dialog?.close();
     } catch (error) {
       alert("Error: " + String(error));
     } finally {
@@ -34,16 +36,17 @@ export function UntakedownModal() {
     <dialog id={UNTAKEDOWN_DIALOG_ID} className="modal">
       <div className="modal-box">
         {form && (
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <div className="flex flex-col gap-4">
             <div className="p-4 text-center">
               <span className="i-lucide-check-circle size-12 mx-auto mb-4 text-success"></span>
               <p className="mb-4">
                 Are you sure you want to untakedown this account?
               </p>
               <button
-                type="submit"
+                type="button"
                 className="btn btn-success relative"
                 disabled={loading}
+                onClick={handleClick}
               >
                 {loading && (
                   <div className="loading loading-spinner loading-sm absolute"></div>
@@ -53,7 +56,7 @@ export function UntakedownModal() {
                 </span>
               </button>
             </div>
-          </form>
+          </div>
         )}
       </div>
       <form method="dialog" className="modal-backdrop">
