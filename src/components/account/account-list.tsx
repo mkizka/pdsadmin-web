@@ -1,16 +1,10 @@
-import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
-import { useOpenDidOperationModal } from "../atoms/did-operation";
-import { usePDS } from "../atoms/session";
-import type { Repository } from "../utils/pds";
-import {
-  DeleteAccountButton,
-  ResetPasswordButton,
-  TakedownAccountButton,
-  UntakedownAccountButton,
-} from "./did-operation-dialog";
-import { InviteCodeButton } from "./invite-code";
+import { useOpenDidOperationModal } from "../../atoms/did-operation";
+import { usePDS } from "../../atoms/session";
+import type { Repository } from "../../utils/pds";
+import { InviteCodeButton } from "../invite-code";
+import { AccountDropdown } from "./account-dropdown";
 
 function SkeltonListRaw() {
   return (
@@ -26,11 +20,7 @@ function SkeltonListRaw() {
 }
 
 function AccountListRaw({ repo }: { repo: Repository | null }) {
-  const openAccountModal = useOpenDidOperationModal();
-
-  const preventClickPropagation = (e: MouseEvent) => {
-    e.stopPropagation();
-  };
+  const openDidOperationModal = useOpenDidOperationModal();
 
   if (!repo) {
     return (
@@ -43,7 +33,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   return (
     <li
       className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
-      onClick={() => openAccountModal({ type: "account-info", repo })}
+      onClick={() => openDidOperationModal({ type: "account-info", repo })}
     >
       <div className="avatar avatar-placeholder">
         <div className="bg-neutral text-neutral-content size-10 rounded-full">
@@ -55,36 +45,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
         <div className="font-bold">@{repo.accountInfo.handle}</div>
         <div className="text-xs font-semibold opacity-60">at://{repo.did}</div>
       </div>
-      <div className="dropdown dropdown-end" onClick={preventClickPropagation}>
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-circle btn-ghost size-8"
-        >
-          <span className="i-lucide-more-horizontal size-6"></span>
-        </div>
-        <ul
-          tabIndex={0}
-          className="menu dropdown-content bg-base-100 rounded-box w-48 shadow-md"
-          onClick={preventClickPropagation}
-        >
-          <li>
-            <ResetPasswordButton did={repo.did} />
-          </li>
-          {repo.status === "takendown" ? (
-            <li>
-              <UntakedownAccountButton did={repo.did} />
-            </li>
-          ) : (
-            <li>
-              <TakedownAccountButton did={repo.did} />
-            </li>
-          )}
-          <li>
-            <DeleteAccountButton did={repo.did} />
-          </li>
-        </ul>
-      </div>
+      <AccountDropdown repo={repo} />
     </li>
   );
 }

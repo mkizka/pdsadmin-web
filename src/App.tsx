@@ -1,5 +1,5 @@
 import { useIsLoggedIn } from "./atoms/session";
-import { AccountList } from "./components/account-list";
+import { AccountList } from "./components/account/account-list";
 import { DidOperationDialog } from "./components/did-operation-dialog";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
