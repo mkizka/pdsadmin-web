@@ -6,9 +6,10 @@
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
   "scripts": {
     "build": "tsc -b && vite build",
-    "dev": "vite",
+    "dev": "./scripts/dev.sh",
     "format": "eslint . --fix && prettier . --write",
     "lint": "eslint . && prettier . --check",
+    "postinstall": "./scripts/postinstall.sh",
     "prepare": "husky",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
@@ -34,12 +35,15 @@
     "daisyui": "^5.0.35",
     "eslint": "^9.25.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "giget": "^2.0.0",
     "husky": "^9.1.7",
+    "kill-port": "^2.0.1",
     "lint-staged": "^16.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-pkg": "^0.19.1",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "wait-on": "^8.0.3"
   },
   "lint-staged": {
     "*.{js,mjs,ts,tsx}": "eslint --fix",

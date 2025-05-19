@@ -37,7 +37,9 @@ const useForm = () => {
 };
 
 const requireHttps = (maybeUrl: string) => {
-  return maybeUrl.startsWith("https://") ? maybeUrl : `https://${maybeUrl}`;
+  return maybeUrl.startsWith("https://") || maybeUrl.startsWith("http://")
+    ? maybeUrl
+    : `https://${maybeUrl}`;
 };
 
 export function LoginForm() {
