@@ -1,16 +1,13 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList, AccountModal } from "./components/account-list";
-import { DeleteAccountModal } from "./components/delete-account";
+import { DidOperationDialog } from "./components/did-operation-dialog";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
 import { ResetPasswordModal } from "./components/reset-password";
-import { TakedownModal } from "./components/takedown";
 import { Toaster } from "./components/toaster";
-import { UntakedownModal } from "./components/untakedown";
 
 export function App() {
   const isLoggedIn = useIsLoggedIn();
-
   return (
     <>
       <Navbar />
@@ -19,10 +16,8 @@ export function App() {
         {isLoggedIn && <AccountList />}
       </div>
       {isLoggedIn && <ResetPasswordModal />}
-      {isLoggedIn && <TakedownModal />}
-      {isLoggedIn && <UntakedownModal />}
       {isLoggedIn && <AccountModal />}
-      {isLoggedIn && <DeleteAccountModal />}
+      {isLoggedIn && <DidOperationDialog />}
       <Toaster />
     </>
   );

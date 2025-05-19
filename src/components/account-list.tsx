@@ -8,11 +8,13 @@ import {
 } from "../atoms/account-modal";
 import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
-import { DeleteButton } from "./delete-account";
+import {
+  DeleteAccountButton,
+  TakedownAccountButton,
+  UntakedownAccountButton,
+} from "./did-operation-dialog";
 import { InviteCodeButton } from "./invite-code";
 import { ResetPasswordButton } from "./reset-password";
-import { TakedownButton } from "./takedown";
-import { UntakedownButton } from "./untakedown";
 
 function SkeltonListRaw() {
   return (
@@ -105,15 +107,15 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           </li>
           {repo.status === "takendown" ? (
             <li>
-              <UntakedownButton did={repo.did} />
+              <UntakedownAccountButton did={repo.did} />
             </li>
           ) : (
             <li>
-              <TakedownButton did={repo.did} />
+              <TakedownAccountButton did={repo.did} />
             </li>
           )}
           <li>
-            <DeleteButton did={repo.did} />
+            <DeleteAccountButton did={repo.did} />
           </li>
         </ul>
       </div>

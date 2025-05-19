@@ -14,7 +14,7 @@
     "postinstall": "./scripts/postinstall.sh",
     "prepare": "husky",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "@atcute/client": "^4.0.0",
