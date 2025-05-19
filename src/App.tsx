@@ -5,6 +5,7 @@ import { Navbar } from "./components/navbar";
 import { ResetPasswordModal } from "./components/reset-password";
 import { TakedownModal } from "./components/takedown";
 import { Toaster } from "./components/toaster";
+import { UntakedownModal } from "./components/untakedown";
 
 export function App() {
   const isLoggedIn = useIsLoggedIn();
@@ -18,6 +19,7 @@ export function App() {
       </div>
       {isLoggedIn && <ResetPasswordModal />}
       {isLoggedIn && <TakedownModal />}
+      {isLoggedIn && <UntakedownModal />}
       {isLoggedIn && <AccountModal />}
       <Toaster />
     </>
