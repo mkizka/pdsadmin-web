@@ -1,5 +1,4 @@
 import type { FormEvent } from "react";
-import { useRef } from "react";
 
 import { usePDS } from "../atoms/session";
 import {
@@ -12,14 +11,14 @@ import type { Did } from "../utils/types";
 export function TakedownModal() {
   const pds = usePDS();
   const form = useTakedownForm();
-  const reasonRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!form || !reasonRef.current) {
-      throw new Error("Form or reason reference is missing");
+    if (!form) {
+      throw new Error("Form is missing");
     }
-    await pds.takedown(form.did, reasonRef.current.value);
+    const timestamp = Math.floor(Date.now() / 1000).toString();
+    await pds.takedown(form.did, timestamp);
   };
 
   return (
@@ -27,18 +26,15 @@ export function TakedownModal() {
       <div className="modal-box">
         {form && (
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-            <label className="input">
-              <span className="i-lucide-ban"></span>
-              <input
-                type="text"
-                required
-                placeholder="Reason for takedown"
-                ref={reasonRef}
-              />
-            </label>
-            <button type="submit" className="btn btn-primary">
-              Takedown Account
-            </button>
+            <div className="p-4 text-center">
+              <span className="i-lucide-ban size-12 mx-auto mb-4 text-error"></span>
+              <p className="mb-4">
+                Are you sure you want to takedown this account?
+              </p>
+              <button type="submit" className="btn btn-error">
+                Takedown Account
+              </button>
+            </div>
           </form>
         )}
       </div>
