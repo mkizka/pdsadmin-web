@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ATPROTO_DIR=/tmp/dawn-atproto-$(< .atproto-sha)
+ATPROTO_DIR=/tmp/atproto-$(< .atproto-sha)
 ATPROTO_LOG=$ATPROTO_DIR.log
 
 make_atproto() {
