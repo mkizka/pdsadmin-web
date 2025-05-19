@@ -150,7 +150,7 @@ export function DeleteAccountButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost"
+      className="h-12 btn btn-ghost text-error"
       onClick={(e) => {
         e.stopPropagation();
         openDidOperationModal({ type: "delete", did });
@@ -167,7 +167,7 @@ export function TakedownAccountButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost"
+      className="h-12 btn btn-ghost text-error"
       onClick={(e) => {
         e.stopPropagation();
         openDidOperationModal({ type: "takedown", did });
@@ -184,7 +184,7 @@ export function UntakedownAccountButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost"
+      className="h-12 btn btn-ghost text-success"
       onClick={(e) => {
         e.stopPropagation();
         openDidOperationModal({ type: "untakedown", did });
