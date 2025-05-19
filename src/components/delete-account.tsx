@@ -40,7 +40,8 @@ export function DeleteAccountModal() {
             <div className="p-4 text-center">
               <span className="i-lucide-trash-2 size-12 mx-auto mb-4 text-error"></span>
               <p className="mb-4">
-                アカウントを削除してもよろしいですか？この操作は元に戻せません。
+                Are you sure you want to delete this account? This action cannot
+                be undone.
               </p>
               <button
                 type="button"
@@ -52,7 +53,7 @@ export function DeleteAccountModal() {
                   <div className="loading loading-spinner loading-sm absolute"></div>
                 )}
                 <span className={cn(loading && "opacity-0")}>
-                  アカウントを削除
+                  Delete Account
                 </span>
               </button>
             </div>
