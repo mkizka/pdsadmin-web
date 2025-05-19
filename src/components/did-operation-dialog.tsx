@@ -30,33 +30,6 @@ type OperationBodyProps = {
   did: Did;
 };
 
-function DeleteOperationBody({ did }: OperationBodyProps) {
-  const pds = usePDS();
-  const { loading, handler } = useWithLoading(() => pds.deleteAccount(did));
-  return (
-    <div className="flex flex-col gap-4">
-      <div className="p-4 text-center">
-        <span className="i-lucide-trash-2 size-12 mx-auto mb-4 text-error"></span>
-        <p className="mb-4">
-          Are you sure you want to delete this account? This action cannot be
-          undone.
-        </p>
-        <button
-          type="button"
-          className="btn btn-error relative"
-          disabled={loading}
-          onClick={handler}
-        >
-          {loading && (
-            <div className="loading loading-spinner loading-sm absolute"></div>
-          )}
-          <span className={cn(loading && "opacity-0")}>Delete Account</span>
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function TakedownOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
   const { loading, handler } = useWithLoading(async () => {
@@ -104,6 +77,33 @@ function UntakedownOperationBody({ did }: OperationBodyProps) {
             <div className="loading loading-spinner loading-sm absolute"></div>
           )}
           <span className={cn(loading && "opacity-0")}>Untakedown Account</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function DeleteOperationBody({ did }: OperationBodyProps) {
+  const pds = usePDS();
+  const { loading, handler } = useWithLoading(() => pds.deleteAccount(did));
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="p-4 text-center">
+        <span className="i-lucide-trash-2 size-12 mx-auto mb-4 text-error"></span>
+        <p className="mb-4">
+          Are you sure you want to delete this account? This action cannot be
+          undone.
+        </p>
+        <button
+          type="button"
+          className="btn btn-error relative"
+          disabled={loading}
+          onClick={handler}
+        >
+          {loading && (
+            <div className="loading loading-spinner loading-sm absolute"></div>
+          )}
+          <span className={cn(loading && "opacity-0")}>Delete Account</span>
         </button>
       </div>
     </div>
