@@ -1,0 +1,20 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+      - run: |
+          corepack enable pnpm
+          pnpm i
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm build

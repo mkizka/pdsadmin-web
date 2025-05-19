@@ -10,7 +10,8 @@
     "format": "eslint . --fix && prettier . --write",
     "lint": "eslint .",
     "prepare": "husky",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@atcute/client": "^4.0.0",
