@@ -2,6 +2,7 @@ import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
 import { usePDS } from "../atoms/session";
+import { ACCOUNT_MODAL_DIALOG_ID, useAccountModalForm, useOpenAccountModal } from "../atoms/account-modal";
 import type { Repository } from "../utils/pds";
 import { InviteCodeButton } from "./invite-code";
 import { ResetPasswordButton } from "./reset-password";
@@ -19,24 +20,28 @@ function SkeltonListRaw() {
   );
 }
 
-function AccountModal({ repo }: { repo: Repository }) {
+export function AccountModal() {
+  const form = useAccountModalForm();
+
   return (
-    <dialog id={`account-modal_${repo.did}`} className="modal">
+    <dialog id={ACCOUNT_MODAL_DIALOG_ID} className="modal">
       <div className="modal-box">
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Account Info</h3>
-          <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
-            <code>{JSON.stringify(repo, null, 2)}</code>
-          </pre>
-          <a
-            href={`https://pdsls.dev/at://${repo.did}`}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-link w-full"
-          >
-            Open in pdsls.dev
-          </a>
-        </div>
+        {form && (
+          <div className="flex flex-col gap-2">
+            <h3 className="font-bold text-lg">Account Info</h3>
+            <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
+              <code>{JSON.stringify(form.repo, null, 2)}</code>
+            </pre>
+            <a
+              href={`https://pdsls.dev/at://${form.repo.did}`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-link w-full"
+            >
+              Open in pdsls.dev
+            </a>
+          </div>
+        )}
       </div>
       <form method="dialog" className="modal-backdrop">
         <button>close</button>
@@ -54,11 +59,9 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
     );
   }
 
+  const openAccountModal = useOpenAccountModal();
   const handleModalOpen = () => {
-    const modal = document.getElementById(
-      `account-modal_${repo.did}`,
-    ) as HTMLDialogElement | null;
-    modal?.showModal();
+    openAccountModal(repo);
   };
 
   const preventClickPropagation = (e: MouseEvent) => {
@@ -116,7 +119,6 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           </li>
         </ul>
       </div>
-      <AccountModal repo={repo} />
     </li>
   );
 }
