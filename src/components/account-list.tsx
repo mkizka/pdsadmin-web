@@ -10,6 +10,7 @@ import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
 import { InviteCodeButton } from "./invite-code";
 import { ResetPasswordButton } from "./reset-password";
+import { TakedownButton } from "./takedown";
 
 function SkeltonListRaw() {
   return (
@@ -101,13 +102,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
             <ResetPasswordButton did={repo.did} />
           </li>
           <li>
-            <a
-              className="h-12 text-error content-center"
-              onClick={preventClickPropagation}
-            >
-              <span className="i-lucide-ban size-4"></span>
-              Takedown
-            </a>
+            <TakedownButton did={repo.did} />
           </li>
           <li>
             <a
