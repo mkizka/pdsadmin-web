@@ -1,8 +1,12 @@
 import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
+import {
+  ACCOUNT_MODAL_DIALOG_ID,
+  useAccountModalForm,
+  useOpenAccountModal,
+} from "../atoms/account-modal";
 import { usePDS } from "../atoms/session";
-import { ACCOUNT_MODAL_DIALOG_ID, useAccountModalForm, useOpenAccountModal } from "../atoms/account-modal";
 import type { Repository } from "../utils/pds";
 import { InviteCodeButton } from "./invite-code";
 import { ResetPasswordButton } from "./reset-password";
@@ -51,6 +55,12 @@ export function AccountModal() {
 }
 
 function AccountListRaw({ repo }: { repo: Repository | null }) {
+  const openAccountModal = useOpenAccountModal();
+
+  const preventClickPropagation = (e: MouseEvent) => {
+    e.stopPropagation();
+  };
+
   if (!repo) {
     return (
       <li className="list-row place-items-center h-20">
@@ -59,19 +69,10 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
     );
   }
 
-  const openAccountModal = useOpenAccountModal();
-  const handleModalOpen = () => {
-    openAccountModal(repo);
-  };
-
-  const preventClickPropagation = (e: MouseEvent) => {
-    e.stopPropagation();
-  };
-
   return (
     <li
       className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
-      onClick={handleModalOpen}
+      onClick={() => openAccountModal(repo)}
     >
       <div className="avatar avatar-placeholder">
         <div className="bg-neutral text-neutral-content size-10 rounded-full">
