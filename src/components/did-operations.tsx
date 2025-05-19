@@ -7,23 +7,23 @@ import {
   RESET_PASSWORD_DIALOG_ID,
   TAKEDOWN_DIALOG_ID,
   UNTAKEDOWN_DIALOG_ID,
-  useDidAccountModalForm,
-  useDidDeleteAccountForm,
-  useDidResetPasswordForm,
-  useDidTakedownForm,
-  useDidUntakedownForm,
-  useOpenDidDeleteAccountModal,
-  useOpenDidResetPasswordModal,
-  useOpenDidTakedownModal,
-  useOpenDidUntakedownModal,
+  useAccountModalForm,
+  useDeleteAccountForm,
+  useOpenDeleteAccountModal,
+  useOpenResetPasswordModal,
+  useOpenTakedownModal,
+  useOpenUntakedownModal,
+  useResetPasswordForm,
+  useTakedownForm,
+  useUntakedownForm,
 } from "../atoms/did-operations";
 import { usePDS } from "../atoms/session";
 import { cn } from "../utils/cn";
 import type { Did } from "../utils/types";
 
-export function DidResetPasswordModal() {
+export function ResetPasswordModal() {
   const pds = usePDS();
-  const form = useDidResetPasswordForm();
+  const form = useResetPasswordForm();
   const newPasswordRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -61,15 +61,15 @@ export function DidResetPasswordModal() {
   );
 }
 
-export function DidResetPasswordButton({ did }: { did: Did }) {
-  const openDidResetPasswordModal = useOpenDidResetPasswordModal();
+export function ResetPasswordButton({ did }: { did: Did }) {
+  const openResetPasswordModal = useOpenResetPasswordModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost"
       onClick={(e) => {
         e.stopPropagation();
-        openDidResetPasswordModal(did);
+        openResetPasswordModal(did);
       }}
     >
       <span className="i-lucide-key-round size-4"></span>
@@ -78,9 +78,9 @@ export function DidResetPasswordButton({ did }: { did: Did }) {
   );
 }
 
-export function DidTakedownModal() {
+export function TakedownModal() {
   const pds = usePDS();
-  const form = useDidTakedownForm();
+  const form = useTakedownForm();
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
@@ -136,15 +136,15 @@ export function DidTakedownModal() {
   );
 }
 
-export function DidTakedownButton({ did }: { did: Did }) {
-  const openDidTakedownModal = useOpenDidTakedownModal();
+export function TakedownButton({ did }: { did: Did }) {
+  const openTakedownModal = useOpenTakedownModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost"
       onClick={(e) => {
         e.stopPropagation();
-        openDidTakedownModal(did);
+        openTakedownModal(did);
       }}
     >
       <span className="i-lucide-ban size-4"></span>
@@ -153,9 +153,9 @@ export function DidTakedownButton({ did }: { did: Did }) {
   );
 }
 
-export function DidUntakedownModal() {
+export function UntakedownModal() {
   const pds = usePDS();
-  const form = useDidUntakedownForm();
+  const form = useUntakedownForm();
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
@@ -210,15 +210,15 @@ export function DidUntakedownModal() {
   );
 }
 
-export function DidUntakedownButton({ did }: { did: Did }) {
-  const openDidUntakedownModal = useOpenDidUntakedownModal();
+export function UntakedownButton({ did }: { did: Did }) {
+  const openUntakedownModal = useOpenUntakedownModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost"
       onClick={(e) => {
         e.stopPropagation();
-        openDidUntakedownModal(did);
+        openUntakedownModal(did);
       }}
     >
       <span className="i-lucide-check-circle size-4"></span>
@@ -227,9 +227,9 @@ export function DidUntakedownButton({ did }: { did: Did }) {
   );
 }
 
-export function DidDeleteAccountModal() {
+export function DeleteAccountModal() {
   const pds = usePDS();
-  const form = useDidDeleteAccountForm();
+  const form = useDeleteAccountForm();
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
@@ -285,15 +285,15 @@ export function DidDeleteAccountModal() {
   );
 }
 
-export function DidDeleteButton({ did }: { did: Did }) {
-  const openDidDeleteAccountModal = useOpenDidDeleteAccountModal();
+export function DeleteButton({ did }: { did: Did }) {
+  const openDeleteAccountModal = useOpenDeleteAccountModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost"
       onClick={(e) => {
         e.stopPropagation();
-        openDidDeleteAccountModal(did);
+        openDeleteAccountModal(did);
       }}
     >
       <span className="i-lucide-trash-2 size-4"></span>
@@ -302,8 +302,8 @@ export function DidDeleteButton({ did }: { did: Did }) {
   );
 }
 
-export function DidAccountModal() {
-  const form = useDidAccountModalForm();
+export function AccountModal() {
+  const form = useAccountModalForm();
 
   return (
     <dialog id={ACCOUNT_MODAL_DIALOG_ID} className="modal">

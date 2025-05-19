@@ -1,14 +1,14 @@
 import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
-import { useOpenDidAccountModal } from "../atoms/did-operations";
+import { useOpenAccountModal } from "../atoms/did-operations";
 import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
 import {
-  DidDeleteButton,
-  DidResetPasswordButton,
-  DidTakedownButton,
-  DidUntakedownButton,
+  DeleteButton,
+  ResetPasswordButton,
+  TakedownButton,
+  UntakedownButton,
 } from "./did-operations";
 import { InviteCodeButton } from "./invite-code";
 
@@ -26,7 +26,7 @@ function SkeltonListRaw() {
 }
 
 function AccountListRaw({ repo }: { repo: Repository | null }) {
-  const openDidAccountModal = useOpenDidAccountModal();
+  const openAccountModal = useOpenAccountModal();
 
   const preventClickPropagation = (e: MouseEvent) => {
     e.stopPropagation();
@@ -43,7 +43,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   return (
     <li
       className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
-      onClick={() => openDidAccountModal(repo)}
+      onClick={() => openAccountModal(repo)}
     >
       <div className="avatar avatar-placeholder">
         <div className="bg-neutral text-neutral-content size-10 rounded-full">
@@ -69,19 +69,19 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           onClick={preventClickPropagation}
         >
           <li>
-            <DidResetPasswordButton did={repo.did} />
+            <ResetPasswordButton did={repo.did} />
           </li>
           {repo.status === "takendown" ? (
             <li>
-              <DidUntakedownButton did={repo.did} />
+              <UntakedownButton did={repo.did} />
             </li>
           ) : (
             <li>
-              <DidTakedownButton did={repo.did} />
+              <TakedownButton did={repo.did} />
             </li>
           )}
           <li>
-            <DidDeleteButton did={repo.did} />
+            <DeleteButton did={repo.did} />
           </li>
         </ul>
       </div>
