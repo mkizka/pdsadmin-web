@@ -102,7 +102,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           <li>
             <ResetPasswordButton did={repo.did} />
           </li>
-          {repo.status === "takedown" ? (
+          {repo.status === "takendown" ? (
             <li>
               <UntakedownButton did={repo.did} />
             </li>
