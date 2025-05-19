@@ -1,18 +1,16 @@
 import type { MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
-import {
-  ACCOUNT_MODAL_DIALOG_ID,
-  useAccountModalForm,
-  useOpenAccountModal,
-} from "../atoms/account-modal";
+import { useOpenDidAccountModal } from "../atoms/did-operations";
 import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
-import { DeleteButton } from "./delete-account";
+import {
+  DidDeleteButton,
+  DidResetPasswordButton,
+  DidTakedownButton,
+  DidUntakedownButton,
+} from "./did-operations";
 import { InviteCodeButton } from "./invite-code";
-import { ResetPasswordButton } from "./reset-password";
-import { TakedownButton } from "./takedown";
-import { UntakedownButton } from "./untakedown";
 
 function SkeltonListRaw() {
   return (
@@ -27,38 +25,8 @@ function SkeltonListRaw() {
   );
 }
 
-export function AccountModal() {
-  const form = useAccountModalForm();
-
-  return (
-    <dialog id={ACCOUNT_MODAL_DIALOG_ID} className="modal">
-      <div className="modal-box">
-        {form && (
-          <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Account Info</h3>
-            <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
-              <code>{JSON.stringify(form.repo, null, 2)}</code>
-            </pre>
-            <a
-              href={`https://pdsls.dev/at://${form.repo.did}`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-link w-full"
-            >
-              Open in pdsls.dev
-            </a>
-          </div>
-        )}
-      </div>
-      <form method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-  );
-}
-
 function AccountListRaw({ repo }: { repo: Repository | null }) {
-  const openAccountModal = useOpenAccountModal();
+  const openDidAccountModal = useOpenDidAccountModal();
 
   const preventClickPropagation = (e: MouseEvent) => {
     e.stopPropagation();
@@ -75,7 +43,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   return (
     <li
       className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
-      onClick={() => openAccountModal(repo)}
+      onClick={() => openDidAccountModal(repo)}
     >
       <div className="avatar avatar-placeholder">
         <div className="bg-neutral text-neutral-content size-10 rounded-full">
@@ -101,19 +69,19 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           onClick={preventClickPropagation}
         >
           <li>
-            <ResetPasswordButton did={repo.did} />
+            <DidResetPasswordButton did={repo.did} />
           </li>
           {repo.status === "takendown" ? (
             <li>
-              <UntakedownButton did={repo.did} />
+              <DidUntakedownButton did={repo.did} />
             </li>
           ) : (
             <li>
-              <TakedownButton did={repo.did} />
+              <DidTakedownButton did={repo.did} />
             </li>
           )}
           <li>
-            <DeleteButton did={repo.did} />
+            <DidDeleteButton did={repo.did} />
           </li>
         </ul>
       </div>
