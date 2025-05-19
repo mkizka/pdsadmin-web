@@ -22,7 +22,8 @@ export function TakedownModal() {
     }
     setLoading(true);
     try {
-      await pds.takedown(form.did);
+      const timestamp = Math.floor(Date.now() / 1000).toString();
+      await pds.takedown(form.did, timestamp);
     } catch (error) {
       alert("Error: " + String(error));
     } finally {
