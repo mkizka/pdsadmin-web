@@ -1,4 +1,5 @@
 import type { FormEvent } from "react";
+import { useState } from "react";
 
 import { usePDS } from "../atoms/session";
 import {
@@ -6,19 +7,28 @@ import {
   useOpenTakedownModal,
   useTakedownForm,
 } from "../atoms/takedown";
+import { cn } from "../utils/cn";
 import type { Did } from "../utils/types";
 
 export function TakedownModal() {
   const pds = usePDS();
   const form = useTakedownForm();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!form) {
       throw new Error("Form is missing");
     }
-    const timestamp = Math.floor(Date.now() / 1000).toString();
-    await pds.takedown(form.did, timestamp);
+    setLoading(true);
+    try {
+      const timestamp = Math.floor(Date.now() / 1000).toString();
+      await pds.takedown(form.did, timestamp);
+    } catch (error) {
+      alert("Error: " + String(error));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -31,8 +41,17 @@ export function TakedownModal() {
               <p className="mb-4">
                 Are you sure you want to takedown this account?
               </p>
-              <button type="submit" className="btn btn-error">
-                Takedown Account
+              <button
+                type="submit"
+                className="btn btn-error relative"
+                disabled={loading}
+              >
+                {loading && (
+                  <div className="loading loading-spinner loading-sm absolute"></div>
+                )}
+                <span className={cn(loading && "opacity-0")}>
+                  Takedown Account
+                </span>
               </button>
             </div>
           </form>
