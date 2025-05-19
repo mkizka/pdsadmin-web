@@ -1,5 +1,6 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList, AccountModal } from "./components/account-list";
+import { DeleteAccountModal } from "./components/delete-account";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
 import { ResetPasswordModal } from "./components/reset-password";
@@ -21,6 +22,7 @@ export function App() {
       {isLoggedIn && <TakedownModal />}
       {isLoggedIn && <UntakedownModal />}
       {isLoggedIn && <AccountModal />}
+      {isLoggedIn && <DeleteAccountModal />}
       <Toaster />
     </>
   );

@@ -8,6 +8,7 @@ import {
 } from "../atoms/account-modal";
 import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
+import { DeleteButton } from "./delete-account";
 import { InviteCodeButton } from "./invite-code";
 import { ResetPasswordButton } from "./reset-password";
 import { TakedownButton } from "./takedown";
@@ -112,13 +113,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
             </li>
           )}
           <li>
-            <a
-              className="h-12 text-error content-center"
-              onClick={preventClickPropagation}
-            >
-              <span className="i-lucide-trash-2 size-4"></span>
-              Delete
-            </a>
+            <DeleteButton did={repo.did} />
           </li>
         </ul>
       </div>

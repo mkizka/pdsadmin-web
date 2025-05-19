@@ -132,6 +132,22 @@ export class PDS {
       throw new Error(data.message ?? data.error);
     }
   }
+
+  async deleteAccount(did: Did) {
+    const { data, ok } = await this.#rpc.post(
+      "com.atproto.admin.deleteAccount",
+      {
+        input: {
+          did,
+        },
+        headers: this.#headers,
+        as: "json",
+      },
+    );
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
+  }
 }
 
 export type Repository = Awaited<
