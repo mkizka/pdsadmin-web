@@ -8,6 +8,7 @@ import {
 } from "../atoms/did-operation";
 import { usePDS } from "../atoms/session";
 import { cn } from "../utils/cn";
+import type { Repository } from "../utils/pds";
 import type { Did } from "../utils/types";
 
 const useWithLoading = (fn: () => Promise<void>) => {
@@ -27,6 +28,29 @@ const useWithLoading = (fn: () => Promise<void>) => {
   };
   return { loading, handler };
 };
+
+type AccountInfoOperationBodyProps = {
+  repo: Repository;
+};
+
+function AccountInfoOperationBody({ repo }: AccountInfoOperationBodyProps) {
+  return (
+    <div className="flex flex-col gap-2">
+      <h3 className="font-bold text-lg">Account Info</h3>
+      <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
+        <code>{JSON.stringify(repo, null, 2)}</code>
+      </pre>
+      <a
+        href={`https://pdsls.dev/at://${repo.did}`}
+        target="_blank"
+        rel="noreferrer"
+        className="btn btn-link w-full"
+      >
+        Open in pdsls.dev
+      </a>
+    </div>
+  );
+}
 
 type OperationBodyProps = {
   did: Did;
@@ -152,23 +176,20 @@ function DeleteOperationBody({ did }: OperationBodyProps) {
   );
 }
 
-function OperationBody({
-  didOperation: { type, ...bodyProps },
-}: {
-  didOperation: DidOperation;
-}) {
-  switch (type) {
-    case "reset-password":
-      return <ResetPasswordOperationBody {...bodyProps} />;
-    case "takedown":
-      return <TakedownOperationBody {...bodyProps} />;
-    case "untakedown":
-      return <UntakedownOperationBody {...bodyProps} />;
-    case "delete":
-      return <DeleteOperationBody {...bodyProps} />;
-    default:
-      throw new Error("Unknown operation type");
+function OperationBody({ didOperation }: { didOperation: DidOperation }) {
+  if (didOperation.type === "account-info") {
+    return <AccountInfoOperationBody {...didOperation} />;
   }
+  if (didOperation.type === "reset-password") {
+    return <ResetPasswordOperationBody {...didOperation} />;
+  }
+  if (didOperation.type === "takedown") {
+    return <TakedownOperationBody {...didOperation} />;
+  }
+  if (didOperation.type === "untakedown") {
+    return <UntakedownOperationBody {...didOperation} />;
+  }
+  return <DeleteOperationBody {...didOperation} />;
 }
 
 export function DidOperationDialog() {

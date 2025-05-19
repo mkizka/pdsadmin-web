@@ -1,11 +1,19 @@
 import { atom, useAtomValue, useSetAtom } from "jotai";
 
+import type { Repository } from "../utils/pds";
 import type { Did } from "../utils/types";
 
-export type DidOperation = {
+type SimpleDidOperation = {
   type: "reset-password" | "takedown" | "untakedown" | "delete";
   did: Did;
 };
+
+type AccountInfoOperation = {
+  type: "account-info";
+  repo: Repository;
+};
+
+export type DidOperation = SimpleDidOperation | AccountInfoOperation;
 
 const baseAtom = atom<DidOperation | null>(null);
 
