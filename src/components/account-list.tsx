@@ -102,12 +102,15 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
           <li>
             <ResetPasswordButton did={repo.did} />
           </li>
-          <li>
-            <TakedownButton did={repo.did} />
-          </li>
-          <li>
-            <UntakedownButton did={repo.did} />
-          </li>
+          {repo.status === "takedown" ? (
+            <li>
+              <UntakedownButton did={repo.did} />
+            </li>
+          ) : (
+            <li>
+              <TakedownButton did={repo.did} />
+            </li>
+          )}
           <li>
             <a
               className="h-12 text-error content-center"
