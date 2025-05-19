@@ -3,7 +3,6 @@ import { AccountList, AccountModal } from "./components/account-list";
 import { DidOperationDialog } from "./components/did-operation-dialog";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
-import { ResetPasswordModal } from "./components/reset-password";
 import { Toaster } from "./components/toaster";
 
 export function App() {
@@ -15,7 +14,6 @@ export function App() {
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && <AccountList />}
       </div>
-      {isLoggedIn && <ResetPasswordModal />}
       {isLoggedIn && <AccountModal />}
       {isLoggedIn && <DidOperationDialog />}
       <Toaster />

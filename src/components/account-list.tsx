@@ -10,11 +10,11 @@ import { usePDS } from "../atoms/session";
 import type { Repository } from "../utils/pds";
 import {
   DeleteAccountButton,
+  ResetPasswordButton,
   TakedownAccountButton,
   UntakedownAccountButton,
 } from "./did-operation-dialog";
 import { InviteCodeButton } from "./invite-code";
-import { ResetPasswordButton } from "./reset-password";
 
 function SkeltonListRaw() {
   return (

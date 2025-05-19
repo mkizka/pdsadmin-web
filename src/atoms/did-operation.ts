@@ -3,7 +3,7 @@ import { atom, useAtomValue, useSetAtom } from "jotai";
 import type { Did } from "../utils/types";
 
 export type DidOperation = {
-  type: "takedown" | "untakedown" | "delete";
+  type: "reset-password" | "takedown" | "untakedown" | "delete";
   did: Did;
 };
 

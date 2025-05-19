@@ -80,7 +80,7 @@ export class PDS {
           password,
         },
         headers: this.#headers,
-        as: "json",
+        as: "blob", // jsonだとエラーになった
       },
     );
     if (!ok) {

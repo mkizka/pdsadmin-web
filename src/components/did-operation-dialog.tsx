@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 import {
   type DidOperation,
@@ -18,6 +18,8 @@ const useWithLoading = (fn: () => Promise<void>) => {
       await fn();
       didOperationDialog.close();
     } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
       alert("Error: " + String(error));
     } finally {
       setLoading(false);
@@ -29,6 +31,46 @@ const useWithLoading = (fn: () => Promise<void>) => {
 type OperationBodyProps = {
   did: Did;
 };
+
+function ResetPasswordOperationBody({ did }: OperationBodyProps) {
+  const pds = usePDS();
+  const [newPassword, setNewPassword] = useState("");
+  const { loading, handler } = useWithLoading(() =>
+    pds.resetPassword(did, newPassword),
+  );
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await handler();
+    setNewPassword("");
+  };
+
+  return (
+    <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
+      <span className="i-lucide-key-round size-12"></span>
+      <p>Enter new password</p>
+      <label className="input">
+        <input
+          type="password"
+          placeholder="New Password"
+          required
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+      </label>
+      <button
+        type="submit"
+        className="btn btn-primary relative"
+        disabled={loading}
+      >
+        {loading && (
+          <div className="loading loading-spinner loading-sm absolute"></div>
+        )}
+        <span className={cn(loading && "opacity-0")}>Reset Password</span>
+      </button>
+    </form>
+  );
+}
 
 function TakedownOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
@@ -116,6 +158,8 @@ function OperationBody({
   didOperation: DidOperation;
 }) {
   switch (type) {
+    case "reset-password":
+      return <ResetPasswordOperationBody {...bodyProps} />;
     case "takedown":
       return <TakedownOperationBody {...bodyProps} />;
     case "untakedown":
@@ -142,6 +186,23 @@ export function DidOperationDialog() {
         <button>close</button>
       </form>
     </dialog>
+  );
+}
+
+export function ResetPasswordButton({ did }: { did: Did }) {
+  const openDidOperationModal = useOpenDidOperationModal();
+  return (
+    <div
+      role="button"
+      className="h-12 btn btn-ghost"
+      onClick={(e) => {
+        e.stopPropagation();
+        openDidOperationModal({ type: "reset-password", did });
+      }}
+    >
+      <span className="i-lucide-key-round size-4"></span>
+      Reset Password
+    </div>
   );
 }
 
