@@ -174,6 +174,44 @@ function DeleteOperationBody({ did }: OperationBodyProps) {
   );
 }
 
+function RequestCrawlOperationBody() {
+  const pds = usePDS();
+  const [hostname, setHostname] = useState("");
+  const { loading, handler } = useWithLoading(() => pds.requestCrawl(hostname));
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await handler();
+    setHostname("");
+  };
+
+  return (
+    <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
+      <span className="i-lucide-refresh-cw size-12"></span>
+      <p className="text-center">Enter relay address to request crawl</p>
+      <label className="input">
+        <input
+          type="text"
+          placeholder="Relay hostname"
+          required
+          value={hostname}
+          onChange={(e) => setHostname(e.target.value)}
+        />
+      </label>
+      <button
+        type="submit"
+        className="btn btn-primary relative"
+        disabled={loading}
+      >
+        {loading && (
+          <div className="loading loading-spinner loading-sm absolute"></div>
+        )}
+        <span className={cn(loading && "opacity-0")}>Request Crawl</span>
+      </button>
+    </form>
+  );
+}
+
 function OperationBody({ operation }: { operation: AccountOperation }) {
   if (operation.type === "account-info") {
     return <AccountInfoOperationBody {...operation} />;
@@ -186,6 +224,9 @@ function OperationBody({ operation }: { operation: AccountOperation }) {
   }
   if (operation.type === "untakedown") {
     return <UntakedownOperationBody {...operation} />;
+  }
+  if (operation.type === "request-crawl") {
+    return <RequestCrawlOperationBody />;
   }
   return <DeleteOperationBody {...operation} />;
 }

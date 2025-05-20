@@ -151,10 +151,10 @@ export class PDS {
     }
   }
 
-  async requestCrawl() {
+  async requestCrawl(hostname?: string) {
     const { data, ok } = await this.#rpc.post("com.atproto.sync.requestCrawl", {
       input: {
-        hostname: new URL(this.#service).hostname,
+        hostname: hostname || new URL(this.#service).hostname,
       },
       headers: this.#headers,
       as: "blob",

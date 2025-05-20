@@ -1,24 +1,10 @@
-import { useState } from "react";
-
-import { usePDS } from "../atoms/pds";
-import { cn } from "../utils/cn";
+import { useOpenAccountOperationModal } from "../atoms/account-operation";
 
 export function RequestCrawlButton() {
-  const pds = usePDS();
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const openModal = useOpenAccountOperationModal();
 
-  const handleRequestCrawl = async () => {
-    setLoading(true);
-    try {
-      await pds.requestCrawl();
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 2000);
-    } catch (error) {
-      alert("Error: " + String(error));
-    } finally {
-      setLoading(false);
-    }
+  const handleRequestCrawl = () => {
+    openModal({ type: "request-crawl" });
   };
 
   return (
@@ -29,25 +15,9 @@ export function RequestCrawlButton() {
           Request a relay server to crawl your repository.
         </p>
         <div className="card-actions justify-end mt-2">
-          <button
-            className="btn btn-primary relative"
-            onClick={handleRequestCrawl}
-            disabled={loading}
-          >
-            {loading && (
-              <div className="loading loading-spinner loading-sm absolute"></div>
-            )}
-            {success ? (
-              <span className={cn(loading && "opacity-0")}>
-                <span className="i-lucide-check size-4 mr-1"></span>
-                Requested
-              </span>
-            ) : (
-              <span className={cn(loading && "opacity-0")}>
-                <span className="i-lucide-refresh-cw size-4 mr-1"></span>
-                Request Crawl
-              </span>
-            )}
+          <button className="btn btn-primary" onClick={handleRequestCrawl}>
+            <span className="i-lucide-refresh-cw size-4 mr-1"></span>
+            Request Crawl
           </button>
         </div>
       </div>

@@ -14,7 +14,14 @@ type AccountInfoOperation = {
   repo: Repository;
 };
 
-export type AccountOperation = SimpleAccountOperation | AccountInfoOperation;
+type RequestCrawlOperation = {
+  type: "request-crawl";
+};
+
+export type AccountOperation =
+  | SimpleAccountOperation
+  | AccountInfoOperation
+  | RequestCrawlOperation;
 
 const baseAtom = atom<AccountOperation | null>(null);
 
