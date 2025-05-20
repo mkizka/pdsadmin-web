@@ -3,6 +3,7 @@ import { AccountList } from "./components/account/account-list";
 import { AccountOperationDialog } from "./components/account/account-operation-dialog";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
+import { RequestCrawlButton } from "./components/request-crawl";
 import { Toaster } from "./components/toaster";
 
 export function App() {
@@ -12,7 +13,12 @@ export function App() {
       <Navbar />
       <div className="container mx-auto p-4 max-w-md">
         {!isLoggedIn && <LoginForm />}
-        {isLoggedIn && <AccountList />}
+        {isLoggedIn && (
+          <>
+            <RequestCrawlButton />
+            <AccountList />
+          </>
+        )}
       </div>
       {isLoggedIn && <AccountOperationDialog />}
       <Toaster />
