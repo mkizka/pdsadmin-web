@@ -44,13 +44,13 @@ const fetchMoreRepositoriesAtom = atom(null, async (get, set) => {
 
 const accountListAtom = atom((get) => {
   const repos = get(reposAtom);
-  const initLoading = get(initLoadingAtom);
-  const fetchMoreLoading = get(fetchMoreLoadingAtom);
+  const isInitLoading = get(initLoadingAtom);
+  const isFetchMoreLoading = get(fetchMoreLoadingAtom);
   const hasNextPage = get(cursorAtom) !== undefined;
   return {
     repos,
-    initLoading,
-    fetchMoreLoading,
+    isInitLoading,
+    isFetchMoreLoading,
     hasNextPage,
   };
 });

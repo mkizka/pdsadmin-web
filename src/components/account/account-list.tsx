@@ -79,7 +79,7 @@ export function AccountList() {
         <div className="font-bold flex-1">Repositories</div>
         <InviteCodeButton />
       </li>
-      {accountList.initLoading
+      {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRaw key={i} />)
         : listedRepos.map((repo, i) => (
             <AccountListRaw key={repo?.did ?? i} repo={repo} />
@@ -90,9 +90,9 @@ export function AccountList() {
             <button
               className="btn btn-primary h-12 w-full"
               onClick={() => fetchMoreRepositories()}
-              disabled={accountList.fetchMoreLoading}
+              disabled={accountList.isFetchMoreLoading}
             >
-              {accountList.fetchMoreLoading ? (
+              {accountList.isFetchMoreLoading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
                 <span>Load More</span>
