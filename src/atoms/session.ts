@@ -1,8 +1,5 @@
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { useMemo } from "react";
-
-import { PDS } from "../utils/pds";
 
 type Session = {
   service: string;
@@ -35,9 +32,4 @@ export const requiredSessionAtom = atom((get) => {
 
 export const useSession = () => {
   return useAtomValue(requiredSessionAtom);
-};
-
-export const usePDS = () => {
-  const session = useAtomValue(requiredSessionAtom);
-  return useMemo(() => new PDS(session), [session]);
 };

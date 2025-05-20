@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { usePDS } from "../atoms/session";
+import { usePDS } from "../atoms/pds";
 import { cn } from "../utils/cn";
 
 const INVITE_CODE_DIALOG_ID = "create-invite-code";

@@ -6,7 +6,7 @@ import {
   accountOperationDialog,
   useAccountOperation,
 } from "../../atoms/account-operation";
-import { usePDS } from "../../atoms/session";
+import { usePDS } from "../../atoms/pds";
 import { cn } from "../../utils/cn";
 import type { Repository } from "../../utils/pds";
 import type { Did } from "../../utils/types";

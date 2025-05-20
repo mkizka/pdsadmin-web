@@ -1,7 +1,7 @@
 import { atom, useAtomValue, useSetAtom } from "jotai";
 
-import { PDS, type Repository } from "../utils/pds";
-import { requiredSessionAtom } from "./session";
+import { type Repository } from "../utils/pds";
+import { pdsAtom } from "./pds";
 
 export const INIT_PAGE_SIZE = 5;
 
@@ -18,8 +18,7 @@ const cursorAtom = atom<string | undefined>(undefined);
 const initRepositoriesAtom = atom(
   null,
   async (get, set, limit: number = INIT_PAGE_SIZE) => {
-    const session = get(requiredSessionAtom);
-    const pds = new PDS(session);
+    const pds = get(pdsAtom);
     set(initLoadingAtom, true);
     const { repos, cursor } = await pds.listRepos({ limit });
     set(reposAtom, repos);
@@ -29,8 +28,7 @@ const initRepositoriesAtom = atom(
 );
 
 const fetchMoreRepositoriesAtom = atom(null, async (get, set) => {
-  const session = get(requiredSessionAtom);
-  const pds = new PDS(session);
+  const pds = get(pdsAtom);
   const cursor = get(cursorAtom);
   set(fetchMoreLoadingAtom, true);
   const { repos, cursor: newCursor } = await pds.listRepos({
