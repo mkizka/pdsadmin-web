@@ -28,12 +28,12 @@ const pushToastAtom = atom(
 export const useToasts = () => useAtomValue(baseAtom);
 
 export const useToast = () => {
-  const toast = useSetAtom(pushToastAtom);
+  const pushToast = useSetAtom(pushToastAtom);
   return useMemo(
     () => ({
-      success: (message: string) => toast(message, "success"),
-      error: (message: string) => toast(message, "error"),
+      success: (message: string) => pushToast(message, "success"),
+      error: (message: string) => pushToast(message, "error"),
     }),
-    [toast],
+    [pushToast],
   );
 };

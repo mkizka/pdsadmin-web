@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from "react";
 
 import { useSetSession } from "../atoms/session";
+import { useToast } from "../atoms/toast";
 import { cn } from "../utils/cn";
 import { PDS } from "../utils/pds";
 import { ErrorAlert } from "./alert-message";
@@ -20,7 +21,6 @@ const useForm = () => {
       !formState.loading &&
       formState.service !== "" &&
       formState.adminPassword !== "",
-    resetForm: () => setFormState(initialForm),
     setService: (service: string) => {
       setFormState((prev) => ({ ...prev, service }));
     },
@@ -45,6 +45,7 @@ const requireHttps = (maybeUrl: string) => {
 export function LoginForm() {
   const form = useForm();
   const setSession = useSetSession();
+  const toast = useToast();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +59,7 @@ export function LoginForm() {
       const pds = new PDS(session);
       await pds.listRepos();
       setSession(session);
-      form.resetForm();
+      toast.success("ログインしました");
     } catch (error) {
       form.setError(String(error));
     } finally {
