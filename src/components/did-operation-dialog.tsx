@@ -71,7 +71,7 @@ function ResetPasswordOperationBody({ did }: OperationBodyProps) {
   return (
     <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
       <span className="i-lucide-key-round size-12"></span>
-      <p>Enter new password</p>
+      <p className="text-center">Enter new password</p>
       <label className="input">
         <input
           type="password"
@@ -102,22 +102,22 @@ function TakedownOperationBody({ did }: OperationBodyProps) {
     await pds.takedown(did, ref);
   });
   return (
-    <div className="flex flex-col gap-4">
-      <div className="p-4 text-center">
-        <span className="i-lucide-ban size-12 mx-auto mb-4 text-error"></span>
-        <p className="mb-4">Are you sure you want to takedown this account?</p>
-        <button
-          type="button"
-          className="btn btn-error relative"
-          disabled={loading}
-          onClick={handler}
-        >
-          {loading && (
-            <div className="loading loading-spinner loading-sm absolute"></div>
-          )}
-          <span className={cn(loading && "opacity-0")}>Takedown Account</span>
-        </button>
-      </div>
+    <div className="flex flex-col gap-4 items-center">
+      <span className="i-lucide-ban size-12 text-error"></span>
+      <p className="text-center">
+        Are you sure you want to takedown this account?
+      </p>
+      <button
+        type="button"
+        className="btn btn-error relative"
+        disabled={loading}
+        onClick={handler}
+      >
+        {loading && (
+          <div className="loading loading-spinner loading-sm absolute"></div>
+        )}
+        <span className={cn(loading && "opacity-0")}>Takedown Account</span>
+      </button>
     </div>
   );
 }
@@ -126,24 +126,22 @@ function UntakedownOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
   const { loading, handler } = useWithLoading(() => pds.untakedown(did));
   return (
-    <div className="flex flex-col gap-4">
-      <div className="p-4 text-center">
-        <span className="i-lucide-check-circle size-12 mx-auto mb-4 text-success"></span>
-        <p className="mb-4">
-          Are you sure you want to untakedown this account?
-        </p>
-        <button
-          type="button"
-          className="btn btn-success relative"
-          disabled={loading}
-          onClick={handler}
-        >
-          {loading && (
-            <div className="loading loading-spinner loading-sm absolute"></div>
-          )}
-          <span className={cn(loading && "opacity-0")}>Untakedown Account</span>
-        </button>
-      </div>
+    <div className="flex flex-col gap-4 items-center">
+      <span className="i-lucide-check-circle size-12 text-success"></span>
+      <p className="text-center">
+        Are you sure you want to untakedown this account?
+      </p>
+      <button
+        type="button"
+        className="btn btn-success relative"
+        disabled={loading}
+        onClick={handler}
+      >
+        {loading && (
+          <div className="loading loading-spinner loading-sm absolute"></div>
+        )}
+        <span className={cn(loading && "opacity-0")}>Untakedown Account</span>
+      </button>
     </div>
   );
 }
@@ -152,25 +150,23 @@ function DeleteOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
   const { loading, handler } = useWithLoading(() => pds.deleteAccount(did));
   return (
-    <div className="flex flex-col gap-4">
-      <div className="p-4 text-center">
-        <span className="i-lucide-trash-2 size-12 mx-auto mb-4 text-error"></span>
-        <p className="mb-4">
-          Are you sure you want to delete this account? This action cannot be
-          undone.
-        </p>
-        <button
-          type="button"
-          className="btn btn-error relative"
-          disabled={loading}
-          onClick={handler}
-        >
-          {loading && (
-            <div className="loading loading-spinner loading-sm absolute"></div>
-          )}
-          <span className={cn(loading && "opacity-0")}>Delete Account</span>
-        </button>
-      </div>
+    <div className="flex flex-col gap-4 items-center">
+      <span className="i-lucide-trash-2 size-12 text-error"></span>
+      <p className="text-center">
+        Are you sure you want to delete this account? This action cannot be
+        undone.
+      </p>
+      <button
+        type="button"
+        className="btn btn-error relative"
+        disabled={loading}
+        onClick={handler}
+      >
+        {loading && (
+          <div className="loading loading-spinner loading-sm absolute"></div>
+        )}
+        <span className={cn(loading && "opacity-0")}>Delete Account</span>
+      </button>
     </div>
   );
 }
