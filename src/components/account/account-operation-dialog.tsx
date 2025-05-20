@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from "react";
 
+import { useReloadRepositories } from "../../atoms/account-list";
 import {
   type AccountOperation,
   accountOperationDialog,
@@ -12,11 +13,13 @@ import type { Did } from "../../utils/types";
 
 const useWithLoading = (fn: () => Promise<void>) => {
   const [loading, setLoading] = useState(false);
+  const reloadRepos = useReloadRepositories();
   const handler = async () => {
     setLoading(true);
     try {
       await fn();
       accountOperationDialog.close();
+      await reloadRepos();
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);

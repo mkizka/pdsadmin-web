@@ -3,7 +3,7 @@ import { atom, useAtomValue, useSetAtom } from "jotai";
 import { PDS, type Repository } from "../utils/pds";
 import { requiredSessionAtom } from "./session";
 
-export const INIT_PAGE_SIZE = 3;
+export const INIT_PAGE_SIZE = 5;
 
 const FETCH_MORE_PAGE_SIZE = 10;
 
@@ -65,4 +65,10 @@ export const useInitRepositories = () => {
 
 export const useFetchMoreRepositories = () => {
   return useSetAtom(fetchMoreRepositoriesAtom);
+};
+
+export const useReloadRepositories = () => {
+  const accountList = useAccountList();
+  const initRepositories = useInitRepositories();
+  return () => initRepositories(accountList.repos.length);
 };

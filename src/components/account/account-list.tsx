@@ -64,7 +64,9 @@ export function AccountList() {
     void initRepositories();
   }, [initRepositories]);
 
-  const skeltonRepos = Array.from({ length: INIT_PAGE_SIZE }).map(() => null);
+  // リロード時に追加読み込み後の長さでスケルトンを出すため
+  const skeltonLength = Math.max(INIT_PAGE_SIZE, accountList.repos.length);
+  const skeltonRepos = Array.from({ length: skeltonLength }).map(() => null);
 
   const listedRepos = [
     ...accountList.repos,
