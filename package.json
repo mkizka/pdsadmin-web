@@ -11,7 +11,6 @@
     "dev:vite": "wait-on http://localhost:2583 && vite",
     "format": "eslint . --fix && prettier . --write",
     "lint": "eslint . && prettier . --check",
-    "postinstall": "./scripts/postinstall.sh",
     "prepare": "husky",
     "preview": "vite preview",
     "typecheck": "tsc -b"

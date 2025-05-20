@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ATPROTO_DIR=/tmp/atproto-$(< .atproto-sha)
-cd $ATPROTO_DIR
+ATPROTO_SHA=$(< .atproto-sha)
+ATPROTO_DIR="/tmp/atproto/$ATPROTO_SHA"
  
+echo "[scripts/run-dev-env.sh] Downloading atproto..."
+pnpm giget gh:bluesky-social/atproto#$ATPROTO_SHA $ATPROTO_DIR --force --preferOffline
+cd $ATPROTO_DIR
+
 if [ -d "$ATPROTO_DIR/node_modules" ]; then
   echo "[scripts/run-dev-env.sh] Skipping atproto build, already exists."
 else
