@@ -1,10 +1,10 @@
 import { type FormEvent, useState } from "react";
 
 import {
-  type DidOperation,
-  didOperationDialog,
-  useDidOperation,
-} from "../atoms/did-operation";
+  type AccountOperation,
+  accountOperationDialog,
+  useAccountOperation,
+} from "../atoms/account-operation";
 import { usePDS } from "../atoms/session";
 import { cn } from "../utils/cn";
 import type { Repository } from "../utils/pds";
@@ -16,7 +16,7 @@ const useWithLoading = (fn: () => Promise<void>) => {
     setLoading(true);
     try {
       await fn();
-      didOperationDialog.close();
+      accountOperationDialog.close();
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
@@ -171,31 +171,31 @@ function DeleteOperationBody({ did }: OperationBodyProps) {
   );
 }
 
-function OperationBody({ didOperation }: { didOperation: DidOperation }) {
-  if (didOperation.type === "account-info") {
-    return <AccountInfoOperationBody {...didOperation} />;
+function OperationBody({ operation }: { operation: AccountOperation }) {
+  if (operation.type === "account-info") {
+    return <AccountInfoOperationBody {...operation} />;
   }
-  if (didOperation.type === "reset-password") {
-    return <ResetPasswordOperationBody {...didOperation} />;
+  if (operation.type === "reset-password") {
+    return <ResetPasswordOperationBody {...operation} />;
   }
-  if (didOperation.type === "takedown") {
-    return <TakedownOperationBody {...didOperation} />;
+  if (operation.type === "takedown") {
+    return <TakedownOperationBody {...operation} />;
   }
-  if (didOperation.type === "untakedown") {
-    return <UntakedownOperationBody {...didOperation} />;
+  if (operation.type === "untakedown") {
+    return <UntakedownOperationBody {...operation} />;
   }
-  return <DeleteOperationBody {...didOperation} />;
+  return <DeleteOperationBody {...operation} />;
 }
 
-export function DidOperationDialog() {
-  const didOperation = useDidOperation();
+export function AccountOperationDialog() {
+  const operation = useAccountOperation();
 
   // idを指定してopenModalするのでdialog要素は常に必要
   return (
-    <dialog id={didOperationDialog.getElementId()} className="modal">
-      {didOperation && (
+    <dialog id={accountOperationDialog.getElementId()} className="modal">
+      {operation && (
         <div className="modal-box">
-          <OperationBody didOperation={didOperation} />
+          <OperationBody operation={operation} />
         </div>
       )}
       <form method="dialog" className="modal-backdrop">

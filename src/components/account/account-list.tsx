@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { useOpenDidOperationModal } from "../../atoms/did-operation";
+import { useOpenAccountOperationModal } from "../../atoms/account-operation";
 import { usePDS } from "../../atoms/session";
 import type { Repository } from "../../utils/pds";
 import { InviteCodeButton } from "../invite-code";
@@ -20,7 +20,7 @@ function SkeltonListRaw() {
 }
 
 function AccountListRaw({ repo }: { repo: Repository | null }) {
-  const openDidOperationModal = useOpenDidOperationModal();
+  const openAccountOperationModal = useOpenAccountOperationModal();
 
   if (!repo) {
     return (
@@ -33,7 +33,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   return (
     <li
       className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
-      onClick={() => openDidOperationModal({ type: "account-info", repo })}
+      onClick={() => openAccountOperationModal({ type: "account-info", repo })}
     >
       <div className="avatar avatar-placeholder">
         <div className="bg-neutral text-neutral-content size-10 rounded-full">

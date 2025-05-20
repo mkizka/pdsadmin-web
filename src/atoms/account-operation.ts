@@ -1,9 +1,10 @@
 import { atom, useAtomValue, useSetAtom } from "jotai";
+import { useCallback } from "react";
 
 import type { Repository } from "../utils/pds";
 import type { Did } from "../utils/types";
 
-type SimpleDidOperation = {
+type SimpleAccountOperation = {
   type: "reset-password" | "takedown" | "untakedown" | "delete";
   did: Did;
 };
@@ -13,12 +14,12 @@ type AccountInfoOperation = {
   repo: Repository;
 };
 
-export type DidOperation = SimpleDidOperation | AccountInfoOperation;
+export type AccountOperation = SimpleAccountOperation | AccountInfoOperation;
 
-const baseAtom = atom<DidOperation | null>(null);
+const baseAtom = atom<AccountOperation | null>(null);
 
-class DidOperationDialog {
-  #elementId = "did-operation";
+class AccountOperationDialog {
+  #elementId = "account-operation";
 
   getElementId() {
     return this.#elementId;
@@ -43,14 +44,17 @@ class DidOperationDialog {
   }
 }
 
-export const didOperationDialog = new DidOperationDialog();
+export const accountOperationDialog = new AccountOperationDialog();
 
-export const useDidOperation = () => useAtomValue(baseAtom);
+export const useAccountOperation = () => useAtomValue(baseAtom);
 
-export const useOpenDidOperationModal = () => {
-  const setDidOperation = useSetAtom(baseAtom);
-  return (operation: DidOperation) => {
-    setDidOperation(operation);
-    didOperationDialog.showModal();
-  };
+export const useOpenAccountOperationModal = () => {
+  const setAccountOperation = useSetAtom(baseAtom);
+  return useCallback(
+    (operation: AccountOperation) => {
+      setAccountOperation(operation);
+      accountOperationDialog.showModal();
+    },
+    [setAccountOperation],
+  );
 };

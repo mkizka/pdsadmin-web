@@ -1,6 +1,6 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account/account-list";
-import { DidOperationDialog } from "./components/did-operation-dialog";
+import { AccountOperationDialog } from "./components/account-operation-dialog";
 import { LoginForm } from "./components/login-form";
 import { Navbar } from "./components/navbar";
 import { Toaster } from "./components/toaster";
@@ -14,7 +14,7 @@ export function App() {
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && <AccountList />}
       </div>
-      {isLoggedIn && <DidOperationDialog />}
+      {isLoggedIn && <AccountOperationDialog />}
       <Toaster />
     </>
   );
