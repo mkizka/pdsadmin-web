@@ -1,7 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 
+import {
+  INIT_PAGE_SIZE,
+  useAccountList,
+  useFetchMoreRepositories,
+  useInitRepositories,
+} from "../../atoms/account-list";
 import { useOpenAccountOperationModal } from "../../atoms/account-operation";
-import { usePDS } from "../../atoms/session";
 import type { Repository } from "../../utils/pds";
 import { InviteCodeButton } from "../invite-code";
 import { AccountDropdown } from "./account-dropdown";
@@ -50,50 +55,22 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
   );
 }
 
-const INIT_PAGE_SIZE = 3;
-const FETCH_PAGE_SIZE = 10;
-
 export function AccountList() {
-  const [repositories, setRepositories] = useState<Repository[]>([]);
-  const [cursor, setCursor] = useState<string>();
-  const pds = usePDS();
-  const [initLoading, setInitLoading] = useState(true);
-  const [fetchLoading, setFetchLoading] = useState(false);
-
-  const initAccountList = useCallback(async () => {
-    setInitLoading(true);
-    const { repos, cursor: newCursor } = await pds.listRepos({
-      limit: INIT_PAGE_SIZE,
-    });
-    setRepositories(repos);
-    setCursor(newCursor);
-    setInitLoading(false);
-  }, [pds]);
-
-  const fetchAccountList = useCallback(async () => {
-    setFetchLoading(true);
-    const { repos: newRepos, cursor: newCursor } = await pds.listRepos({
-      limit: FETCH_PAGE_SIZE,
-      cursor,
-    });
-    setRepositories((prev) => [...prev, ...newRepos]);
-    setCursor(newCursor);
-    setFetchLoading(false);
-  }, [cursor, pds]);
+  const accountList = useAccountList();
+  const initRepositories = useInitRepositories();
+  const fetchMoreRepositories = useFetchMoreRepositories();
 
   useEffect(() => {
-    void initAccountList();
-  }, [initAccountList]);
+    void initRepositories();
+  }, [initRepositories]);
 
-  const skeltonRepositories = Array.from({ length: INIT_PAGE_SIZE }).map(
-    () => null,
-  );
+  const skeltonRepos = Array.from({ length: INIT_PAGE_SIZE }).map(() => null);
 
-  const listedRepositories = [
-    ...repositories,
-    ...Array.from({ length: INIT_PAGE_SIZE - repositories.length }).map(
-      () => null,
-    ),
+  const listedRepos = [
+    ...accountList.repos,
+    ...Array.from({
+      length: INIT_PAGE_SIZE - accountList.repos.length,
+    }).map(() => null),
   ];
 
   return (
@@ -102,20 +79,20 @@ export function AccountList() {
         <div className="font-bold flex-1">Repositories</div>
         <InviteCodeButton />
       </li>
-      {initLoading
-        ? skeltonRepositories.map((_, i) => <SkeltonListRaw key={i} />)
-        : listedRepositories.map((repo, i) => (
+      {accountList.initLoading
+        ? skeltonRepos.map((_, i) => <SkeltonListRaw key={i} />)
+        : listedRepos.map((repo, i) => (
             <AccountListRaw key={repo?.did ?? i} repo={repo} />
           ))}
-      {cursor && (
+      {accountList.hasNextPage && (
         <li>
           <div className="list-col-grow w-full">
             <button
               className="btn btn-primary h-12 w-full"
-              onClick={() => fetchAccountList()}
-              disabled={fetchLoading}
+              onClick={() => fetchMoreRepositories()}
+              disabled={accountList.fetchMoreLoading}
             >
-              {fetchLoading ? (
+              {accountList.fetchMoreLoading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
                 <span>Load More</span>
