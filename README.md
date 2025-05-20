@@ -20,7 +20,9 @@ pnpm i
 pnpm dev
 ```
 
-ローカル環境での開発時は以下でログインできます。
+`pnpm dev`で Vite の開発サーバーが起動したら http://localhost:5173/pdsadmin-web/ を開いてください。
+
+ローカル環境のPDSには以下でログインできます。
 
 - PDSのURL ... http://localhost:2583
-- パスワード ... [admin-pass](https://github.com/bluesky-social/atproto/blob/36dbd41551f74052a3f584719a1a7edd86eca201/packages/pds/example.env#L19)
+- パスワード ... admin-pass
