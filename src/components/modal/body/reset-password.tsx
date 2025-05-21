@@ -1,7 +1,6 @@
 import { type FormEvent, useState } from "react";
 
 import { usePDS } from "../../../atoms/pds";
-import { useToast } from "../../../atoms/toast";
 import { cn } from "../../../utils/cn";
 import type { Did } from "../../../utils/types";
 import { useModalHandler } from "../hooks";
@@ -13,17 +12,17 @@ type Props = {
 export function ResetPasswordModalBody({ did }: Props) {
   const pds = usePDS();
   const [newPassword, setNewPassword] = useState("");
-  const toast = useToast();
 
-  const { loading, handler } = useModalHandler(async () => {
-    await pds.resetPassword(did, newPassword);
-    toast.success("Password reset successfully");
-    setNewPassword("");
+  const { loading, handler } = useModalHandler({
+    fn: () => pds.resetPassword(did, newPassword),
+    toastMessage: "Password reset successfully",
+    shouldReloadRepos: true,
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await handler();
+    setNewPassword("");
   };
 
   return (

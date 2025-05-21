@@ -1,5 +1,4 @@
 import { usePDS } from "../../../atoms/pds";
-import { useToast } from "../../../atoms/toast";
 import { cn } from "../../../utils/cn";
 import type { Did } from "../../../utils/types";
 import { useModalHandler } from "../hooks";
@@ -10,11 +9,11 @@ type Props = {
 
 export function UntakedownAccountModalBody({ did }: Props) {
   const pds = usePDS();
-  const toast = useToast();
 
-  const { loading, handler } = useModalHandler(async () => {
-    await pds.untakedown(did);
-    toast.success("Account untakedown successfully");
+  const { loading, handler } = useModalHandler({
+    fn: () => pds.untakedown(did),
+    toastMessage: "Account untakedown successfully",
+    shouldReloadRepos: true,
   });
 
   return (

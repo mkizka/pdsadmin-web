@@ -7,9 +7,11 @@ import { useModalHandler } from "../hooks";
 export function RequestCrawlModalBody() {
   const pds = usePDS();
   const [relayService, setRelayService] = useState("");
-  const { loading, handler } = useModalHandler(() =>
-    pds.requestCrawl(relayService),
-  );
+
+  const { loading, handler } = useModalHandler({
+    fn: () => pds.requestCrawl(relayService),
+    toastMessage: "Crawl request sent successfully",
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

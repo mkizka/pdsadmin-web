@@ -76,3 +76,11 @@ export const useOpenModal = () => {
     [setModalAction],
   );
 };
+
+export const useCloseModal = () => {
+  const setModalAction = useSetAtom(modalActionAtom);
+  return useCallback(() => {
+    setModalAction(null);
+    modal.close();
+  }, [setModalAction]);
+};

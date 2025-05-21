@@ -1,5 +1,4 @@
 import { usePDS } from "../../../atoms/pds";
-import { useToast } from "../../../atoms/toast";
 import { cn } from "../../../utils/cn";
 import type { Did } from "../../../utils/types";
 import { useModalHandler } from "../hooks";
@@ -10,11 +9,11 @@ type Props = {
 
 export function DeleteAccountModalBody({ did }: Props) {
   const pds = usePDS();
-  const toast = useToast();
 
-  const { loading, handler } = useModalHandler(async () => {
-    await pds.deleteAccount(did);
-    toast.success("Account deleted successfully");
+  const { loading, handler } = useModalHandler({
+    fn: () => pds.deleteAccount(did),
+    toastMessage: "Account deleted successfully",
+    shouldReloadRepos: true,
   });
 
   return (

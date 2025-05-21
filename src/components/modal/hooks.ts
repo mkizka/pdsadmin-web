@@ -1,17 +1,26 @@
 import { useState } from "react";
 
 import { useReloadRepositories } from "../../atoms/account-list";
-import { modal } from "../../atoms/modal";
+import { useCloseModal } from "../../atoms/modal";
+import { useToast } from "../../atoms/toast";
 
-export const useModalHandler = (fn: () => Promise<void> | void) => {
+export const useModalHandler = (args: {
+  fn: () => Promise<void> | void;
+  toastMessage?: string;
+  shouldReloadRepos?: boolean;
+}) => {
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const closeModal = useCloseModal();
   const reloadRepos = useReloadRepositories();
+
   const handler = async () => {
     setLoading(true);
     try {
-      await fn();
-      modal.close();
-      await reloadRepos();
+      await args.fn();
+      closeModal();
+      if (args.toastMessage) toast.success(args.toastMessage);
+      if (args.shouldReloadRepos) await reloadRepos();
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
@@ -20,5 +29,6 @@ export const useModalHandler = (fn: () => Promise<void> | void) => {
       setLoading(false);
     }
   };
+
   return { loading, handler };
 };

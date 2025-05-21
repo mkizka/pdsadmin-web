@@ -1,16 +1,14 @@
 import { modal } from "../../../atoms/modal";
 import { useLogout } from "../../../atoms/session";
-import { useToast } from "../../../atoms/toast";
 import { cn } from "../../../utils/cn";
 import { useModalHandler } from "../hooks";
 
 export function LogoutModalBody() {
   const logout = useLogout();
-  const toast = useToast();
 
-  const { loading, handler } = useModalHandler(() => {
-    logout();
-    toast.success("ログアウトしました");
+  const { loading, handler } = useModalHandler({
+    fn: () => logout(),
+    toastMessage: "ログアウトしました",
   });
 
   return (
