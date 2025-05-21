@@ -33,20 +33,39 @@ export class PDS {
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
-    const repos = [];
-    for (const repo of data.repos) {
-      const accountInfo = await this.#getAccountInfo(repo.did);
-      repos.push({ ...repo, accountInfo });
+
+    const dids = data.repos.map((repo) => repo.did);
+
+    if (dids.length === 0) {
+      return { repos: [], cursor: data.cursor };
     }
+
+    const accountInfos = await this.#getAccountInfos(dids);
+
+    const accountInfoMap = new Map(
+      accountInfos.map((info) => [info.did, info]),
+    );
+
+    const repos = data.repos.map((repo) => {
+      const accountInfo = accountInfoMap.get(repo.did);
+      if (!accountInfo) {
+        throw new Error(`Account info not found for DID: ${repo.did}`);
+      }
+      return {
+        ...repo,
+        accountInfo,
+      };
+    });
+
     return { repos, cursor: data.cursor };
   }
 
-  async #getAccountInfo(did: Did) {
+  async #getAccountInfos(dids: Did[]) {
     const { data, ok } = await this.#rpc.get(
-      "com.atproto.admin.getAccountInfo",
+      "com.atproto.admin.getAccountInfos",
       {
         params: {
-          did,
+          dids,
         },
         headers: this.#headers,
       },
@@ -54,7 +73,7 @@ export class PDS {
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
-    return data;
+    return data.infos;
   }
 
   async createInviteCode() {
