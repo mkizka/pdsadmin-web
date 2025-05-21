@@ -33,19 +33,14 @@ export class PDS {
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
-
     const dids = data.repos.map((repo) => repo.did);
-
     if (dids.length === 0) {
       return { repos: [], cursor: data.cursor };
     }
-
     const accountInfos = await this.#getAccountInfos(dids);
-
     const accountInfoMap = new Map(
       accountInfos.map((info) => [info.did, info]),
     );
-
     const repos = data.repos.map((repo) => {
       const accountInfo = accountInfoMap.get(repo.did);
       if (!accountInfo) {
@@ -56,7 +51,6 @@ export class PDS {
         accountInfo,
       };
     });
-
     return { repos, cursor: data.cursor };
   }
 
