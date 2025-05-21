@@ -151,10 +151,9 @@ export class PDS {
     }
   }
 
-  async requestCrawl(hostname?: string) {
-    const targetHostname = hostname || new URL(this.#service).hostname;
+  async requestCrawl(hostname: string) {
     const handler = simpleFetchHandler({
-      service: targetHostname,
+      service: hostname,
     });
     const rpc = new Client({ handler });
 
