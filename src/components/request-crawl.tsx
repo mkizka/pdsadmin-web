@@ -1,7 +1,7 @@
-import { useOpenAccountOperationModal } from "../atoms/account-operation";
+import { useOpenModal } from "../atoms/modal";
 
 export function RequestCrawlButton() {
-  const openModal = useOpenAccountOperationModal();
+  const openModal = useOpenModal();
 
   const handleRequestCrawl = () => {
     openModal({ type: "request-crawl" });

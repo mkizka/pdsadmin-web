@@ -1,16 +1,12 @@
 import { type FormEvent, useState } from "react";
 
-import { useReloadRepositories } from "../../atoms/account-list";
-import {
-  type AccountOperation,
-  accountOperationDialog,
-  useAccountOperation,
-} from "../../atoms/account-operation";
-import { usePDS } from "../../atoms/pds";
-import { useToast } from "../../atoms/toast";
-import { cn } from "../../utils/cn";
-import type { Repository } from "../../utils/pds";
-import type { Did } from "../../utils/types";
+import { useReloadRepositories } from "../atoms/account-list";
+import { modal, type ModalAction, useModalAction } from "../atoms/modal";
+import { usePDS } from "../atoms/pds";
+import { useToast } from "../atoms/toast";
+import { cn } from "../utils/cn";
+import type { Repository } from "../utils/pds";
+import type { Did } from "../utils/types";
 
 const useWithLoading = (fn: () => Promise<void>) => {
   const [loading, setLoading] = useState(false);
@@ -19,7 +15,7 @@ const useWithLoading = (fn: () => Promise<void>) => {
     setLoading(true);
     try {
       await fn();
-      accountOperationDialog.close();
+      modal.close();
       await reloadRepos();
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -32,11 +28,11 @@ const useWithLoading = (fn: () => Promise<void>) => {
   return { loading, handler };
 };
 
-type AccountInfoOperationBodyProps = {
+type AccountInfoModalBodyProps = {
   repo: Repository;
 };
 
-function AccountInfoOperationBody({ repo }: AccountInfoOperationBodyProps) {
+function AccountInfoModalBody({ repo }: AccountInfoModalBodyProps) {
   return (
     <div className="flex flex-col gap-2">
       <h3 className="font-bold text-lg">Account Info</h3>
@@ -55,11 +51,11 @@ function AccountInfoOperationBody({ repo }: AccountInfoOperationBodyProps) {
   );
 }
 
-type OperationBodyProps = {
+type AccountOperationModalBodyProps = {
   did: Did;
 };
 
-function ResetPasswordOperationBody({ did }: OperationBodyProps) {
+function ResetPasswordModalBody({ did }: AccountOperationModalBodyProps) {
   const pds = usePDS();
   const [newPassword, setNewPassword] = useState("");
   const toast = useToast();
@@ -102,7 +98,7 @@ function ResetPasswordOperationBody({ did }: OperationBodyProps) {
   );
 }
 
-function TakedownOperationBody({ did }: OperationBodyProps) {
+function TakedownModalBody({ did }: AccountOperationModalBodyProps) {
   const pds = usePDS();
   const toast = useToast();
 
@@ -133,7 +129,7 @@ function TakedownOperationBody({ did }: OperationBodyProps) {
   );
 }
 
-function UntakedownOperationBody({ did }: OperationBodyProps) {
+function UntakedownModalBody({ did }: AccountOperationModalBodyProps) {
   const pds = usePDS();
   const toast = useToast();
 
@@ -163,7 +159,7 @@ function UntakedownOperationBody({ did }: OperationBodyProps) {
   );
 }
 
-function DeleteOperationBody({ did }: OperationBodyProps) {
+function DeleteModalBody({ did }: AccountOperationModalBodyProps) {
   const pds = usePDS();
   const toast = useToast();
 
@@ -194,7 +190,7 @@ function DeleteOperationBody({ did }: OperationBodyProps) {
   );
 }
 
-function RequestCrawlOperationBody() {
+function RequestCrawlModalBody() {
   const pds = usePDS();
   const [hostname, setHostname] = useState("");
   const { loading, handler } = useWithLoading(() => pds.requestCrawl(hostname));
@@ -232,34 +228,32 @@ function RequestCrawlOperationBody() {
   );
 }
 
-function OperationBody({ operation }: { operation: AccountOperation }) {
-  if (operation.type === "account-info") {
-    return <AccountInfoOperationBody {...operation} />;
+function ModalBody({ modalAction }: { modalAction: ModalAction }) {
+  if (modalAction.type === "account-info") {
+    return <AccountInfoModalBody {...modalAction} />;
   }
-  if (operation.type === "reset-password") {
-    return <ResetPasswordOperationBody {...operation} />;
+  if (modalAction.type === "reset-password") {
+    return <ResetPasswordModalBody {...modalAction} />;
   }
-  if (operation.type === "takedown") {
-    return <TakedownOperationBody {...operation} />;
+  if (modalAction.type === "takedown") {
+    return <TakedownModalBody {...modalAction} />;
   }
-  if (operation.type === "untakedown") {
-    return <UntakedownOperationBody {...operation} />;
+  if (modalAction.type === "untakedown") {
+    return <UntakedownModalBody {...modalAction} />;
   }
-  if (operation.type === "request-crawl") {
-    return <RequestCrawlOperationBody />;
+  if (modalAction.type === "request-crawl") {
+    return <RequestCrawlModalBody />;
   }
-  return <DeleteOperationBody {...operation} />;
+  return <DeleteModalBody {...modalAction} />;
 }
 
-export function AccountOperationDialog() {
-  const operation = useAccountOperation();
-
-  // idを指定してopenModalするのでdialog要素は常に必要
+export function ModalDialog() {
+  const modalAction = useModalAction();
   return (
-    <dialog id={accountOperationDialog.getElementId()} className="modal">
-      {operation && (
+    <dialog id={modal.getElementId()} className="modal">
+      {modalAction && (
         <div className="modal-box">
-          <OperationBody operation={operation} />
+          <ModalBody modalAction={modalAction} />
         </div>
       )}
       <form method="dialog" className="modal-backdrop">

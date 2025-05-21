@@ -1,15 +1,15 @@
-import { useOpenAccountOperationModal } from "../../atoms/account-operation";
+import { useOpenModal } from "../../atoms/modal";
 import type { Did } from "../../utils/types";
 
 export function ResetPasswordButton({ did }: { did: Did }) {
-  const openAccountOperationModal = useOpenAccountOperationModal();
+  const openModal = useOpenModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost"
       onClick={(e) => {
         e.stopPropagation();
-        openAccountOperationModal({ type: "reset-password", did });
+        openModal({ type: "reset-password", did });
       }}
     >
       <span className="i-lucide-key-round size-4"></span>
@@ -19,14 +19,14 @@ export function ResetPasswordButton({ did }: { did: Did }) {
 }
 
 export function DeleteAccountButton({ did }: { did: Did }) {
-  const openAccountOperationModal = useOpenAccountOperationModal();
+  const openModal = useOpenModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost text-error"
       onClick={(e) => {
         e.stopPropagation();
-        openAccountOperationModal({ type: "delete", did });
+        openModal({ type: "delete", did });
       }}
     >
       <span className="i-lucide-trash-2 size-4"></span>
@@ -36,14 +36,14 @@ export function DeleteAccountButton({ did }: { did: Did }) {
 }
 
 export function TakedownAccountButton({ did }: { did: Did }) {
-  const openAccountOperationModal = useOpenAccountOperationModal();
+  const openModal = useOpenModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost text-error"
       onClick={(e) => {
         e.stopPropagation();
-        openAccountOperationModal({ type: "takedown", did });
+        openModal({ type: "takedown", did });
       }}
     >
       <span className="i-lucide-ban size-4"></span>
@@ -53,14 +53,14 @@ export function TakedownAccountButton({ did }: { did: Did }) {
 }
 
 export function UntakedownAccountButton({ did }: { did: Did }) {
-  const openAccountOperationModal = useOpenAccountOperationModal();
+  const openModal = useOpenModal();
   return (
     <div
       role="button"
       className="h-12 btn btn-ghost text-success"
       onClick={(e) => {
         e.stopPropagation();
-        openAccountOperationModal({ type: "untakedown", did });
+        openModal({ type: "untakedown", did });
       }}
     >
       <span className="i-lucide-check-circle size-4"></span>
