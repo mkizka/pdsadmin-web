@@ -8,7 +8,6 @@ import {
 } from "../../atoms/account-list";
 import { useOpenModal } from "../../atoms/modal";
 import type { Repository } from "../../utils/pds";
-import { InviteCodeButton } from "../invite-code";
 import { AccountDropdown } from "./account-dropdown";
 
 function SkeltonListRaw() {
@@ -77,10 +76,7 @@ export function AccountList() {
 
   return (
     <ul className="list rounded-box shadow-md">
-      <li className="p-4 pb-2 flex items-center">
-        <div className="font-bold flex-1">Repositories</div>
-        <InviteCodeButton />
-      </li>
+      <li className="p-4 pb-2 font-bold">Repositories</li>
       {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRaw key={i} />)
         : listedRepos.map((repo, i) => (

@@ -23,7 +23,7 @@ export function InviteCodeButton() {
 
   return (
     <button
-      className="btn btn-sm btn-primary relative"
+      className="btn btn-primary relative"
       onClick={handleCreateInviteCode}
       disabled={loading}
     >

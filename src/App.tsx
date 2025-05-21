@@ -3,7 +3,7 @@ import { AccountList } from "./components/account/account-list";
 import { LoginForm } from "./components/login-form";
 import { ModalDialog } from "./components/modal/modal";
 import { Navbar } from "./components/navbar";
-import { RequestCrawl } from "./components/request-crawl";
+import { PDSInfo } from "./components/pds-info";
 import { Toaster } from "./components/toaster";
 
 export function App() {
@@ -15,7 +15,7 @@ export function App() {
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && (
           <div className="flex flex-col gap-4">
-            <RequestCrawl />
+            <PDSInfo />
             <AccountList />
           </div>
         )}

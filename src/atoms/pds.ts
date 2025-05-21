@@ -8,6 +8,11 @@ export const pdsAtom = atom((get) => {
   return new PDS(session);
 });
 
-export const usePDS = () => {
-  return useAtomValue(pdsAtom);
-};
+const pdsHostnameAtom = atom((get) => {
+  const session = get(requiredSessionAtom);
+  return new URL(session.service).hostname;
+});
+
+export const usePDSHostname = () => useAtomValue(pdsHostnameAtom);
+
+export const usePDS = () => useAtomValue(pdsAtom);
