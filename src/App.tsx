@@ -14,7 +14,7 @@ export function App() {
       <div className="container mx-auto p-4 max-w-md">
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
             <PDSInfo />
             <AccountList />
           </div>
