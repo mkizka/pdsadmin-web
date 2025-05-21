@@ -9,6 +9,10 @@ type AccountOperationAction = {
   did: Did;
 };
 
+type LogoutAction = {
+  type: "logout";
+};
+
 type AccountInfoAction = {
   type: "account-info";
   repo: Repository;
@@ -27,7 +31,8 @@ export type ModalAction =
   | AccountOperationAction
   | AccountInfoAction
   | RequestCrawlAction
-  | InviteCodeAction;
+  | InviteCodeAction
+  | LogoutAction;
 
 const modalActionAtom = atom<ModalAction | null>(null);
 

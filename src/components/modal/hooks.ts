@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useReloadRepositories } from "../../atoms/account-list";
 import { modal } from "../../atoms/modal";
 
-export const useModalHandler = (fn: () => Promise<void>) => {
+export const useModalHandler = (fn: () => Promise<void> | void) => {
   const [loading, setLoading] = useState(false);
   const reloadRepos = useReloadRepositories();
   const handler = async () => {

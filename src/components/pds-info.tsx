@@ -57,6 +57,26 @@ function CreateInviteCodeButton() {
   );
 }
 
+function LogoutButton() {
+  const openModal = useOpenModal();
+
+  const handleLogout = (e: MouseEvent) => {
+    e.stopPropagation();
+    openModal({ type: "logout" });
+  };
+
+  return (
+    <div
+      role="button"
+      className="h-12 btn btn-ghost text-error"
+      onClick={handleLogout}
+    >
+      <span className="i-lucide-log-out size-4"></span>
+      ログアウト
+    </div>
+  );
+}
+
 function PDSActionsDropdown() {
   const preventClickPropagation = (e: MouseEvent) => {
     e.stopPropagation();
@@ -81,6 +101,9 @@ function PDSActionsDropdown() {
         </li>
         <li>
           <CreateInviteCodeButton />
+        </li>
+        <li>
+          <LogoutButton />
         </li>
       </ul>
     </div>

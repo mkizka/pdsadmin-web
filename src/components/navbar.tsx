@@ -1,8 +1,4 @@
-import { useIsLoggedIn } from "../atoms/session";
-import { LogoutButton } from "./logout-button";
-
 export function Navbar() {
-  const isLoggedIn = useIsLoggedIn();
   return (
     <div className="navbar gap-4 bg-primary shadow-sm text-primary-content">
       <div className="flex-1">
@@ -15,7 +11,6 @@ export function Navbar() {
           <span className="text-xl font-bold">PDS Admin</span>
         </div>
       </div>
-      {isLoggedIn && <LogoutButton />}
     </div>
   );
 }

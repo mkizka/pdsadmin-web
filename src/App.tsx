@@ -20,7 +20,7 @@ export function App() {
           </div>
         )}
       </div>
-      {isLoggedIn && <ModalDialog />}
+      <ModalDialog />
       <Toaster />
     </>
   );
