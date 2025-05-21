@@ -1,7 +1,7 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account/account-list";
 import { LoginForm } from "./components/login-form";
-import { ModalDialog } from "./components/modal";
+import { ModalDialog } from "./components/modal/modal";
 import { Navbar } from "./components/navbar";
 import { RequestCrawlButton } from "./components/request-crawl";
 import { Toaster } from "./components/toaster";
