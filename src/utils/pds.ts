@@ -5,6 +5,7 @@ import type { Did } from "./types";
 export class PDS {
   readonly #rpc;
   readonly #headers;
+  readonly #service: string;
 
   constructor({
     service,
@@ -18,6 +19,7 @@ export class PDS {
     this.#headers = {
       Authorization: `Basic ${btoa(`admin:${adminPassword}`)}`,
     };
+    this.#service = service;
   }
 
   async listRepos(params?: { limit?: number; cursor?: string }) {
@@ -144,6 +146,24 @@ export class PDS {
         as: "blob", // jsonだとエラーになった
       },
     );
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
+  }
+
+  async requestCrawl(hostname: string) {
+    const handler = simpleFetchHandler({
+      service: hostname,
+    });
+    const rpc = new Client({ handler });
+
+    const { data, ok } = await rpc.post("com.atproto.sync.requestCrawl", {
+      input: {
+        hostname: new URL(this.#service).hostname,
+      },
+      headers: this.#headers,
+      as: "blob",
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
