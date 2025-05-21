@@ -82,7 +82,7 @@ export class PDS {
           password,
         },
         headers: this.#headers,
-        as: "blob", // jsonだとエラーになった
+        as: "blob",
       },
     );
     if (!ok) {
@@ -143,7 +143,7 @@ export class PDS {
           did,
         },
         headers: this.#headers,
-        as: "blob", // jsonだとエラーになった
+        as: "blob",
       },
     );
     if (!ok) {
@@ -151,12 +151,11 @@ export class PDS {
     }
   }
 
-  async requestCrawl(hostname: string) {
+  async requestCrawl(relayService: string) {
     const handler = simpleFetchHandler({
-      service: hostname,
+      service: relayService,
     });
     const rpc = new Client({ handler });
-
     const { data, ok } = await rpc.post("com.atproto.sync.requestCrawl", {
       input: {
         hostname: new URL(this.#service).hostname,
