@@ -18,10 +18,16 @@ type RequestCrawlAction = {
   type: "request-crawl";
 };
 
+type InviteCodeAction = {
+  type: "invite-code";
+  code: string;
+};
+
 export type ModalAction =
   | AccountOperationAction
   | AccountInfoAction
-  | RequestCrawlAction;
+  | RequestCrawlAction
+  | InviteCodeAction;
 
 const modalActionAtom = atom<ModalAction | null>(null);
 
