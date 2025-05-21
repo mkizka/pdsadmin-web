@@ -7,6 +7,7 @@ import {
   useInitRepositories,
 } from "../../atoms/account-list";
 import { useOpenModal } from "../../atoms/modal";
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import type { Repository } from "../../utils/pds";
 import { AccountDropdown } from "./account-dropdown";
 
@@ -58,10 +59,28 @@ export function AccountList() {
   const accountList = useAccountList();
   const initRepositories = useInitRepositories();
   const fetchMoreRepositories = useFetchMoreRepositories();
+  const { targetRef, isIntersecting } = useIntersectionObserver({
+    rootMargin: "100px",
+  });
 
   useEffect(() => {
     void initRepositories();
   }, [initRepositories]);
+
+  useEffect(() => {
+    if (
+      isIntersecting &&
+      accountList.hasNextPage &&
+      !accountList.isFetchMoreLoading
+    ) {
+      void fetchMoreRepositories();
+    }
+  }, [
+    isIntersecting,
+    accountList.hasNextPage,
+    accountList.isFetchMoreLoading,
+    fetchMoreRepositories,
+  ]);
 
   // リロード時に追加読み込み後の長さでスケルトンを出すため
   const skeltonLength = Math.max(INIT_PAGE_SIZE, accountList.repos.length);
@@ -83,20 +102,13 @@ export function AccountList() {
             <AccountListRaw key={repo?.did ?? i} repo={repo} />
           ))}
       {accountList.hasNextPage && (
-        <li>
-          <div className="list-col-grow w-full">
-            <button
-              className="btn btn-primary h-12 w-full"
-              onClick={() => fetchMoreRepositories()}
-              disabled={accountList.isFetchMoreLoading}
-            >
-              {accountList.isFetchMoreLoading ? (
-                <span className="loading loading-spinner"></span>
-              ) : (
-                <span>Load More</span>
-              )}
-            </button>
-          </div>
+        <li
+          ref={targetRef as React.RefObject<HTMLLIElement>}
+          className="p-4 text-center h-12"
+        >
+          {accountList.isFetchMoreLoading && (
+            <span className="loading loading-spinner"></span>
+          )}
         </li>
       )}
     </ul>
