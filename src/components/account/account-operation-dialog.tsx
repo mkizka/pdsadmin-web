@@ -7,6 +7,7 @@ import {
   useAccountOperation,
 } from "../../atoms/account-operation";
 import { usePDS } from "../../atoms/pds";
+import { useToast } from "../../atoms/toast";
 import { cn } from "../../utils/cn";
 import type { Repository } from "../../utils/pds";
 import type { Did } from "../../utils/types";
@@ -61,14 +62,17 @@ type OperationBodyProps = {
 function ResetPasswordOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
   const [newPassword, setNewPassword] = useState("");
-  const { loading, handler } = useWithLoading(() =>
-    pds.resetPassword(did, newPassword),
-  );
+  const toast = useToast();
+
+  const { loading, handler } = useWithLoading(async () => {
+    await pds.resetPassword(did, newPassword);
+    toast.success("Password reset successfully");
+    setNewPassword("");
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await handler();
-    setNewPassword("");
   };
 
   return (
@@ -100,10 +104,14 @@ function ResetPasswordOperationBody({ did }: OperationBodyProps) {
 
 function TakedownOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
+  const toast = useToast();
+
   const { loading, handler } = useWithLoading(async () => {
     const ref = (new Date().getTime() / 1000).toString();
     await pds.takedown(did, ref);
+    toast.success("Account takedown successfully");
   });
+
   return (
     <div className="flex flex-col gap-4 items-center">
       <span className="i-lucide-ban size-12 text-error"></span>
@@ -127,7 +135,13 @@ function TakedownOperationBody({ did }: OperationBodyProps) {
 
 function UntakedownOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
-  const { loading, handler } = useWithLoading(() => pds.untakedown(did));
+  const toast = useToast();
+
+  const { loading, handler } = useWithLoading(async () => {
+    await pds.untakedown(did);
+    toast.success("Account untakedown successfully");
+  });
+
   return (
     <div className="flex flex-col gap-4 items-center">
       <span className="i-lucide-check-circle size-12 text-success"></span>
@@ -151,7 +165,13 @@ function UntakedownOperationBody({ did }: OperationBodyProps) {
 
 function DeleteOperationBody({ did }: OperationBodyProps) {
   const pds = usePDS();
-  const { loading, handler } = useWithLoading(() => pds.deleteAccount(did));
+  const toast = useToast();
+
+  const { loading, handler } = useWithLoading(async () => {
+    await pds.deleteAccount(did);
+    toast.success("Account deleted successfully");
+  });
+
   return (
     <div className="flex flex-col gap-4 items-center">
       <span className="i-lucide-trash-2 size-12 text-error"></span>
