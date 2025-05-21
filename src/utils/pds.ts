@@ -152,9 +152,15 @@ export class PDS {
   }
 
   async requestCrawl(hostname?: string) {
-    const { data, ok } = await this.#rpc.post("com.atproto.sync.requestCrawl", {
+    const targetHostname = hostname || new URL(this.#service).hostname;
+    const handler = simpleFetchHandler({
+      service: `https://${targetHostname}`,
+    });
+    const rpc = new Client({ handler });
+
+    const { data, ok } = await rpc.post("com.atproto.sync.requestCrawl", {
       input: {
-        hostname: hostname || new URL(this.#service).hostname,
+        hostname: new URL(this.#service).hostname,
       },
       headers: this.#headers,
       as: "blob",

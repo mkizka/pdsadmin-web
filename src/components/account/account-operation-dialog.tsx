@@ -212,7 +212,7 @@ function RequestCrawlOperationBody() {
       <label className="input">
         <input
           type="text"
-          placeholder="Relay hostname"
+          placeholder="https://bsky.network"
           required
           value={hostname}
           onChange={(e) => setHostname(e.target.value)}
