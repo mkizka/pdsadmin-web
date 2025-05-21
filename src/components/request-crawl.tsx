@@ -1,22 +1,18 @@
 import { useOpenModal } from "../atoms/modal";
 
-export function RequestCrawlButton() {
+export function RequestCrawl() {
   const openModal = useOpenModal();
-
-  const handleRequestCrawl = () => {
-    openModal({ type: "request-crawl" });
-  };
-
   return (
-    <div className="card shadow-md rounded-box mb-4">
-      <div className="card-body p-4">
+    <div className="card shadow-md rounded-box">
+      <div className="card-body">
         <h2 className="card-title text-base">Request Crawl</h2>
-        <p className="text-sm">
-          Request a relay server to crawl your repository.
-        </p>
+        <p>Request a relay server to crawl your repository.</p>
         <div className="card-actions justify-end mt-2">
-          <button className="btn btn-primary" onClick={handleRequestCrawl}>
-            <span className="i-lucide-refresh-cw size-4 mr-1"></span>
+          <button
+            className="btn btn-primary"
+            onClick={() => openModal({ type: "request-crawl" })}
+          >
+            <span className="i-lucide-cloud size-4 mr-1"></span>
             Request Crawl
           </button>
         </div>

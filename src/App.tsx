@@ -3,7 +3,7 @@ import { AccountList } from "./components/account/account-list";
 import { LoginForm } from "./components/login-form";
 import { ModalDialog } from "./components/modal/modal";
 import { Navbar } from "./components/navbar";
-import { RequestCrawlButton } from "./components/request-crawl";
+import { RequestCrawl } from "./components/request-crawl";
 import { Toaster } from "./components/toaster";
 
 export function App() {
@@ -14,10 +14,10 @@ export function App() {
       <div className="container mx-auto p-4 max-w-md">
         {!isLoggedIn && <LoginForm />}
         {isLoggedIn && (
-          <>
-            <RequestCrawlButton />
+          <div className="flex flex-col gap-4">
+            <RequestCrawl />
             <AccountList />
-          </>
+          </div>
         )}
       </div>
       {isLoggedIn && <ModalDialog />}
