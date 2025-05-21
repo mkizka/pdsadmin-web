@@ -1,6 +1,7 @@
 import { modal, type ModalAction, useModalAction } from "../../atoms/modal";
 import { AccountInfoModalBody } from "./body/account-info";
 import { DeleteAccountModalBody } from "./body/delete-account";
+import { InviteCodeModalBody } from "./body/invite-code";
 import { RequestCrawlModalBody } from "./body/request-crawl";
 import { ResetPasswordModalBody } from "./body/reset-password";
 import { TakedownAccountModalBody } from "./body/takedown-account";
@@ -25,6 +26,9 @@ function ModalBody({ modalAction }: ModalBodyProps) {
   }
   if (modalAction.type === "delete") {
     return <DeleteAccountModalBody {...modalAction} />;
+  }
+  if (modalAction.type === "invite-code") {
+    return <InviteCodeModalBody {...modalAction} />;
   }
   return <RequestCrawlModalBody />;
 }
