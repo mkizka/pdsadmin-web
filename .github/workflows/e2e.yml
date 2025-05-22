@@ -20,6 +20,14 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium
 
+      # Create auth directory
+      - name: Create auth directory
+        run: mkdir -p e2e/.auth
+
+      # Run auth setup
+      - name: Run auth setup
+        run: pnpm test:e2e:setup
+
       # Run Playwright tests
       - name: Run Playwright tests
         run: pnpm test:e2e
