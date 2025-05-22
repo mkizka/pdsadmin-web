@@ -30,7 +30,7 @@ jobs:
       - run: pnpm i
       - run: pnpm playwright install --with-deps chromium
       - run: pnpm build
-      - run: pnpm test:e2e
+      - run: pnpm e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
