@@ -42,7 +42,7 @@ export function InfiniteScroll({
   }
 
   return (
-    <li ref={targetRef} className="p-4 text-center h-12">
+    <li ref={targetRef} className="list-row place-items-center h-20">
       {isLoading && <span className="loading loading-spinner"></span>}
     </li>
   );
