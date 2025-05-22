@@ -24,6 +24,6 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     stdout: "pipe",
     stderr: "pipe",
-    timeout: 180000, // 3 minutes - PDS server takes time to download and build
+    timeout: 600000, // 10 minutes - PDS server takes time to download and build
   },
 });
