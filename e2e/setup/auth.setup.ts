@@ -5,8 +5,8 @@ const authFile = "e2e/.auth/user.json";
 setup("authenticate", async ({ page }) => {
   await page.goto("/");
 
-  const pdsUrl = process.env.TEST_PDS_URL || "http://localhost:2583";
-  const adminPassword = process.env.TEST_ADMIN_PASSWORD || "admin-pass";
+  const pdsUrl = "http://localhost:2583";
+  const adminPassword = "admin-pass";
 
   await page.fill('input[placeholder="例: bsky.social"]', pdsUrl);
   await page.fill('input[placeholder="管理者パスワードを入力"]', adminPassword);
