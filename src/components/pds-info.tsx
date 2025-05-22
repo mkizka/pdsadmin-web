@@ -43,10 +43,13 @@ function CreateInviteCodeButton() {
 
   return (
     <div
+      // button要素を使うとドロップダウンが閉じてしまうのでdivを使う
       role="button"
-      className="h-12 btn btn-ghost relative"
+      className={cn("h-12 btn btn-ghost relative", {
+        "pointer-events-none": loading,
+        "pointer-events-auto": !loading,
+      })}
       onClick={handleCreateInviteCode}
-      style={{ pointerEvents: loading ? "none" : "auto" }}
     >
       {loading && (
         <div className="loading loading-spinner loading-sm absolute"></div>

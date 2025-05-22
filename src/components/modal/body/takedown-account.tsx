@@ -1,6 +1,6 @@
 import { usePDS } from "../../../atoms/pds";
-import { cn } from "../../../utils/cn";
 import type { Did } from "../../../utils/types";
+import { Button } from "../../button";
 import { useModalHandler } from "../hooks";
 
 type Props = {
@@ -25,17 +25,15 @@ export function TakedownAccountModalBody({ did }: Props) {
       <p className="text-center">
         Are you sure you want to takedown this account?
       </p>
-      <button
+      <Button
         type="button"
         className="btn btn-error relative"
-        disabled={loading}
+        loading={loading}
+        loadingClassName="loading-sm"
         onClick={handler}
       >
-        {loading && (
-          <div className="loading loading-spinner loading-sm absolute"></div>
-        )}
-        <span className={cn(loading && "opacity-0")}>Takedown Account</span>
-      </button>
+        Takedown Account
+      </Button>
     </div>
   );
 }

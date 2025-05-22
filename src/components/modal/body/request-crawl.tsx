@@ -1,7 +1,7 @@
 import { type FormEvent, useState } from "react";
 
 import { usePDS } from "../../../atoms/pds";
-import { cn } from "../../../utils/cn";
+import { Button } from "../../button";
 import { useModalHandler } from "../hooks";
 
 export function RequestCrawlModalBody() {
@@ -32,16 +32,14 @@ export function RequestCrawlModalBody() {
           onChange={(e) => setRelayService(e.target.value)}
         />
       </label>
-      <button
+      <Button
         type="submit"
         className="btn btn-primary relative"
-        disabled={loading}
+        loading={loading}
+        loadingClassName="loading-sm"
       >
-        {loading && (
-          <div className="loading loading-spinner loading-sm absolute"></div>
-        )}
-        <span className={cn(loading && "opacity-0")}>Request Crawl</span>
-      </button>
+        Request Crawl
+      </Button>
     </form>
   );
 }

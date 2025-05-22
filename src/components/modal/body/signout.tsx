@@ -1,6 +1,6 @@
 import { modal } from "../../../atoms/modal";
 import { useLogout } from "../../../atoms/session";
-import { cn } from "../../../utils/cn";
+import { Button } from "../../button";
 import { useModalHandler } from "../hooks";
 
 export function SignoutModalBody() {
@@ -23,17 +23,15 @@ export function SignoutModalBody() {
         >
           Cancel
         </button>
-        <button
+        <Button
           type="button"
           className="btn btn-primary relative"
-          disabled={loading}
+          loading={loading}
+          loadingClassName="loading-sm"
           onClick={handler}
         >
-          {loading && (
-            <div className="loading loading-spinner loading-sm absolute"></div>
-          )}
-          <span className={cn(loading && "opacity-0")}>Sign Out</span>
-        </button>
+          Sign Out
+        </Button>
       </div>
     </div>
   );

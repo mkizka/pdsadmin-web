@@ -2,9 +2,9 @@ import { type FormEvent, useState } from "react";
 
 import { useSetSession } from "../atoms/session";
 import { useToast } from "../atoms/toast";
-import { cn } from "../utils/cn";
 import { PDS } from "../utils/pds";
 import { ErrorAlert } from "./alert-message";
+import { Button } from "./button";
 
 const initialForm = {
   service: "",
@@ -98,13 +98,14 @@ export function SigninForm() {
           />
         </div>
         <div className="card-actions justify-end mt-4">
-          <button
+          <Button
             type="submit"
-            className={cn("btn btn-primary", form.state.loading && "loading")}
+            className="btn btn-primary"
+            loading={form.state.loading}
             disabled={!form.canSubmit}
           >
             Sign In
-          </button>
+          </Button>
         </div>
         {form.state.error && <ErrorAlert>{form.state.error}</ErrorAlert>}
       </div>
