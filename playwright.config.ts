@@ -18,7 +18,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm start:local",
+    command: "pnpm preview",
     port: 5173,
     stdout: "pipe",
     reuseExistingServer: !process.env.CI,
