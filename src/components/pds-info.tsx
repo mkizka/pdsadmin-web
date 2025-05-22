@@ -73,7 +73,7 @@ function LogoutButton() {
       onClick={handleLogout}
     >
       <span className="i-lucide-log-out size-4"></span>
-      ログアウト
+      Sign Out
     </div>
   );
 }

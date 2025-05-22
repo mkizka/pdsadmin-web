@@ -36,13 +36,15 @@ const useForm = () => {
   };
 };
 
-const requireHttps = (maybeUrl: string) => {
-  return maybeUrl.startsWith("https://") || maybeUrl.startsWith("http://")
-    ? maybeUrl
-    : `https://${maybeUrl}`;
-};
+function Code({ children }: { children: string }) {
+  return (
+    <code className="font-mono text-xs bg-base-200 rounded-md px-1 font-bold">
+      {children}
+    </code>
+  );
+}
 
-export function LoginForm() {
+export function SigninForm() {
   const form = useForm();
   const setSession = useSetSession();
   const toast = useToast();
@@ -52,14 +54,10 @@ export function LoginForm() {
     form.setLoading(true);
     form.setError("");
     try {
-      const session = {
-        service: requireHttps(form.state.service),
-        adminPassword: form.state.adminPassword,
-      };
-      const pds = new PDS(session);
+      const pds = new PDS(form.state);
       await pds.listRepos();
-      setSession(session);
-      toast.success("ログインしました");
+      setSession(form.state);
+      toast.success("Sign in successfully");
     } catch (error) {
       form.setError(String(error));
     } finally {
@@ -70,14 +68,16 @@ export function LoginForm() {
   return (
     <form className="card bg-base-100 shadow-xl" onSubmit={handleSubmit}>
       <div className="card-body">
-        <h2 className="card-title">管理者ログイン</h2>
+        <h2 className="card-title">Sign in to PDS</h2>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">PDS URL</span>
+            <span className="label-text">
+              PDS URL (<Code>{"https://${PDS_HOSTNAME}"}</Code>)
+            </span>
           </label>
           <input
-            type="text"
-            placeholder="例: bsky.social"
+            type="url"
+            placeholder="https://pds.example.com"
             className="input input-bordered w-full"
             value={form.state.service}
             onChange={(e) => form.setService(e.target.value)}
@@ -86,11 +86,13 @@ export function LoginForm() {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">管理者パスワード</span>
+            <span className="label-text">
+              Admin Password (<Code>PDS_ADMIN_PASSWORD</Code>)
+            </span>
           </label>
           <input
             type="password"
-            placeholder="管理者パスワードを入力"
+            placeholder="Enter Admin Password"
             className="input input-bordered w-full"
             value={form.state.adminPassword}
             onChange={(e) => form.setAdminPassword(e.target.value)}
@@ -104,7 +106,7 @@ export function LoginForm() {
             disabled={!form.canSubmit}
             data-testid="login-button"
           >
-            ログイン
+            Sign In
           </button>
         </div>
         {form.state.error && <ErrorAlert>{form.state.error}</ErrorAlert>}
