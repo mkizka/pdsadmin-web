@@ -24,6 +24,7 @@ export function DeleteAccountButton({ did }: { did: Did }) {
     <div
       role="button"
       className="h-12 btn btn-ghost text-error"
+      data-testid="delete-account-button"
       onClick={(e) => {
         e.stopPropagation();
         openModal({ type: "delete", did });

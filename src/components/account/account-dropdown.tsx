@@ -22,6 +22,7 @@ export function AccountDropdown({ repo }: AccountDropdownProps) {
         tabIndex={0}
         role="button"
         className="btn btn-circle btn-ghost size-8"
+        data-testid="account-dropdown-button"
       >
         <span className="i-lucide-more-horizontal size-6"></span>
       </div>

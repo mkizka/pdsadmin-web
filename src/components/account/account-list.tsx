@@ -39,6 +39,7 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
     <li
       className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
       onClick={() => openModal({ type: "account-info", repo })}
+      data-testid="account-list-row"
     >
       <div className="avatar avatar-placeholder">
         <div className="bg-neutral text-neutral-content size-10 rounded-full">
@@ -47,7 +48,9 @@ function AccountListRaw({ repo }: { repo: Repository | null }) {
       </div>
       {/* palce-items-centerで全アイテムを縦横中央揃えした上で、2列目のみ横軸startに上書きする */}
       <div className="justify-self-start">
-        <div className="font-bold">@{repo.accountInfo.handle}</div>
+        <div className="font-bold" data-testid="account-list-row__handle">
+          @{repo.accountInfo.handle}
+        </div>
         <div className="text-xs font-semibold opacity-60">at://{repo.did}</div>
       </div>
       <AccountDropdown repo={repo} />

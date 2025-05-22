@@ -29,6 +29,7 @@ export function DeleteAccountModalBody({ did }: Props) {
         loading={loading}
         loadingClassName="loading-sm"
         onClick={handler}
+        data-testid="delete-account-confirm-button"
       >
         Delete Account
       </Button>
