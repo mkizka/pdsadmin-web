@@ -11,7 +11,7 @@ import type { Repository } from "../../utils/pds";
 import { AccountDropdown } from "./account-dropdown";
 import { InfiniteScroll } from "./infinite-scroll";
 
-function SkeltonListRaw() {
+function SkeltonListRow() {
   return (
     <li className="list-row h-20 place-items-center gap-2">
       <div className="skeleton size-10 rounded-full"></div>
@@ -24,7 +24,7 @@ function SkeltonListRaw() {
   );
 }
 
-function AccountListRaw({ repo }: { repo: Repository | null }) {
+function AccountListRow({ repo }: { repo: Repository | null }) {
   const openModal = useOpenModal();
 
   if (!repo) {
@@ -81,9 +81,9 @@ export function AccountList() {
     <ul className="list rounded-box shadow-md">
       <li className="p-4 pb-2 font-bold">Repositories</li>
       {accountList.isInitLoading
-        ? skeltonRepos.map((_, i) => <SkeltonListRaw key={i} />)
+        ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
         : listedRepos.map((repo, i) => (
-            <AccountListRaw key={repo?.did ?? i} repo={repo} />
+            <AccountListRow key={repo?.did ?? i} repo={repo} />
           ))}
       <InfiniteScroll
         onIntersect={() => fetchMoreRepositories()}
