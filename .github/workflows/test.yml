@@ -30,6 +30,13 @@ jobs:
       - run: pnpm i
       - run: pnpm playwright install --with-deps chromium
       - run: pnpm build
+      - run: |
+          ATPROTO_SHA=$(< .atproto-sha)
+          echo "ATPROTO_SHA=$ATPROTO_SHA" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          path: atproto
+          key: atproto-${{ env.ATPROTO_SHA }}
       - run: pnpm setup-dev-env
       - run: pnpm e2e
       - uses: actions/upload-artifact@v4
