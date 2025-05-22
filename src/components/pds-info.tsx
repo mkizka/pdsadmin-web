@@ -121,7 +121,7 @@ export function PDSInfo() {
     <div className="card shadow-md rounded-box mb-4">
       <div className="card-body">
         <div className="flex items-center justify-between">
-          <div className="text-lg font-bold" data-testid="pds-info-text">
+          <div className="text-lg font-bold">
             PDS:<span className="ml-2">{pdsHostname}</span>
           </div>
           <PDSActionsDropdown />
