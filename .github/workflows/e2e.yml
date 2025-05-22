@@ -1,0 +1,36 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+      - run: |
+          npm i -g corepack@latest
+          corepack enable pnpm
+      - run: pnpm i
+      # Install Playwright browsers
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      # Run Playwright tests
+      - name: Run Playwright tests
+        run: pnpm test:e2e
+        env:
+          TEST_PDS_URL: http://localhost:2583
+          TEST_ADMIN_PASSWORD: ${{ secrets.TEST_ADMIN_PASSWORD || 'admin-pass' }}
+
+      # Upload test results on failure
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
