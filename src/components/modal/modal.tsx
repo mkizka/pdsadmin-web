@@ -2,9 +2,9 @@ import { modal, type ModalAction, useModalAction } from "../../atoms/modal";
 import { AccountInfoModalBody } from "./body/account-info";
 import { DeleteAccountModalBody } from "./body/delete-account";
 import { InviteCodeModalBody } from "./body/invite-code";
-import { LogoutModalBody } from "./body/logout";
 import { RequestCrawlModalBody } from "./body/request-crawl";
 import { ResetPasswordModalBody } from "./body/reset-password";
+import { SignoutModalBody } from "./body/signout";
 import { TakedownAccountModalBody } from "./body/takedown-account";
 import { UntakedownAccountModalBody } from "./body/untakedown-account";
 
@@ -32,7 +32,7 @@ function ModalBody({ modalAction }: ModalBodyProps) {
     return <InviteCodeModalBody {...modalAction} />;
   }
   if (modalAction.type === "logout") {
-    return <LogoutModalBody />;
+    return <SignoutModalBody />;
   }
   return <RequestCrawlModalBody />;
 }

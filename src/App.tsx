@@ -1,9 +1,9 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account/account-list";
-import { LoginForm } from "./components/login-form";
 import { ModalDialog } from "./components/modal/modal";
 import { Navbar } from "./components/navbar";
 import { PDSInfo } from "./components/pds-info";
+import { SigninForm } from "./components/signin-form";
 import { Toaster } from "./components/toaster";
 
 export function App() {
@@ -12,7 +12,7 @@ export function App() {
     <>
       <Navbar />
       <div className="container mx-auto p-4 max-w-md">
-        {!isLoggedIn && <LoginForm />}
+        {!isLoggedIn && <SigninForm />}
         {isLoggedIn && (
           <div className="flex flex-col gap-2">
             <PDSInfo />
