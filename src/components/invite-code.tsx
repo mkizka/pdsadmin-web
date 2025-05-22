@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useOpenModal } from "../atoms/modal";
 import { usePDS } from "../atoms/pds";
-import { cn } from "../utils/cn";
+import { Button } from "./button";
 
 export function InviteCodeButton() {
   const pds = usePDS();
@@ -22,16 +22,14 @@ export function InviteCodeButton() {
   };
 
   return (
-    <button
+    <Button
       className="btn btn-primary relative"
       onClick={handleCreateInviteCode}
-      disabled={loading}
+      loading={loading}
+      loadingClassName="loading-sm"
       data-testid="create-invite-code-button"
     >
-      {loading && (
-        <div className="loading loading-spinner loading-sm absolute"></div>
-      )}
-      <span className={cn(loading && "opacity-0")}>Create Invite Code</span>
-    </button>
+      Create Invite Code
+    </Button>
   );
 }
