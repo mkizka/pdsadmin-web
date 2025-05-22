@@ -9,7 +9,7 @@ test("can generate invite code", async ({ page }) => {
   await page.getByTestId("admin-password-input").fill("admin-pass");
   await page.getByTestId("login-button").click();
 
-  await expect(page.getByText("PDS:")).toBeVisible();
+  await expect(page.getByTestId("pds-info-text")).toBeVisible();
 
   await page.getByTestId("pds-actions-dropdown").click();
   await page.getByTestId("create-invite-code-button").click();
