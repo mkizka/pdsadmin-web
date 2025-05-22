@@ -26,6 +26,7 @@ export function InviteCodeButton() {
       className="btn btn-primary relative"
       onClick={handleCreateInviteCode}
       disabled={loading}
+      data-testid="create-invite-code-button"
     >
       {loading && (
         <div className="loading loading-spinner loading-sm absolute"></div>

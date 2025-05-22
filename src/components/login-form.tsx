@@ -81,6 +81,7 @@ export function LoginForm() {
             className="input input-bordered w-full"
             value={form.state.service}
             onChange={(e) => form.setService(e.target.value)}
+            data-testid="pds-url-input"
           />
         </div>
         <div className="form-control w-full">
@@ -93,6 +94,7 @@ export function LoginForm() {
             className="input input-bordered w-full"
             value={form.state.adminPassword}
             onChange={(e) => form.setAdminPassword(e.target.value)}
+            data-testid="admin-password-input"
           />
         </div>
         <div className="card-actions justify-end mt-4">
@@ -100,6 +102,7 @@ export function LoginForm() {
             type="submit"
             className={cn("btn btn-primary", form.state.loading && "loading")}
             disabled={!form.canSubmit}
+            data-testid="login-button"
           >
             ログイン
           </button>

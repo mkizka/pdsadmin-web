@@ -10,6 +10,7 @@ export default defineConfig({
   ],
   use: {
     baseURL: "http://localhost:5173/pdsadmin-web/",
+    actionTimeout: 30000,
   },
   projects: [
     {
@@ -18,7 +19,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm preview",
+    command: "pnpm dev",
     port: 5173,
     stdout: "pipe",
     reuseExistingServer: !process.env.CI,
