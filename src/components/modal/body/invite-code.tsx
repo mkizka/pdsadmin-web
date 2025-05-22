@@ -21,10 +21,15 @@ export function InviteCodeModalBody({ code }: Props) {
 
   return (
     <div className="flex flex-col gap-2">
-      <div>Invite code has been created!</div>
+      <div data-testid="invite-code-success-message">
+        Invite code has been created!
+      </div>
       <div className="relative h-20 rounded-md bg-base-200">
         <div className="flex items-center justify-center h-full overflow-x-auto">
-          <pre className="font-bold text-lg whitespace-pre px-4 max-w-full">
+          <pre
+            className="font-bold text-lg whitespace-pre px-4 max-w-full"
+            data-testid="invite-code-text"
+          >
             {code}
           </pre>
         </div>

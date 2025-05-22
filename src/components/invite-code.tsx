@@ -27,6 +27,7 @@ export function InviteCodeButton() {
       onClick={handleCreateInviteCode}
       loading={loading}
       loadingClassName="loading-sm"
+      data-testid="create-invite-code-button"
     >
       Create Invite Code
     </Button>

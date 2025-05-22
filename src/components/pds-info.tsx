@@ -50,6 +50,7 @@ function CreateInviteCodeButton() {
         "pointer-events-auto": !loading,
       })}
       onClick={handleCreateInviteCode}
+      data-testid="create-invite-code-button"
     >
       {loading && (
         <div className="loading loading-spinner loading-sm absolute"></div>
@@ -91,6 +92,7 @@ function PDSActionsDropdown() {
         tabIndex={0}
         role="button"
         className="btn btn-circle btn-ghost size-8"
+        data-testid="pds-actions-dropdown"
       >
         <span className="i-lucide-more-horizontal size-6"></span>
       </div>
