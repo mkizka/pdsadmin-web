@@ -9,6 +9,7 @@ import {
 import { useOpenModal } from "../../atoms/modal";
 import type { Repository } from "../../utils/pds";
 import { AccountDropdown } from "./account-dropdown";
+import { InfiniteScroll } from "./infinite-scroll";
 
 function SkeltonListRaw() {
   return (
@@ -58,7 +59,6 @@ export function AccountList() {
   const accountList = useAccountList();
   const initRepositories = useInitRepositories();
   const fetchMoreRepositories = useFetchMoreRepositories();
-
   useEffect(() => {
     void initRepositories();
   }, [initRepositories]);
@@ -82,23 +82,11 @@ export function AccountList() {
         : listedRepos.map((repo, i) => (
             <AccountListRaw key={repo?.did ?? i} repo={repo} />
           ))}
-      {accountList.hasNextPage && (
-        <li>
-          <div className="list-col-grow w-full">
-            <button
-              className="btn btn-primary h-12 w-full"
-              onClick={() => fetchMoreRepositories()}
-              disabled={accountList.isFetchMoreLoading}
-            >
-              {accountList.isFetchMoreLoading ? (
-                <span className="loading loading-spinner"></span>
-              ) : (
-                <span>Load More</span>
-              )}
-            </button>
-          </div>
-        </li>
-      )}
+      <InfiniteScroll
+        onIntersect={() => fetchMoreRepositories()}
+        isLoading={accountList.isFetchMoreLoading}
+        hasNextPage={accountList.hasNextPage}
+      />
     </ul>
   );
 }
