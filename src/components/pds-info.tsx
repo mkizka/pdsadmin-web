@@ -81,13 +81,20 @@ function LogoutButton() {
   );
 }
 
-function PDSActionsDropdown() {
+type Props = {
+  className?: string;
+};
+
+function PDSActionsDropdown({ className }: Props) {
   const preventClickPropagation = (e: MouseEvent) => {
     e.stopPropagation();
   };
 
   return (
-    <div className="dropdown dropdown-end" onClick={preventClickPropagation}>
+    <div
+      className={cn("dropdown dropdown-end", className)}
+      onClick={preventClickPropagation}
+    >
       <div
         tabIndex={0}
         role="button"
@@ -118,14 +125,11 @@ function PDSActionsDropdown() {
 export function PDSInfo() {
   const pdsHostname = usePDSHostname();
   return (
-    <div className="card shadow-md rounded-box mb-4">
-      <div className="card-body">
-        <div className="flex items-center justify-between">
-          <div className="text-lg font-bold">
-            PDS:<span className="ml-2">{pdsHostname}</span>
-          </div>
-          <PDSActionsDropdown />
-        </div>
+    <div className="card shadow-md rounded-box mb-4 bg-base-100">
+      <div className="card-body gap-4 items-center text-center relative">
+        <div className="card-title text-2xl font-bold">pdsadmin-web</div>
+        <div className="badge badge-neutral">{pdsHostname}</div>
+        <PDSActionsDropdown className="absolute right-4 top-4" />
       </div>
     </div>
   );

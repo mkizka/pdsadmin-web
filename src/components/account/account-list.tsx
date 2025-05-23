@@ -78,7 +78,7 @@ export function AccountList() {
   ];
 
   return (
-    <ul className="list rounded-box shadow-md">
+    <ul className="list rounded-box shadow-md bg-base-100">
       <li className="p-4 pb-2 font-bold">Repositories</li>
       {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
