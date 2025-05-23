@@ -41,13 +41,13 @@ export class PDS {
     const accountInfoMap = new Map(
       accountInfos.map((info) => [info.did, info]),
     );
-    const repos = data.repos.map((repo) => {
-      const accountInfo = accountInfoMap.get(repo.did);
+    const repos = data.repos.map((repoInfo) => {
+      const accountInfo = accountInfoMap.get(repoInfo.did);
       if (!accountInfo) {
-        throw new Error(`Account info not found for DID: ${repo.did}`);
+        throw new Error(`Account info not found for DID: ${repoInfo.did}`);
       }
       return {
-        ...repo,
+        repoInfo,
         accountInfo,
       };
     });

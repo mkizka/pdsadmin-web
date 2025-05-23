@@ -32,19 +32,19 @@ export function AccountDropdown({ repo }: AccountDropdownProps) {
         onClick={preventClickPropagation}
       >
         <li>
-          <ResetPasswordButton did={repo.did} />
+          <ResetPasswordButton did={repo.repoInfo.did} />
         </li>
-        {repo.status === "takendown" ? (
+        {repo.repoInfo.status === "takendown" ? (
           <li>
-            <UntakedownAccountButton did={repo.did} />
+            <UntakedownAccountButton did={repo.repoInfo.did} />
           </li>
         ) : (
           <li>
-            <TakedownAccountButton did={repo.did} />
+            <TakedownAccountButton did={repo.repoInfo.did} />
           </li>
         )}
         <li>
-          <DeleteAccountButton did={repo.did} />
+          <DeleteAccountButton did={repo.repoInfo.did} />
         </li>
       </ul>
     </div>

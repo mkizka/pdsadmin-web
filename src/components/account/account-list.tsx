@@ -51,7 +51,9 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
         <div className="font-bold" data-testid="account-list-row__handle">
           @{repo.accountInfo.handle}
         </div>
-        <div className="text-xs font-semibold opacity-60">at://{repo.did}</div>
+        <div className="text-xs font-semibold opacity-60">
+          at://{repo.repoInfo.did}
+        </div>
       </div>
       <AccountDropdown repo={repo} />
     </li>
@@ -83,7 +85,7 @@ export function AccountList() {
       {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
         : listedRepos.map((repo, i) => (
-            <AccountListRow key={repo?.did ?? i} repo={repo} />
+            <AccountListRow key={repo?.repoInfo.did ?? i} repo={repo} />
           ))}
       <InfiniteScroll
         onIntersect={() => fetchMoreRepositories()}
