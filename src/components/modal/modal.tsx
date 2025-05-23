@@ -44,6 +44,14 @@ export function ModalDialog() {
       {modalAction && (
         <div className="modal-box">
           <ModalBody modalAction={modalAction} />
+          <form
+            method="dialog"
+            className="btn btn-circle btn-ghost absolute right-3 top-3"
+          >
+            <button className="size-5">
+              <span className="i-lucide-x size-5 cursor-pointer"></span>
+            </button>
+          </form>
         </div>
       )}
       <form method="dialog" className="modal-backdrop">
