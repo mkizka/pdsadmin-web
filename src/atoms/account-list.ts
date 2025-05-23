@@ -23,6 +23,7 @@ const initRepositoriesAtom = atom(
     set(initLoadingAtom, true);
     const { repos, cursor } = await pds.listRepos({ limit });
     set(reposAtom, repos);
+    // limitより少ない場合は次のページがないとみなす
     set(cursorAtom, repos.length < limit ? undefined : cursor);
     set(initLoadingAtom, false);
   },
