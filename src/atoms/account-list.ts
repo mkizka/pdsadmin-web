@@ -17,12 +17,13 @@ const cursorAtom = atom<string | undefined>(undefined);
 
 const initRepositoriesAtom = atom(
   null,
+  // モーダルを閉じた後全体をリロードするために、引数にlimitを持たせる
   async (get, set, limit: number = INIT_PAGE_SIZE) => {
     const pds = get(pdsAtom);
     set(initLoadingAtom, true);
     const { repos, cursor } = await pds.listRepos({ limit });
     set(reposAtom, repos);
-    set(cursorAtom, cursor);
+    set(cursorAtom, repos.length < limit ? undefined : cursor);
     set(initLoadingAtom, false);
   },
 );
@@ -36,7 +37,8 @@ const fetchMoreRepositoriesAtom = atom(null, async (get, set) => {
     cursor,
   });
   set(reposAtom, (prev) => [...prev, ...repos]);
-  set(cursorAtom, newCursor);
+  // limitより少ない場合は次のページがないとみなす
+  set(cursorAtom, repos.length < FETCH_MORE_PAGE_SIZE ? undefined : newCursor);
   set(fetchMoreLoadingAtom, false);
 });
 
