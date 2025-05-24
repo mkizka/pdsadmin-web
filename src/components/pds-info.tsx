@@ -6,7 +6,7 @@ import { usePDS, usePDSHostname } from "../atoms/pds";
 import { cn } from "../utils/cn";
 
 type PDSButtonProps = {
-  type: "request-crawl" | "logout";
+  type: "request-crawl" | "logout" | "create-account";
   iconClassName: string;
   children: string;
 };
@@ -72,7 +72,7 @@ export function PDSInfo() {
         <div className="badge badge-neutral">{pdsHostname}</div>
       </div>
       <div className="grid grid-cols-2 grid-rows-2 gap-2 px-2 pb-2">
-        <PDSButton type="request-crawl" iconClassName="i-lucide-user-plus">
+        <PDSButton type="create-account" iconClassName="i-lucide-user-plus">
           Create Account
         </PDSButton>
         <CreateInviteCodeButton />

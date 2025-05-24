@@ -27,11 +27,16 @@ type InviteCodeAction = {
   code: string;
 };
 
+type CreateAccountAction = {
+  type: "create-account";
+};
+
 export type ModalAction =
   | AccountOperationAction
   | AccountInfoAction
   | RequestCrawlAction
   | InviteCodeAction
+  | CreateAccountAction
   | LogoutAction;
 
 const modalActionAtom = atom<ModalAction | null>(null);

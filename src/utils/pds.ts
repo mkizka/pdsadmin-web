@@ -88,9 +88,11 @@ export class PDS {
 
   async createAccount({
     handle,
+    email,
     password,
   }: {
     handle: `${string}.${string}`;
+    email: string;
     password: string;
   }) {
     const inviteCode = await this.createInviteCode();
@@ -99,6 +101,7 @@ export class PDS {
       {
         input: {
           handle,
+          email,
           password,
           inviteCode,
         },

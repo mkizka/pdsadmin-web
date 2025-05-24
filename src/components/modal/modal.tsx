@@ -1,5 +1,6 @@
 import { modal, type ModalAction, useModalAction } from "../../atoms/modal";
 import { AccountInfoModalBody } from "./body/account-info";
+import { CreateAccountModalBody } from "./body/create-account";
 import { DeleteAccountModalBody } from "./body/delete-account";
 import { InviteCodeModalBody } from "./body/invite-code";
 import { RequestCrawlModalBody } from "./body/request-crawl";
@@ -30,6 +31,9 @@ function ModalBody({ modalAction }: ModalBodyProps) {
   }
   if (modalAction.type === "invite-code") {
     return <InviteCodeModalBody {...modalAction} />;
+  }
+  if (modalAction.type === "create-account") {
+    return <CreateAccountModalBody />;
   }
   if (modalAction.type === "logout") {
     return <SignoutModalBody />;
