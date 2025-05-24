@@ -24,35 +24,6 @@ test("can generate invite code", async ({ page }) => {
   });
 });
 
-test("can delete account", async ({ page }) => {
-  await signIn(page);
-
-  const aliceAccount = page
-    .locator("[data-testid=account-list-row]")
-    .filter({ has: page.locator("text=@alice.test") });
-
-  await test.step("Find and select @alice.test account", async () => {
-    await expect(aliceAccount).toBeVisible();
-  });
-
-  await test.step("Open account dropdown", async () => {
-    await aliceAccount.getByTestId("account-dropdown-button").click();
-  });
-
-  await test.step("Click delete account button", async () => {
-    await aliceAccount.getByTestId("delete-account-button").click();
-  });
-
-  await test.step("Confirm account deletion", async () => {
-    await page.getByTestId("delete-account-confirm-button").click();
-  });
-
-  await test.step("Verify account is deleted", async () => {
-    await page.waitForTimeout(2000);
-    await expect(page.getByText("@alice.test")).not.toBeVisible();
-  });
-});
-
 test("can takedown and untakedown account", async ({ page }) => {
   await signIn(page);
   const bobAccount = page
@@ -91,9 +62,7 @@ test("can takedown and untakedown account", async ({ page }) => {
   });
 });
 
-test("can create a new account and view it in the account list", async ({
-  page,
-}) => {
+test("can create a new account and then delete it", async ({ page }) => {
   await signIn(page);
 
   const uniqueId = `test${Date.now().toString().slice(-6)}`;
@@ -113,11 +82,34 @@ test("can create a new account and view it in the account list", async ({
     await expect(page.getByText("Account created successfully")).toBeVisible();
   });
 
-  await test.step("Scroll to see the newly created account", async () => {
+  await test.step("Find newly created account", async () => {
     await page.mouse.wheel(0, 1000);
     const newAccount = page
       .locator("[data-testid=account-list-row]")
       .filter({ has: page.locator(`text=@${handle}`) });
     await expect(newAccount).toBeVisible();
+  });
+
+  await test.step("Open account dropdown menu", async () => {
+    const newAccount = page
+      .locator("[data-testid=account-list-row]")
+      .filter({ has: page.locator(`text=@${handle}`) });
+    await newAccount.getByTestId("account-dropdown-button").click();
+  });
+
+  await test.step("Click delete account button", async () => {
+    const newAccount = page
+      .locator("[data-testid=account-list-row]")
+      .filter({ has: page.locator(`text=@${handle}`) });
+    await newAccount.getByTestId("delete-account-button").click();
+  });
+
+  await test.step("Confirm account deletion", async () => {
+    await page.getByTestId("delete-account-confirm-button").click();
+    await page.waitForTimeout(2000);
+  });
+
+  await test.step("Verify account is deleted", async () => {
+    await expect(page.getByText(`@${handle}`)).not.toBeVisible();
   });
 });
