@@ -13,7 +13,7 @@
     "lint": "eslint . && prettier . --check",
     "prepare": "husky",
     "preview": "pnpm reset-dev-env && run-p -srl run-dev-env preview:vite",
-    "preview:vite": "wait-on http://localhost:2583 && vite preview",
+    "preview:vite": "wait-on http://localhost:2583 && sleep 5 && vite preview",
     "reset-dev-env": "./scripts/reset-dev-env.sh",
     "run-dev-env": "./scripts/run-dev-env.sh",
     "setup-dev-env": "./scripts/setup-dev-env.sh",
