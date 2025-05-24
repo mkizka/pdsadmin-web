@@ -31,7 +31,7 @@ export function CreateAccountModalBody() {
   };
 
   return (
-    <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
+    <form className="flex flex-col items-center gap-4" onSubmit={handleSubmit}>
       <span className="i-lucide-user-plus size-12"></span>
       <p className="text-center">Create new account</p>
       <label className="input input-bordered flex items-center gap-2">

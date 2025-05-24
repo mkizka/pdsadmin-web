@@ -38,7 +38,7 @@ const useForm = () => {
 
 function Code({ children }: { children: string }) {
   return (
-    <code className="font-mono text-xs bg-base-200 rounded-md px-1 font-bold">
+    <code className="bg-base-200 rounded-md px-1 font-mono text-xs font-bold">
       {children}
     </code>
   );
@@ -99,7 +99,7 @@ export function SigninForm() {
             data-testid="admin-password-input"
           />
         </div>
-        <div className="card-actions justify-end mt-4">
+        <div className="card-actions mt-4 justify-end">
           <Button
             type="submit"
             className="btn btn-primary"

@@ -15,11 +15,11 @@ function SkeltonListRow() {
   return (
     <li className="list-row h-20 place-items-center gap-2">
       <div className="skeleton size-10 rounded-full"></div>
-      <div className="flex flex-col gap-2 w-full">
-        <div className="skeleton w-full h-4"></div>
-        <div className="skeleton w-full h-2"></div>
+      <div className="flex w-full flex-col gap-2">
+        <div className="skeleton h-4 w-full"></div>
+        <div className="skeleton h-2 w-full"></div>
       </div>
-      <div className="btn skeleton rounded-full size-8"></div>
+      <div className="btn skeleton size-8 rounded-full"></div>
     </li>
   );
 }
@@ -29,7 +29,7 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
 
   if (!repo) {
     return (
-      <li className="list-row place-items-center h-20">
+      <li className="list-row h-20 place-items-center">
         <div className="list-col-grow text-center">No account</div>
       </li>
     );
@@ -37,7 +37,7 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
 
   return (
     <li
-      className="list-row place-items-center gap-2 h-20 hover:bg-base-300 hover:cursor-pointer"
+      className="list-row hover:bg-base-300 h-20 place-items-center gap-2 hover:cursor-pointer"
       onClick={() => openModal({ type: "account-info", repo })}
       data-testid="account-list-row"
     >
@@ -80,7 +80,7 @@ export function AccountList() {
   ];
 
   return (
-    <ul className="list rounded-box shadow-md bg-base-100">
+    <ul className="list rounded-box bg-base-100 shadow-md">
       {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
         : listedRepos.map((repo, i) => (

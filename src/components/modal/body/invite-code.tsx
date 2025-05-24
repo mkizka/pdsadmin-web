@@ -24,17 +24,17 @@ export function InviteCodeModalBody({ code }: Props) {
       <div data-testid="invite-code-success-message">
         Invite code has been created!
       </div>
-      <div className="relative h-20 rounded-md bg-base-200">
-        <div className="flex items-center justify-center h-full overflow-x-auto">
+      <div className="bg-base-200 relative h-20 rounded-md">
+        <div className="flex h-full items-center justify-center overflow-x-auto">
           <pre
-            className="font-bold text-lg whitespace-pre px-4 max-w-full"
+            className="max-w-full px-4 text-lg font-bold whitespace-pre"
             data-testid="invite-code-text"
           >
             {code}
           </pre>
         </div>
         <button
-          className="btn btn-square absolute right-4 bottom-0 top-0 my-auto"
+          className="btn btn-square absolute top-0 right-4 bottom-0 my-auto"
           onClick={copyToClipboard}
         >
           <span

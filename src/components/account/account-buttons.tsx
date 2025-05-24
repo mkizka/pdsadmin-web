@@ -6,7 +6,7 @@ export function ResetPasswordButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost"
+      className="btn btn-ghost h-12"
       onClick={(e) => {
         e.stopPropagation();
         openModal({ type: "reset-password", did });
@@ -23,7 +23,7 @@ export function DeleteAccountButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost text-error"
+      className="btn btn-ghost text-error h-12"
       data-testid="delete-account-button"
       onClick={(e) => {
         e.stopPropagation();
@@ -41,7 +41,7 @@ export function TakedownAccountButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost text-error"
+      className="btn btn-ghost text-error h-12"
       data-testid="takedown-account-button"
       onClick={(e) => {
         e.stopPropagation();
@@ -59,7 +59,7 @@ export function UntakedownAccountButton({ did }: { did: Did }) {
   return (
     <div
       role="button"
-      className="h-12 btn btn-ghost text-success"
+      className="btn btn-ghost text-success h-12"
       data-testid="untakedown-account-button"
       onClick={(e) => {
         e.stopPropagation();

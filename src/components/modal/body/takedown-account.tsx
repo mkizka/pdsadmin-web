@@ -20,8 +20,8 @@ export function TakedownAccountModalBody({ did }: Props) {
   });
 
   return (
-    <div className="flex flex-col gap-4 items-center">
-      <span className="i-lucide-ban size-12 text-error"></span>
+    <div className="flex flex-col items-center gap-4">
+      <span className="i-lucide-ban text-error size-12"></span>
       <p className="text-center">
         Are you sure you want to takedown this account?
       </p>

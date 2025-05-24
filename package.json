@@ -49,6 +49,7 @@
     "npm-run-all2": "^8.0.2",
     "prettier": "^3.5.3",
     "prettier-plugin-pkg": "^0.19.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
     "wait-on": "^8.0.3"
@@ -59,7 +60,8 @@
   },
   "prettier": {
     "plugins": [
-      "prettier-plugin-pkg"
+      "prettier-plugin-pkg",
+      "prettier-plugin-tailwindcss"
     ]
   }
 }

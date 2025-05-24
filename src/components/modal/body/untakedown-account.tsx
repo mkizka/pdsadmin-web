@@ -17,8 +17,8 @@ export function UntakedownAccountModalBody({ did }: Props) {
   });
 
   return (
-    <div className="flex flex-col gap-4 items-center">
-      <span className="i-lucide-check-circle size-12 text-success"></span>
+    <div className="flex flex-col items-center gap-4">
+      <span className="i-lucide-check-circle text-success size-12"></span>
       <p className="text-center">
         Are you sure you want to untakedown this account?
       </p>

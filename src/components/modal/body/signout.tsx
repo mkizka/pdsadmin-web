@@ -12,7 +12,7 @@ export function SignoutModalBody() {
   });
 
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div className="flex flex-col items-center gap-4">
       <span className="i-lucide-log-out size-12"></span>
       <p className="text-center">Are you sure you want to sign out?</p>
       <div className="flex gap-4">

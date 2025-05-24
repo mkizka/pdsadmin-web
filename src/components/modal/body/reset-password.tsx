@@ -26,7 +26,7 @@ export function ResetPasswordModalBody({ did }: Props) {
   };
 
   return (
-    <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
+    <form className="flex flex-col items-center gap-4" onSubmit={handleSubmit}>
       <span className="i-lucide-key-round size-12"></span>
       <p className="text-center">Enter new password</p>
       <label className="input">

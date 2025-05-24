@@ -48,7 +48,7 @@ export function ModalDialog() {
       {modalAction && (
         <div className="modal-box max-h-[calc(100dvh*11/12)]">
           <ModalBody modalAction={modalAction} />
-          <form method="dialog" className="absolute right-3 top-3 size-8">
+          <form method="dialog" className="absolute top-3 right-3 size-8">
             <button className="btn btn-circle btn-ghost size-full">
               <span className="i-lucide-x size-5 cursor-pointer"></span>
             </button>

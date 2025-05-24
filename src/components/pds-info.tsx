@@ -16,7 +16,7 @@ function PDSButton({ type, iconClassName, children }: PDSButtonProps) {
   return (
     <div
       role="button"
-      className={"h-12 btn btn-ghost shadow"}
+      className={"btn btn-ghost h-12 shadow"}
       onClick={() => openModal({ type })}
     >
       <span className={cn("size-4", iconClassName)}></span>
@@ -47,7 +47,7 @@ function CreateInviteCodeButton() {
     <div
       // button要素を使うとドロップダウンが閉じてしまうのでdivを使う
       role="button"
-      className={cn("h-12 btn btn-ghost shadow", {
+      className={cn("btn btn-ghost h-12 shadow", {
         "pointer-events-none": loading,
         "pointer-events-auto": !loading,
       })}
@@ -66,8 +66,8 @@ function CreateInviteCodeButton() {
 export function PDSInfo() {
   const pdsHostname = usePDSHostname();
   return (
-    <div className="card shadow-md rounded-box bg-base-100">
-      <div className="card-body gap-4 items-center text-center">
+    <div className="card rounded-box bg-base-100 shadow-md">
+      <div className="card-body items-center gap-4 text-center">
         <h1 className="card-title text-2xl font-bold">pdsadmin-web</h1>
         <div className="badge badge-neutral">{pdsHostname}</div>
       </div>
