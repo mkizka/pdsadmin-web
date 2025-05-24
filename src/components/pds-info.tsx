@@ -18,6 +18,7 @@ function PDSButton({ type, iconClassName, children }: PDSButtonProps) {
       role="button"
       className={"btn btn-ghost h-12 shadow"}
       onClick={() => openModal({ type })}
+      data-testid={type === "create-account" ? "create-account-button" : undefined}
     >
       <span className={cn("size-4", iconClassName)}></span>
       {children}

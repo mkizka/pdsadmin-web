@@ -90,3 +90,26 @@ test("can takedown and untakedown account", async ({ page }) => {
     ).toBeVisible();
   });
 });
+
+test("can create account", async ({ page }) => {
+  await signIn(page);
+
+  await test.step("Click create account button", async () => {
+    await page.getByTestId("create-account-button").click();
+  });
+
+  await test.step("Fill in account creation form", async () => {
+    await page.getByTestId("create-account-handle-input").fill("e2e-test.test");
+    await page.getByTestId("create-account-email-input").fill("test@example.com");
+    await page.getByTestId("create-account-password-input").fill("e2e-test-pass");
+  });
+
+  await test.step("Submit account creation", async () => {
+    await page.getByTestId("create-account-submit-button").click();
+  });
+
+  await test.step("Verify account appears in list", async () => {
+    await page.waitForTimeout(2000);
+    await expect(page.getByText("@e2e-test.test")).toBeVisible();
+  });
+});
