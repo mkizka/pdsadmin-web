@@ -9,7 +9,7 @@ export function App() {
   const isLoggedIn = useIsLoggedIn();
   return (
     <div className="bg-base-300">
-      <div className="bg-base-200 container mx-auto h-dvh max-w-md p-4">
+      <div className="bg-base-200 container mx-auto h-full min-h-dvh max-w-md p-4">
         {!isLoggedIn && <SigninForm />}
         {isLoggedIn && (
           <div className="flex flex-col gap-4">
