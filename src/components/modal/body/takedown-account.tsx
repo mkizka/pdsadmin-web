@@ -31,6 +31,7 @@ export function TakedownAccountModalBody({ did }: Props) {
         loading={loading}
         loadingClassName="loading-sm"
         onClick={handler}
+        data-testid="takedown-account-confirm-button"
       >
         Takedown Account
       </Button>

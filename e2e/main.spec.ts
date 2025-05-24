@@ -1,10 +1,12 @@
 import { expect, type Page, test } from "@playwright/test";
 
 const signIn = async (page: Page) => {
-  await page.goto("/");
-  await page.getByTestId("pds-url-input").fill("http://localhost:2583");
-  await page.getByTestId("admin-password-input").fill("admin-pass");
-  await page.getByTestId("login-button").click();
+  await test.step("ログイン", async () => {
+    await page.goto("/");
+    await page.getByTestId("pds-url-input").fill("http://localhost:2583");
+    await page.getByTestId("admin-password-input").fill("admin-pass");
+    await page.getByTestId("login-button").click();
+  });
 };
 
 test("can generate invite code", async ({ page }) => {
@@ -34,4 +36,38 @@ test("can delete account", async ({ page }) => {
 
   await page.waitForTimeout(2000);
   await expect(page.getByText(`text=${handleToDelete}`)).not.toBeVisible();
+});
+
+test("can takedown and untakedown account", async ({ page }) => {
+  await signIn(page);
+  const firstAccountRow = page
+    .locator("[data-testid=account-list-row]")
+    .first();
+
+  await test.step("アカウントをTakedown", async () => {
+    await firstAccountRow.getByTestId("account-dropdown-button").click();
+    await firstAccountRow.getByTestId("takedown-account-button").click();
+    await page.getByTestId("takedown-account-confirm-button").click();
+    await page.waitForTimeout(2000);
+  });
+
+  await test.step("Untakedownダウンボタンが表示されることを確認", async () => {
+    await firstAccountRow.getByTestId("account-dropdown-button").click();
+    await expect(
+      firstAccountRow.getByTestId("untakedown-account-button"),
+    ).toBeVisible();
+  });
+
+  await test.step("アカウントをUntakedown", async () => {
+    await firstAccountRow.getByTestId("untakedown-account-button").click();
+    await page.getByTestId("untakedown-account-confirm-button").click();
+    await page.waitForTimeout(2000);
+  });
+
+  await test.step("Takedownボタンが再び表示されることを確認", async () => {
+    await firstAccountRow.getByTestId("account-dropdown-button").click();
+    await expect(
+      firstAccountRow.getByTestId("takedown-account-button"),
+    ).toBeVisible();
+  });
 });

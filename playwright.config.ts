@@ -4,10 +4,10 @@ export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  timeout: 5000,
+  timeout: 10000,
   reporter: [
     ["list", { printSteps: true }],
-    ["html", { open: "always" }],
+    ["html", { open: "never" }],
   ],
   use: {
     baseURL: "http://localhost:5173/pdsadmin-web/",

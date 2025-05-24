@@ -28,6 +28,7 @@ export function UntakedownAccountModalBody({ did }: Props) {
         loading={loading}
         loadingClassName="loading-sm"
         onClick={handler}
+        data-testid="untakedown-account-confirm-button"
       >
         Untakedown Account
       </Button>

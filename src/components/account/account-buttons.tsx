@@ -42,6 +42,7 @@ export function TakedownAccountButton({ did }: { did: Did }) {
     <div
       role="button"
       className="h-12 btn btn-ghost text-error"
+      data-testid="takedown-account-button"
       onClick={(e) => {
         e.stopPropagation();
         openModal({ type: "takedown", did });
@@ -59,6 +60,7 @@ export function UntakedownAccountButton({ did }: { did: Did }) {
     <div
       role="button"
       className="h-12 btn btn-ghost text-success"
+      data-testid="untakedown-account-button"
       onClick={(e) => {
         e.stopPropagation();
         openModal({ type: "untakedown", did });
