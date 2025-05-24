@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build:*)",
+      "Bash(pnpm setup-dev-env:*)",
+      "Bash(pnpm e2e:*)"
+    ],
+    "deny": []
+  }
+}
