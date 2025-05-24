@@ -4,8 +4,8 @@ import { useReloadRepositories } from "../../atoms/account-list";
 import { useCloseModal } from "../../atoms/modal";
 import { useToast } from "../../atoms/toast";
 
-export const useModalHandler = (args: {
-  fn: () => Promise<void> | void;
+export const useModalHandler = <T>(args: {
+  fn: () => Promise<T> | T;
   toastMessage?: string;
   shouldReloadRepos?: boolean;
 }) => {
@@ -25,6 +25,7 @@ export const useModalHandler = (args: {
       // eslint-disable-next-line no-console
       console.error(error);
       alert("Error: " + String(error));
+      throw error;
     } finally {
       setLoading(false);
     }
