@@ -16,7 +16,7 @@ const REMOVE_DELAY = 3000;
 const pushToastAtom = atom(
   null,
   (_, set, message: string, level: Toast["level"]) => {
-    const newToast = { message, level, id: crypto.randomUUID() };
+    const newToast = { message, level, id: `${Date.now()}` };
     set(baseAtom, (prev) => [...prev, newToast].slice(-MAX_TOAST_COUNT));
 
     setTimeout(() => {
