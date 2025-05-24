@@ -37,7 +37,7 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
 
   return (
     <li
-      className="list-row place-items-center gap-2 h-20 touch-none select-none hover:bg-base-200 hover:cursor-pointer"
+      className="list-row place-items-center gap-2 h-20 hover:bg-base-200 hover:cursor-pointer"
       onClick={() => openModal({ type: "account-info", repo })}
       data-testid="account-list-row"
     >
