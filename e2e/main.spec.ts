@@ -12,10 +12,6 @@ const signIn = async (page: Page) => {
 test("can generate invite code", async ({ page }) => {
   await signIn(page);
 
-  await test.step("Open PDS actions dropdown", async () => {
-    await page.getByTestId("pds-actions-dropdown").click();
-  });
-
   await test.step("Click create invite code button", async () => {
     await page.getByTestId("create-invite-code-button").click();
   });
