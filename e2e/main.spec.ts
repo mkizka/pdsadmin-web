@@ -109,7 +109,6 @@ test("can create account", async ({ page }) => {
   });
 
   await test.step("Verify account appears in account list", async () => {
-    await page.waitForTimeout(2000);
     const newAccount = page
       .locator("[data-testid=account-list-row]")
       .filter({ has: page.locator("text=@e2e-test.test") });
