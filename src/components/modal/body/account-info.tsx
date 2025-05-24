@@ -9,11 +9,11 @@ export function AccountInfoModalBody({ repo }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="font-bold text-lg">@{repo.accountInfo.handle}</h2>
-      <h3 className="font-bold">com.atproto.sync.listRepos</h3>
+      <h3 className="font-bold">com.atproto.admin.defs#accountView</h3>
       <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
         <code>{JSON.stringify(repoInfo, null, 2)}</code>
       </pre>
-      <h3 className="font-bold">com.atproto.admin.getAccountInfos</h3>
+      <h3 className="font-bold">com.atproto.admin.getAccountInfos#repo</h3>
       <pre className="p-4 bg-base-200 rounded-lg overflow-x-auto">
         <code>{JSON.stringify(accountInfo, null, 2)}</code>
       </pre>
