@@ -86,6 +86,32 @@ export class PDS {
     return data.code;
   }
 
+  async createAccount({
+    handle,
+    password,
+  }: {
+    handle: `${string}.${string}`;
+    password: string;
+  }) {
+    const inviteCode = await this.createInviteCode();
+    const { data, ok } = await this.#rpc.post(
+      "com.atproto.server.createAccount",
+      {
+        input: {
+          handle,
+          password,
+          inviteCode,
+        },
+        headers: this.#headers,
+        as: "json",
+      },
+    );
+    if (!ok) {
+      throw new Error(data.message ?? data.error);
+    }
+    return data.did;
+  }
+
   async resetPassword(did: Did, password: string) {
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.updateAccountPassword",
