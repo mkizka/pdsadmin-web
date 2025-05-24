@@ -37,7 +37,7 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
 
   return (
     <li
-      className="list-row place-items-center gap-2 h-20 hover:bg-base-200 hover:cursor-pointer"
+      className="list-row place-items-center gap-2 h-20 hover:bg-base-300 hover:cursor-pointer"
       onClick={() => openModal({ type: "account-info", repo })}
       data-testid="account-list-row"
     >
@@ -81,7 +81,6 @@ export function AccountList() {
 
   return (
     <ul className="list rounded-box shadow-md bg-base-100">
-      <li className="p-4 pb-2 font-bold">Repositories</li>
       {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
         : listedRepos.map((repo, i) => (
