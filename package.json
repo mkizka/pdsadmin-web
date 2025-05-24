@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "run-s -sl setup-dev-env reset-dev-env && run-p -srl run-dev-env dev:vite",
-    "dev:vite": "wait-on http://localhost:2583 && vite",
+    "dev:vite": "wait-on http://localhost:2583 && vite --host",
     "e2e": "playwright test",
     "format": "eslint . --fix && prettier . --write",
     "lint": "eslint . && prettier . --check",
