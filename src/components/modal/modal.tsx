@@ -42,7 +42,7 @@ export function ModalDialog() {
   return (
     <dialog id={modal.getElementId()} className="modal">
       {modalAction && (
-        <div className="modal-box">
+        <div className="modal-box max-h-[calc(100dvh*11/12)]">
           <ModalBody modalAction={modalAction} />
           <form method="dialog" className="absolute right-3 top-3 size-8">
             <button className="btn btn-circle btn-ghost size-full">
