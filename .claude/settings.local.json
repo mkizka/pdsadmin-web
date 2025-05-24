@@ -3,7 +3,10 @@
     "allow": [
       "Bash(pnpm build:*)",
       "Bash(pnpm setup-dev-env:*)",
-      "Bash(pnpm e2e:*)"
+      "Bash(pnpm e2e:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm format)"
     ],
     "deny": []
   }
