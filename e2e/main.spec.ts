@@ -48,7 +48,6 @@ test("can delete account", async ({ page }) => {
   });
 
   await test.step("Verify account is deleted", async () => {
-    await page.waitForTimeout(2000);
     await expect(page.getByText("@alice.test")).not.toBeVisible();
   });
 });
@@ -67,7 +66,6 @@ test("can takedown and untakedown account", async ({ page }) => {
     await bobAccount.getByTestId("account-dropdown-button").click();
     await bobAccount.getByTestId("takedown-account-button").click();
     await page.getByTestId("takedown-account-confirm-button").click();
-    await page.waitForTimeout(2000);
   });
 
   await test.step("Verify untakedown button is visible", async () => {
@@ -80,7 +78,6 @@ test("can takedown and untakedown account", async ({ page }) => {
   await test.step("Untakedown account", async () => {
     await bobAccount.getByTestId("untakedown-account-button").click();
     await page.getByTestId("untakedown-account-confirm-button").click();
-    await page.waitForTimeout(2000);
   });
 
   await test.step("Verify takedown button is visible again", async () => {
@@ -109,6 +106,11 @@ test("can create account", async ({ page }) => {
   });
 
   await test.step("Verify account appears in account list", async () => {
+    // Scroll to bottom to trigger infinite scroll loading
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    
     const newAccount = page
       .locator("[data-testid=account-list-row]")
       .filter({ has: page.locator("text=@e2e-test.test") });
