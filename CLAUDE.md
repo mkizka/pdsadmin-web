@@ -1,75 +1,86 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## プロジェクト概要
 
-## Project Overview
+これは [pdsadmin](https://github.com/bluesky-social/pds/tree/main/pdsadmin) コマンドのブラウザベースのインターフェースを提供するウェブアプリケーションで、コマンドラインの代わりにウェブUIを通じてPDS（Personal Data Server）の管理を可能にします。
 
-This is a web application that provides a browser-based interface for [pdsadmin](https://github.com/bluesky-social/pds/tree/main/pdsadmin) commands, allowing PDS (Personal Data Server) administration through a web UI instead of command line.
-
-## Development Commands
+## 開発コマンド
 
 ```bash
-# Install dependencies
+# 依存関係をインストール
 pnpm i
 
-# Start development server (includes local PDS setup)
+# 開発サーバーを起動（ローカルPDSのセットアップを含む）
 pnpm dev
 
-# Build for production
+# 本番用ビルド
 pnpm build
 
-# Run linting and formatting checks
+# リントとフォーマットのチェックを実行
 pnpm lint
 
-# Fix linting and formatting issues
+# リントとフォーマットの問題を修正
 pnpm format
 
-# Run type checking
+# 型チェックを実行
 pnpm typecheck
 
-# Run end-to-end tests
-pnpm e2e
+# ローカルPDSのセットアップ
+pnpm setup-dev-env
 
-# Preview production build
-pnpm preview
+# エンドツーエンドテストを実行(事前にpnpm buildとpnpm setup-dev-envが必要)
+pnpm e2e
 ```
 
-Development server runs at: http://localhost:5173/pdsadmin-web/
+開発サーバーの実行先: http://localhost:5173/pdsadmin-web/
 
-Local PDS credentials:
+ローカルPDSの認証情報:
 
 - URL: http://localhost:2583
-- Password: admin-pass
+- パスワード: admin-pass
 
-## Architecture
+## アーキテクチャ
 
-### State Management
+### 状態管理
 
-- Uses Jotai for global state management
-- Session state persisted in localStorage via `atomWithStorage`
-- Key atoms in `src/atoms/`:
-  - `session.ts`: Authentication state and PDS connection info
-  - `account-list.ts`: Account data and pagination
-  - `modal.ts`: Modal dialog state
-  - `toast.ts`: Toast notification state
+- グローバル状態管理に Jotai を使用
+- セッション状態は `atomWithStorage` を介して localStorage に永続化
+- `src/atoms/` の主要なアトム:
+  - `session.ts`: 認証状態と PDS 接続情報
+  - `account-list.ts`: アカウントデータとページネーション
+  - `modal.ts`: モーダルダイアログの状態
+  - `toast.ts`: トースト通知の状態
 
-### PDS Communication
+### PDS 通信
 
-- `src/utils/pds.ts` contains the main `PDS` class for API communication
-- Uses @atcute/client for AT Protocol communication
-- Basic authentication with admin credentials
-- Supports all major pdsadmin operations: account listing, takedown/untakedown, deletion, invite codes, crawl requests
+- `src/utils/pds.ts` に API 通信用のメイン `PDS` クラスが含まれています
+- AT Protocol 通信に @atcute/client を使用
+- 管理者認証情報による基本認証
+- すべての主要な pdsadmin 操作をサポート: アカウント一覧、テイクダウン/テイクダウン解除、削除、招待コード、クロールリクエスト
 
-### Component Structure
+### コンポーネント構造
 
-- Modal-based UI for all admin actions
-- `src/components/modal/body/` contains specific modal content for each operation
-- Infinite scroll for account listing
-- Responsive design optimized for mobile-first approach
+- すべての管理アクションにモーダルベースの UI
+- `src/components/modal/body/` に各操作の特定のモーダルコンテンツが含まれています
+- アカウント一覧の無限スクロール
+- モバイルファーストアプローチに最適化されたレスポンシブデザイン
 
-### Development Environment
+### 開発環境
 
-- Automatically sets up and runs local AT Protocol dev environment
-- Uses scripts in `scripts/` directory to manage local PDS instance
-- Vite-based development with React and TypeScript
-- TailwindCSS + DaisyUI for styling
+- ローカル AT Protocol 開発環境を自動的にセットアップして実行
+- ローカル PDS インスタンスを管理するために `scripts/` ディレクトリのスクリプトを使用
+- React と TypeScript による Vite ベースの開発
+- スタイリングに TailwindCSS + DaisyUI を使用
+
+### e2eテストのコード規約
+
+- テストは並列実行されているため、実行順に依存しないようにテストケースを作成する
+- 可能な限りgetTestByIdを使用し、必要に応じて実装側にdata-testidを追加する
+
+## 開発時のルール
+
+- コミットする前に以下のコマンドを実行してコードに問題がないことを確認してください
+  - pnpm lint
+  - pnpm typecheck
+- lintエラーがある場合は以下のコマンドで自動修正できます
+  - pnpm format
