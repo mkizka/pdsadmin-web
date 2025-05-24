@@ -31,23 +31,20 @@ test("can generate invite code", async ({ page }) => {
 test("can delete account", async ({ page }) => {
   await signIn(page);
 
-  const accountToDelete = page
+  const aliceAccount = page
     .locator("[data-testid=account-list-row]")
-    .first();
+    .filter({ has: page.locator("text=@alice.test") });
 
-  let handleToDelete: string | null = null;
-  await test.step("Get account handle to delete", async () => {
-    handleToDelete = await accountToDelete
-      .getByTestId("account-list-row__handle")
-      .textContent();
+  await test.step("Find and select @alice.test account", async () => {
+    await expect(aliceAccount).toBeVisible();
   });
 
   await test.step("Open account dropdown", async () => {
-    await accountToDelete.getByTestId("account-dropdown-button").click();
+    await aliceAccount.getByTestId("account-dropdown-button").click();
   });
 
   await test.step("Click delete account button", async () => {
-    await accountToDelete.getByTestId("delete-account-button").click();
+    await aliceAccount.getByTestId("delete-account-button").click();
   });
 
   await test.step("Confirm account deletion", async () => {
@@ -56,40 +53,44 @@ test("can delete account", async ({ page }) => {
 
   await test.step("Verify account is deleted", async () => {
     await page.waitForTimeout(2000);
-    await expect(page.getByText(`text=${handleToDelete}`)).not.toBeVisible();
+    await expect(page.getByText("@alice.test")).not.toBeVisible();
   });
 });
 
 test("can takedown and untakedown account", async ({ page }) => {
   await signIn(page);
-  const firstAccountRow = page
+  const bobAccount = page
     .locator("[data-testid=account-list-row]")
-    .first();
+    .filter({ has: page.locator("text=@bob.test") });
+
+  await test.step("Find and select @bob.test account", async () => {
+    await expect(bobAccount).toBeVisible();
+  });
 
   await test.step("Takedown account", async () => {
-    await firstAccountRow.getByTestId("account-dropdown-button").click();
-    await firstAccountRow.getByTestId("takedown-account-button").click();
+    await bobAccount.getByTestId("account-dropdown-button").click();
+    await bobAccount.getByTestId("takedown-account-button").click();
     await page.getByTestId("takedown-account-confirm-button").click();
     await page.waitForTimeout(2000);
   });
 
   await test.step("Verify untakedown button is visible", async () => {
-    await firstAccountRow.getByTestId("account-dropdown-button").click();
+    await bobAccount.getByTestId("account-dropdown-button").click();
     await expect(
-      firstAccountRow.getByTestId("untakedown-account-button"),
+      bobAccount.getByTestId("untakedown-account-button"),
     ).toBeVisible();
   });
 
   await test.step("Untakedown account", async () => {
-    await firstAccountRow.getByTestId("untakedown-account-button").click();
+    await bobAccount.getByTestId("untakedown-account-button").click();
     await page.getByTestId("untakedown-account-confirm-button").click();
     await page.waitForTimeout(2000);
   });
 
   await test.step("Verify takedown button is visible again", async () => {
-    await firstAccountRow.getByTestId("account-dropdown-button").click();
+    await bobAccount.getByTestId("account-dropdown-button").click();
     await expect(
-      firstAccountRow.getByTestId("takedown-account-button"),
+      bobAccount.getByTestId("takedown-account-button"),
     ).toBeVisible();
   });
 });
