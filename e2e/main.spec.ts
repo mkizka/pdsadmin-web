@@ -90,3 +90,34 @@ test("can takedown and untakedown account", async ({ page }) => {
     ).toBeVisible();
   });
 });
+
+test("can create a new account and view it in the account list", async ({
+  page,
+}) => {
+  await signIn(page);
+
+  const uniqueId = `test${Date.now().toString().slice(-6)}`;
+  const email = `${uniqueId}@example.com`;
+  const password = "password123";
+  const handle = `${uniqueId}.test`;
+
+  await test.step("Click create account button", async () => {
+    await page.getByTestId("create-account-button").click();
+  });
+
+  await test.step("Fill in account creation form", async () => {
+    await page.getByTestId("create-account-handle-input").fill(handle);
+    await page.getByTestId("create-account-email-input").fill(email);
+    await page.getByTestId("create-account-password-input").fill(password);
+    await page.getByTestId("create-account-submit-button").click();
+    await expect(page.getByText("Account created successfully")).toBeVisible();
+  });
+
+  await test.step("Scroll to see the newly created account", async () => {
+    await page.mouse.wheel(0, 1000);
+    const newAccount = page
+      .locator("[data-testid=account-list-row]")
+      .filter({ has: page.locator(`text=@${handle}`) });
+    await expect(newAccount).toBeVisible();
+  });
+});

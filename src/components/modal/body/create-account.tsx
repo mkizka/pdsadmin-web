@@ -31,7 +31,11 @@ export function CreateAccountModalBody() {
   };
 
   return (
-    <form className="flex flex-col items-center gap-4" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col items-center gap-4"
+      onSubmit={handleSubmit}
+      data-testid="create-account-form"
+    >
       <span className="i-lucide-user-plus size-12"></span>
       <p className="text-center">Create new account</p>
       <label className="input input-bordered flex items-center gap-2">
@@ -44,6 +48,7 @@ export function CreateAccountModalBody() {
           value={handle}
           onChange={(e) => setHandle(e.target.value)}
           className="grow"
+          data-testid="create-account-handle-input"
         />
       </label>
       <label className="input input-bordered flex items-center gap-2">
@@ -56,6 +61,7 @@ export function CreateAccountModalBody() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="grow"
+          data-testid="create-account-email-input"
         />
       </label>
       <label className="input input-bordered flex items-center gap-2">
@@ -68,6 +74,7 @@ export function CreateAccountModalBody() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="grow"
+          data-testid="create-account-password-input"
         />
       </label>
       <Button
@@ -75,6 +82,7 @@ export function CreateAccountModalBody() {
         className="btn btn-primary relative"
         loading={loading}
         loadingClassName="loading-sm"
+        data-testid="create-account-submit-button"
       >
         Create Account
       </Button>
