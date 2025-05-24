@@ -100,8 +100,12 @@ test("can create account", async ({ page }) => {
 
   await test.step("Fill in account creation form", async () => {
     await page.getByTestId("create-account-handle-input").fill("e2e-test.test");
-    await page.getByTestId("create-account-email-input").fill("test@example.com");
-    await page.getByTestId("create-account-password-input").fill("e2e-test-pass");
+    await page
+      .getByTestId("create-account-email-input")
+      .fill("test@example.com");
+    await page
+      .getByTestId("create-account-password-input")
+      .fill("e2e-test-pass");
   });
 
   await test.step("Submit account creation", async () => {
@@ -110,6 +114,9 @@ test("can create account", async ({ page }) => {
 
   await test.step("Verify account appears in list", async () => {
     await page.waitForTimeout(2000);
+    // Scroll down to load more accounts
+    await page.mouse.wheel(0, 500);
+    await page.waitForTimeout(1000);
     await expect(page.getByText("@e2e-test.test")).toBeVisible();
   });
 });
