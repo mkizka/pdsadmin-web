@@ -1,10 +1,10 @@
 {
-  "pdsInfo": {
+  "pds-info": {
     "buttons": {
-      "createAccount": "Create Account",
-      "createInviteCode": "Create Invite Code",
-      "requestCrawl": "Request Crawl",
-      "signOut": "Sign Out"
+      "create-account": "Create Account",
+      "create-invite-code": "Create Invite Code",
+      "request-crawl": "Request Crawl",
+      "sign-out": "Sign Out"
     },
     "alerts": {
       "error": "Error: {{message}}"
@@ -12,10 +12,10 @@
   },
   "account": {
     "list": {
-      "noAccount": "No account"
+      "no-account": "No account"
     },
     "buttons": {
-      "resetPassword": "Reset Password",
+      "reset-password": "Reset Password",
       "delete": "Delete",
       "takedown": "Takedown",
       "untakedown": "Untakedown"
@@ -37,7 +37,7 @@
       "button": "Untakedown",
       "toast": "Account untaken down successfully"
     },
-    "resetPassword": {
+    "reset-password": {
       "button": "Reset Password",
       "message": "Enter new password",
       "toast": "Password reset successfully"

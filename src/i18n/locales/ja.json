@@ -1,10 +1,10 @@
 {
-  "pdsInfo": {
+  "pds-info": {
     "buttons": {
-      "createAccount": "アカウント作成",
-      "createInviteCode": "招待コード作成",
-      "requestCrawl": "クロールをリクエスト",
-      "signOut": "ログアウト"
+      "create-account": "アカウント作成",
+      "create-invite-code": "招待コード作成",
+      "request-crawl": "クロールをリクエスト",
+      "sign-out": "ログアウト"
     },
     "alerts": {
       "error": "エラー: {{message}}"
@@ -12,10 +12,10 @@
   },
   "account": {
     "list": {
-      "noAccount": "アカウントなし"
+      "no-account": "アカウントなし"
     },
     "buttons": {
-      "resetPassword": "パスワードをリセット",
+      "reset-password": "パスワードをリセット",
       "delete": "削除",
       "takedown": "Takedown",
       "untakedown": "Takedownを解除"
@@ -37,7 +37,7 @@
       "button": "Takedownを解除",
       "toast": "アカウントのTakedownが正常に解除されました"
     },
-    "resetPassword": {
+    "reset-password": {
       "button": "パスワードをリセット",
       "message": "新しいパスワードを入力してください",
       "toast": "パスワードが正常にリセットされました"

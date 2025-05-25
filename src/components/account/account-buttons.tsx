@@ -16,7 +16,7 @@ export function ResetPasswordButton({ did }: { did: Did }) {
       }}
     >
       <span className="i-lucide-key-round size-4"></span>
-      {t("account.buttons.resetPassword")}
+      {t("account.buttons.reset-password")}
     </div>
   );
 }

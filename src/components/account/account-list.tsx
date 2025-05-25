@@ -33,7 +33,7 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
     return (
       <li className="list-row h-20 place-items-center">
         <div className="list-col-grow text-center">
-          {t("account.list.noAccount")}
+          {t("account.list.no-account")}
         </div>
       </li>
     );

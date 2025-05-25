@@ -30,7 +30,7 @@ export function ResetPasswordModalBody({ did }: Props) {
   return (
     <form className="flex flex-col items-center gap-4" onSubmit={handleSubmit}>
       <span className="i-lucide-key-round size-12"></span>
-      <p className="text-center">{t("modal.resetPassword.message")}</p>
+      <p className="text-center">{t("modal.reset-password.message")}</p>
       <label className="input">
         <input
           type="password"
@@ -45,7 +45,7 @@ export function ResetPasswordModalBody({ did }: Props) {
         loading={loading}
         loadingClassName="loading-sm"
       >
-        {t("modal.resetPassword.button")}
+        {t("modal.reset-password.button")}
       </Button>
     </form>
   );

@@ -41,7 +41,7 @@ function CreateInviteCodeButton() {
       const code = await pds.createInviteCode();
       openModal({ type: "invite-code", code });
     } catch (error) {
-      alert(t("pdsInfo.alerts.error", { message: String(error) }));
+      alert(t("pds-info.alerts.error", { message: String(error) }));
     } finally {
       setLoading(false);
     }
@@ -63,7 +63,7 @@ function CreateInviteCodeButton() {
       )}
       <span className="i-lucide-ticket size-4"></span>
       <span className={cn(loading && "opacity-0")}>
-        {t("pdsInfo.buttons.createInviteCode")}
+        {t("pds-info.buttons.create-invite-code")}
       </span>
     </div>
   );
@@ -82,14 +82,14 @@ export function PDSInfo() {
       </div>
       <div className="grid grid-cols-2 grid-rows-2 gap-2 px-2 pb-2">
         <PDSButton type="create-account" iconClassName="i-lucide-user-plus">
-          {t("pdsInfo.buttons.createAccount")}
+          {t("pds-info.buttons.create-account")}
         </PDSButton>
         <CreateInviteCodeButton />
         <PDSButton type="request-crawl" iconClassName="i-lucide-refresh-cw">
-          {t("pdsInfo.buttons.requestCrawl")}
+          {t("pds-info.buttons.request-crawl")}
         </PDSButton>
         <PDSButton type="logout" iconClassName="i-lucide-log-out">
-          {t("pdsInfo.buttons.signOut")}
+          {t("pds-info.buttons.sign-out")}
         </PDSButton>
       </div>
     </div>
