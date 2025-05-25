@@ -1,0 +1,14 @@
+{
+  "pdsInfo": {
+    "title": "pdsadmin-web",
+    "buttons": {
+      "createAccount": "アカウントを作成",
+      "createInviteCode": "招待コードを作成",
+      "requestCrawl": "クロールをリクエスト",
+      "signOut": "ログアウト"
+    },
+    "alerts": {
+      "error": "エラー: {{message}}"
+    }
+  }
+}

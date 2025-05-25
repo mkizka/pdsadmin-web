@@ -1,0 +1,14 @@
+{
+  "pdsInfo": {
+    "title": "pdsadmin-web",
+    "buttons": {
+      "createAccount": "Create Account",
+      "createInviteCode": "Create Invite Code",
+      "requestCrawl": "Request Crawl",
+      "signOut": "Sign Out"
+    },
+    "alerts": {
+      "error": "Error: {{message}}"
+    }
+  }
+}
