@@ -15,15 +15,14 @@ type PDSButtonProps = {
 function PDSButton({ type, iconClassName, children }: PDSButtonProps) {
   const openModal = useOpenModal();
   return (
-    <div
-      role="button"
-      className={"btn btn-ghost h-12 shadow"}
+    <button
+      className="btn btn-ghost h-12 shadow"
       onClick={() => openModal({ type })}
       data-testid={`${type}-button`}
     >
       <span className={cn("size-4", iconClassName)}></span>
-      {children}
-    </div>
+      <span className="truncate">{children}</span>
+    </button>
   );
 }
 

@@ -41,26 +41,31 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
 
   return (
     <li
-      className="list-row hover:bg-base-300 h-20 place-items-center gap-4 hover:cursor-pointer"
+      className="list-row hover:bg-base-300 h-20 w-full items-center gap-4 hover:cursor-pointer"
       onClick={() => openModal({ type: "account-info", repo })}
       data-testid="account-list-row"
     >
-      <div className="avatar avatar-placeholder">
-        <div className="bg-neutral text-neutral-content size-10 rounded-full">
+      <div className="avatar avatar-placeholder size-10">
+        <div className="bg-neutral text-neutral-content rounded-full">
           <span className="i-lucide-circle-user size-6"></span>
         </div>
       </div>
-      {/* palce-items-centerで全アイテムを縦横中央揃えした上で、2列目のみ横軸startに上書きする */}
-      <div className="flex flex-col gap-1 justify-self-start">
+      {/* min-w-0がないとflexの子要素が横幅いっぱいに広がってしまう */}
+      <div className="flex min-w-0 flex-col gap-1">
         <div className="flex items-center gap-2">
-          <div className="font-bold" data-testid="account-list-row__handle">
+          <div
+            className="truncate font-bold"
+            data-testid="account-list-row__handle"
+          >
             @{repo.accountInfo.handle}
           </div>
           {repo.repoInfo.status === "takendown" && (
-            <div className="badge badge-error badge-sm font-bold">Takedown</div>
+            <div className="badge badge-error badge-sm font-bold whitespace-nowrap">
+              Takedown
+            </div>
           )}
         </div>
-        <div className="text-xs font-semibold opacity-60">
+        <div className="truncate text-xs font-semibold opacity-60">
           at://{repo.repoInfo.did}
         </div>
       </div>
