@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { cn } from "../../../utils/cn";
 
@@ -7,6 +8,7 @@ type Props = {
 };
 
 export function InviteCodeModalBody({ code }: Props) {
+  const { t } = useTranslation();
   const [copySuccess, setCopySuccess] = useState(false);
 
   const copyToClipboard = async () => {
@@ -15,15 +17,15 @@ export function InviteCodeModalBody({ code }: Props) {
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
     } catch (err) {
-      alert("クリップボードへのコピーに失敗しました");
+      alert(t("modal.invite-code.clipboard-error"));
     }
   };
 
   return (
     <div className="flex flex-col gap-2">
-      <div data-testid="invite-code-success-message">
-        Invite code has been created!
-      </div>
+      <p className="text-center" data-testid="invite-code-success-message">
+        {t("modal.invite-code.message")}
+      </p>
       <div className="bg-base-200 relative h-20 rounded-md">
         <div className="flex h-full items-center justify-center overflow-x-auto">
           <pre

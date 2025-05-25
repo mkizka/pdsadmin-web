@@ -41,6 +41,30 @@
       "button": "Reset Password",
       "message": "Enter new password",
       "toast": "Password reset successfully"
+    },
+    "create-account": {
+      "title": "Create new account",
+      "placeholder": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "button": "Create Account",
+      "toast": "Account created successfully"
+    },
+    "invite-code": {
+      "message": "Invite code has been created!",
+      "clipboard-error": "Failed to copy to clipboard"
+    },
+    "request-crawl": {
+      "title": "Enter relay URL to request crawl",
+      "button": "Request Crawl",
+      "toast": "Crawl request sent successfully"
+    },
+    "signout": {
+      "message": "Are you sure you want to sign out?",
+      "cancel": "Cancel",
+      "button": "Sign Out",
+      "toast": "Sign out successfully"
     }
   }
 }

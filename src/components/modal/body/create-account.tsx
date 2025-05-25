@@ -1,10 +1,12 @@
 import { type FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { usePDS, usePDSHostname } from "../../../atoms/pds";
 import { Button } from "../../button";
 import { useModalHandler } from "../hooks";
 
 export function CreateAccountModalBody() {
+  const { t } = useTranslation();
   const pds = usePDS();
   const pdsHostname = usePDSHostname();
   const [handle, setHandle] = useState("");
@@ -18,7 +20,7 @@ export function CreateAccountModalBody() {
         email,
         password,
       }),
-    toastMessage: "Account created successfully",
+    toastMessage: t("modal.create-account.toast"),
     shouldReloadRepos: true,
   });
 
@@ -37,7 +39,7 @@ export function CreateAccountModalBody() {
       data-testid="create-account-form"
     >
       <span className="i-lucide-user-plus size-12"></span>
-      <p className="text-center">Create new account</p>
+      <p className="text-center">{t("modal.create-account.title")}</p>
       <label className="input input-bordered flex items-center gap-2">
         <span className="i-lucide-at-sign size-4"></span>
         <input
@@ -55,7 +57,7 @@ export function CreateAccountModalBody() {
         <span className="i-lucide-mail size-4"></span>
         <input
           type="email"
-          placeholder="Email"
+          placeholder={t("modal.create-account.placeholder.email")}
           required
           autoComplete="email"
           value={email}
@@ -68,7 +70,7 @@ export function CreateAccountModalBody() {
         <span className="i-lucide-lock size-4"></span>
         <input
           type="password"
-          placeholder="Password"
+          placeholder={t("modal.create-account.placeholder.password")}
           required
           autoComplete="new-password"
           value={password}
@@ -84,7 +86,7 @@ export function CreateAccountModalBody() {
         loadingClassName="loading-sm"
         data-testid="create-account-submit-button"
       >
-        Create Account
+        {t("modal.create-account.button")}
       </Button>
     </form>
   );
