@@ -60,7 +60,7 @@ function CreateInviteCodeButton() {
         <div className="loading loading-spinner loading-sm absolute"></div>
       )}
       <span className="i-lucide-ticket size-4"></span>
-      <span className={cn(loading && "opacity-0")}>
+      <span className={cn("truncate", loading && "opacity-0")}>
         {t("pds-info.buttons.create-invite-code")}
       </span>
     </div>
