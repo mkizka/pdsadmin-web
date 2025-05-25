@@ -24,6 +24,45 @@ jobs:
       issues: read
       id-token: write
     steps:
+      - name: React with eyes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            let commentId;
+            if (context.eventName === 'issue_comment') {
+              commentId = context.payload.comment.id;
+            } else if (context.eventName === 'pull_request_review_comment') {
+              commentId = context.payload.comment.id;
+            } else if (context.eventName === 'pull_request_review') {
+              // PRレビューの場合、レビュー自体にリアクションする
+              await github.rest.pulls.createReviewComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                body: '👀',
+                commit_id: context.payload.pull_request.head.sha,
+                path: '',
+                line: 1
+              });
+              return;
+            } else if (context.eventName === 'issues') {
+              // Issueの場合、Issue自体にリアクションする
+              await github.rest.reactions.createForIssue({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                content: 'eyes'
+              });
+              return;
+            }
+            if (commentId) {
+              await github.rest.reactions.createForIssueComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: commentId,
+                content: 'eyes'
+              });
+            }
       - name: Checkout repository
         uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
