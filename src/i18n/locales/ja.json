@@ -1,14 +1,46 @@
 {
   "pdsInfo": {
-    "title": "pdsadmin-web",
     "buttons": {
-      "createAccount": "アカウントを作成",
-      "createInviteCode": "招待コードを作成",
+      "createAccount": "アカウント作成",
+      "createInviteCode": "招待コード作成",
       "requestCrawl": "クロールをリクエスト",
       "signOut": "ログアウト"
     },
     "alerts": {
       "error": "エラー: {{message}}"
+    }
+  },
+  "account": {
+    "list": {
+      "noAccount": "アカウントなし"
+    },
+    "buttons": {
+      "resetPassword": "パスワードをリセット",
+      "delete": "削除",
+      "takedown": "Takedown",
+      "untakedown": "Takedownを解除"
+    }
+  },
+  "modal": {
+    "delete": {
+      "message": "このアカウントを削除してもよろしいですか？この操作は元に戻せません。",
+      "button": "アカウントを削除",
+      "toast": "アカウントが正常に削除されました"
+    },
+    "takedown": {
+      "message": "このアカウントをTakedownしますか？",
+      "button": "Takedown",
+      "toast": "アカウントが正常にTakedownされました"
+    },
+    "untakedown": {
+      "message": "このアカウントのTakedownを解除しますか？",
+      "button": "Takedownを解除",
+      "toast": "アカウントのTakedownが正常に解除されました"
+    },
+    "resetPassword": {
+      "button": "パスワードをリセット",
+      "message": "新しいパスワードを入力してください",
+      "toast": "パスワードが正常にリセットされました"
     }
   }
 }

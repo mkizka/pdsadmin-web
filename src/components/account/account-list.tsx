@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   INIT_PAGE_SIZE,
@@ -26,11 +27,14 @@ function SkeltonListRow() {
 
 function AccountListRow({ repo }: { repo: Repository | null }) {
   const openModal = useOpenModal();
+  const { t } = useTranslation();
 
   if (!repo) {
     return (
       <li className="list-row h-20 place-items-center">
-        <div className="list-col-grow text-center">No account</div>
+        <div className="list-col-grow text-center">
+          {t("account.list.noAccount")}
+        </div>
       </li>
     );
   }

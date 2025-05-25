@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { usePDS } from "../../../atoms/pds";
 import type { Did } from "../../../utils/types";
 import { Button } from "../../button";
@@ -9,20 +11,18 @@ type Props = {
 
 export function DeleteAccountModalBody({ did }: Props) {
   const pds = usePDS();
+  const { t } = useTranslation();
 
   const { loading, handler } = useModalHandler({
     fn: () => pds.deleteAccount(did),
-    toastMessage: "Account deleted successfully",
+    toastMessage: t("modal.delete.toast"),
     shouldReloadRepos: true,
   });
 
   return (
     <div className="flex flex-col items-center gap-4">
       <span className="i-lucide-trash-2 text-error size-12"></span>
-      <p className="text-center">
-        Are you sure you want to delete this account? This action cannot be
-        undone.
-      </p>
+      <p className="text-center">{t("modal.delete.message")}</p>
       <Button
         type="button"
         className="btn btn-error relative"
@@ -31,7 +31,7 @@ export function DeleteAccountModalBody({ did }: Props) {
         onClick={handler}
         data-testid="delete-account-confirm-button"
       >
-        Delete Account
+        {t("modal.delete.button")}
       </Button>
     </div>
   );

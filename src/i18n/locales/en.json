@@ -1,6 +1,5 @@
 {
   "pdsInfo": {
-    "title": "pdsadmin-web",
     "buttons": {
       "createAccount": "Create Account",
       "createInviteCode": "Create Invite Code",
@@ -9,6 +8,39 @@
     },
     "alerts": {
       "error": "Error: {{message}}"
+    }
+  },
+  "account": {
+    "list": {
+      "noAccount": "No account"
+    },
+    "buttons": {
+      "resetPassword": "Reset Password",
+      "delete": "Delete",
+      "takedown": "Takedown",
+      "untakedown": "Untakedown"
+    }
+  },
+  "modal": {
+    "delete": {
+      "message": "Are you sure you want to delete this account? This action cannot be undone.",
+      "button": "Delete Account",
+      "toast": "Account deleted successfully"
+    },
+    "takedown": {
+      "message": "Are you sure you want to takedown this account?",
+      "button": "Takedown",
+      "toast": "Account taken down successfully"
+    },
+    "untakedown": {
+      "message": "Are you sure you want to untakedown this account?",
+      "button": "Untakedown",
+      "toast": "Account untaken down successfully"
+    },
+    "resetPassword": {
+      "button": "Reset Password",
+      "message": "Enter new password",
+      "toast": "Password reset successfully"
     }
   }
 }

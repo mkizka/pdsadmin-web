@@ -1,29 +1,33 @@
+import { useTranslation } from "react-i18next";
+
 import { useOpenModal } from "../../atoms/modal";
 import type { Did } from "../../utils/types";
 
 export function ResetPasswordButton({ did }: { did: Did }) {
   const openModal = useOpenModal();
+  const { t } = useTranslation();
   return (
     <div
       role="button"
-      className="btn btn-ghost h-12"
+      className="btn btn-ghost h-12 justify-start whitespace-nowrap"
       onClick={(e) => {
         e.stopPropagation();
         openModal({ type: "reset-password", did });
       }}
     >
       <span className="i-lucide-key-round size-4"></span>
-      Reset Password
+      {t("account.buttons.resetPassword")}
     </div>
   );
 }
 
 export function DeleteAccountButton({ did }: { did: Did }) {
   const openModal = useOpenModal();
+  const { t } = useTranslation();
   return (
     <div
       role="button"
-      className="btn btn-ghost text-error h-12"
+      className="btn btn-ghost text-error h-12 justify-start whitespace-nowrap"
       data-testid="delete-account-button"
       onClick={(e) => {
         e.stopPropagation();
@@ -31,17 +35,18 @@ export function DeleteAccountButton({ did }: { did: Did }) {
       }}
     >
       <span className="i-lucide-trash-2 size-4"></span>
-      Delete
+      {t("account.buttons.delete")}
     </div>
   );
 }
 
 export function TakedownAccountButton({ did }: { did: Did }) {
   const openModal = useOpenModal();
+  const { t } = useTranslation();
   return (
     <div
       role="button"
-      className="btn btn-ghost text-error h-12"
+      className="btn btn-ghost text-error h-12 justify-start whitespace-nowrap"
       data-testid="takedown-account-button"
       onClick={(e) => {
         e.stopPropagation();
@@ -49,17 +54,18 @@ export function TakedownAccountButton({ did }: { did: Did }) {
       }}
     >
       <span className="i-lucide-ban size-4"></span>
-      Takedown
+      {t("account.buttons.takedown")}
     </div>
   );
 }
 
 export function UntakedownAccountButton({ did }: { did: Did }) {
   const openModal = useOpenModal();
+  const { t } = useTranslation();
   return (
     <div
       role="button"
-      className="btn btn-ghost text-success h-12"
+      className="btn btn-ghost text-success h-12 justify-start whitespace-nowrap"
       data-testid="untakedown-account-button"
       onClick={(e) => {
         e.stopPropagation();
@@ -67,7 +73,7 @@ export function UntakedownAccountButton({ did }: { did: Did }) {
       }}
     >
       <span className="i-lucide-check-circle size-4"></span>
-      Untakedown
+      {t("account.buttons.untakedown")}
     </div>
   );
 }

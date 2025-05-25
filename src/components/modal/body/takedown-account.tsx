@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { usePDS } from "../../../atoms/pds";
 import type { Did } from "../../../utils/types";
 import { Button } from "../../button";
@@ -9,22 +11,22 @@ type Props = {
 
 export function TakedownAccountModalBody({ did }: Props) {
   const pds = usePDS();
+  const { t } = useTranslation();
 
   const { loading, handler } = useModalHandler({
     fn: async () => {
       const ref = (new Date().getTime() / 1000).toString();
       await pds.takedown(did, ref);
     },
-    toastMessage: "Account takedown successfully",
+    toastMessage: t("modal.takedown.toast"),
     shouldReloadRepos: true,
   });
 
+  // TODO: アカウントの詳細情報を出す
   return (
     <div className="flex flex-col items-center gap-4">
       <span className="i-lucide-ban text-error size-12"></span>
-      <p className="text-center">
-        Are you sure you want to takedown this account?
-      </p>
+      <p className="text-center">{t("modal.takedown.message")}</p>
       <Button
         type="button"
         className="btn btn-error relative"
@@ -33,7 +35,7 @@ export function TakedownAccountModalBody({ did }: Props) {
         onClick={handler}
         data-testid="takedown-account-confirm-button"
       >
-        Takedown Account
+        {t("modal.takedown.button")}
       </Button>
     </div>
   );

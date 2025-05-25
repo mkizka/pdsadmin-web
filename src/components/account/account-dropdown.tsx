@@ -28,7 +28,7 @@ export function AccountDropdown({ repo }: AccountDropdownProps) {
       </div>
       <ul
         tabIndex={0}
-        className="menu dropdown-content bg-base-100 rounded-box w-48 shadow-md"
+        className="menu dropdown-content bg-base-100 rounded-box w-fit shadow-md"
         onClick={preventClickPropagation}
       >
         <li>

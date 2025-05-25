@@ -1,4 +1,5 @@
 import { type FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { usePDS } from "../../../atoms/pds";
 import type { Did } from "../../../utils/types";
@@ -11,11 +12,12 @@ type Props = {
 
 export function ResetPasswordModalBody({ did }: Props) {
   const pds = usePDS();
+  const { t } = useTranslation();
   const [newPassword, setNewPassword] = useState("");
 
   const { loading, handler } = useModalHandler({
     fn: () => pds.resetPassword(did, newPassword),
-    toastMessage: "Password reset successfully",
+    toastMessage: t("modal.resetPassword.toast"),
     shouldReloadRepos: true,
   });
 
@@ -28,11 +30,10 @@ export function ResetPasswordModalBody({ did }: Props) {
   return (
     <form className="flex flex-col items-center gap-4" onSubmit={handleSubmit}>
       <span className="i-lucide-key-round size-12"></span>
-      <p className="text-center">Enter new password</p>
+      <p className="text-center">{t("modal.resetPassword.message")}</p>
       <label className="input">
         <input
           type="password"
-          placeholder="New Password"
           required
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
@@ -44,7 +45,7 @@ export function ResetPasswordModalBody({ did }: Props) {
         loading={loading}
         loadingClassName="loading-sm"
       >
-        Reset Password
+        {t("modal.resetPassword.button")}
       </Button>
     </form>
   );
