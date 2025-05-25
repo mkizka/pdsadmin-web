@@ -84,3 +84,6 @@ pnpm e2e
   - pnpm typecheck
 - lintエラーがある場合は以下のコマンドで自動修正できます
   - pnpm format
+- コンポーネント単体で完結するようtailwindのクラスを指定し、位置を指定するクラスはclassNameという名前のpropsで受け取るようにする
+- コードの内容から明らかな場合はコメントを書かない
+- 新しくルールが指摘された場合は.github/copilot-instructions.mdに追記する
