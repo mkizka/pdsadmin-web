@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { useOpenModal } from "../atoms/modal";
 import { usePDS, usePDSHostname } from "../atoms/pds";
 import { cn } from "../utils/cn";
-import { LanguageSwitcher } from "./language-switcher";
 
 type PDSButtonProps = {
   type: "request-crawl" | "logout" | "create-account";
@@ -74,13 +73,12 @@ export function PDSInfo() {
   const { t } = useTranslation();
 
   return (
-    <div className="card rounded-box bg-base-100 shadow-md">
-      <div className="card-body relative items-center gap-4 text-center">
-        <LanguageSwitcher className="absolute top-4 right-4" />
-        <h1 className="card-title text-2xl font-bold">pdsadmin-web</h1>
-        <div className="badge badge-neutral">{pdsHostname}</div>
+    <div className="card rounded-box bg-base-100 p-2 shadow-md">
+      <div className="flex justify-center py-4">
+        PDS:
+        <span className="ml-2 font-bold">{pdsHostname}</span>
       </div>
-      <div className="grid grid-cols-2 grid-rows-2 gap-2 px-2 pb-2">
+      <div className="grid grid-cols-2 grid-rows-2 gap-2">
         <PDSButton type="create-account" iconClassName="i-lucide-user-plus">
           {t("pds-info.buttons.create-account")}
         </PDSButton>
