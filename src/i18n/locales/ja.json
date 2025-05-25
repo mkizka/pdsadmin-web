@@ -66,5 +66,12 @@
       "button": "ログアウト",
       "toast": "正常にログアウトしました"
     }
+  },
+  "signin": {
+    "title": "PDSにサインイン",
+    "pds-url": "PDSのURL",
+    "admin-password": "管理者パスワード",
+    "button": "サインイン",
+    "toast": "正常にサインインしました"
   }
 }

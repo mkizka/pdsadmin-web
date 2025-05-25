@@ -66,5 +66,12 @@
       "button": "Sign Out",
       "toast": "Sign out successfully"
     }
+  },
+  "signin": {
+    "title": "Sign in to PDS",
+    "pds-url": "PDS URL",
+    "admin-password": "Admin Password",
+    "button": "Sign In",
+    "toast": "Sign in successfully"
   }
 }
