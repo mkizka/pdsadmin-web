@@ -71,7 +71,7 @@
     "title": "PDSにログイン",
     "pds-url": "PDSのURL",
     "admin-password": "管理者パスワード",
-    "remember-login": "ログインを記憶する",
+    "remember-login": "ログイン情報をLocalStorageに保存する",
     "button": "ログイン",
     "toast": "正常にログインしました"
   }
