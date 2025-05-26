@@ -113,3 +113,56 @@ test("can create a new account and then delete it", async ({ page }) => {
     await expect(page.getByText(`@${handle}`)).not.toBeVisible();
   });
 });
+
+test("password saving preference with checkbox ON keeps session after reload", async ({ page }) => {
+  await test.step("Go to login page", async () => {
+    await page.goto("/");
+  });
+
+  await test.step("Fill login form with save password checkbox ON", async () => {
+    await page.getByTestId("pds-url-input").fill("http://localhost:2583");
+    await page.getByTestId("admin-password-input").fill("admin-pass");
+    await expect(page.getByTestId("save-password-checkbox")).toBeChecked();
+    await page.getByTestId("login-button").click();
+  });
+
+  await test.step("Verify login success and account list is visible", async () => {
+    await expect(page.getByTestId("account-list-row")).toBeVisible();
+  });
+
+  await test.step("Reload page", async () => {
+    await page.reload();
+  });
+
+  await test.step("Verify account list is still visible after reload", async () => {
+    await expect(page.getByTestId("account-list-row")).toBeVisible();
+  });
+});
+
+test("password saving preference with checkbox OFF requires re-login after reload", async ({ page }) => {
+  await test.step("Go to login page", async () => {
+    await page.goto("/");
+  });
+
+  await test.step("Fill login form with save password checkbox OFF", async () => {
+    await page.getByTestId("pds-url-input").fill("http://localhost:2583");
+    await page.getByTestId("admin-password-input").fill("admin-pass");
+    await page.getByTestId("save-password-checkbox").uncheck();
+    await expect(page.getByTestId("save-password-checkbox")).not.toBeChecked();
+    await page.getByTestId("login-button").click();
+  });
+
+  await test.step("Verify login success and account list is visible", async () => {
+    await expect(page.getByTestId("account-list-row")).toBeVisible();
+  });
+
+  await test.step("Reload page", async () => {
+    await page.reload();
+  });
+
+  await test.step("Verify login form is displayed after reload", async () => {
+    await expect(page.getByTestId("pds-url-input")).toBeVisible();
+    await expect(page.getByTestId("admin-password-input")).toBeVisible();
+    await expect(page.getByTestId("login-button")).toBeVisible();
+  });
+});
