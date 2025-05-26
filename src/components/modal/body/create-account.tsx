@@ -1,8 +1,8 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
+import { parseWithZod } from "@conform-to/zod/v4";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { useReloadRepositories } from "../../../atoms/account-list";
 import { useCloseModal } from "../../../atoms/modal";
@@ -13,7 +13,7 @@ import { Button } from "../../button";
 const createSchema = (t: (key: string) => string, hostname: string) =>
   z.object({
     handle: z
-      .string({ required_error: t("modal.create-account.validation.required") })
+      .string({ message: t("modal.create-account.validation.required") })
       .min(1, t("modal.create-account.errors.handle-required"))
       .refine((value) => value.includes("."), {
         message: t("modal.create-account.errors.handle-no-dot"),
@@ -24,11 +24,9 @@ const createSchema = (t: (key: string) => string, hostname: string) =>
           hostname,
         ),
       }),
-    email: z
-      .string({ required_error: t("modal.create-account.validation.required") })
-      .email(t("modal.create-account.errors.email-invalid")),
+    email: z.email({ message: t("modal.create-account.errors.email-invalid") }),
     password: z
-      .string({ required_error: t("modal.create-account.validation.required") })
+      .string({ message: t("modal.create-account.validation.required") })
       .min(1, t("modal.create-account.errors.password-required")),
   });
 
