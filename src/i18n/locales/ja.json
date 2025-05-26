@@ -53,7 +53,6 @@
       "errors": {
         "handle-required": "ハンドルは必須です",
         "handle-no-dot": "ハンドルには少なくとも1つのドットが必要です",
-        "handle-wrong-domain": "ハンドルは.{{hostname}}で終わる必要があります",
         "email-invalid": "無効なメールアドレスです",
         "password-required": "パスワードは必須です"
       },

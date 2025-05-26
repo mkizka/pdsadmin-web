@@ -53,7 +53,6 @@
       "errors": {
         "handle-required": "Handle is required",
         "handle-no-dot": "Handle must contain at least one dot",
-        "handle-wrong-domain": "Handle must end with {{hostname}}",
         "email-invalid": "Invalid email address",
         "password-required": "Password is required"
       },

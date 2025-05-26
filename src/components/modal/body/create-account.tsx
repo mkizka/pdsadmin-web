@@ -10,19 +10,13 @@ import { usePDS, usePDSHostname } from "../../../atoms/pds";
 import { useToast } from "../../../atoms/toast";
 import { Button } from "../../button";
 
-const createSchema = (t: (key: string) => string, hostname: string) =>
+const createSchema = (t: (key: string) => string) =>
   z.object({
     handle: z
       .string({ message: t("modal.create-account.validation.required") })
       .min(1, t("modal.create-account.errors.handle-required"))
       .refine((value) => value.includes("."), {
         message: t("modal.create-account.errors.handle-no-dot"),
-      })
-      .refine((value) => value.endsWith(`.${hostname}`), {
-        message: t("modal.create-account.errors.handle-wrong-domain").replace(
-          "{{hostname}}",
-          hostname,
-        ),
       }),
     email: z.email({ message: t("modal.create-account.errors.email-invalid") }),
     password: z
@@ -41,7 +35,7 @@ export function CreateAccountModalBody() {
 
   const [form, fields] = useForm({
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: createSchema(t, pdsHostname) });
+      return parseWithZod(formData, { schema: createSchema(t) });
     },
     onSubmit: async (event, { submission }) => {
       event.preventDefault();
