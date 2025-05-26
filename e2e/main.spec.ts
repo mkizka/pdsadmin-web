@@ -113,3 +113,44 @@ test("can create a new account and then delete it", async ({ page }) => {
     await expect(page.getByText(`@${handle}`)).not.toBeVisible();
   });
 });
+
+test("persistent storage when remember login is enabled", async ({ page }) => {
+  await test.step("Go to login page and enable remember login", async () => {
+    await page.goto("/");
+    await page.getByTestId("pds-url-input").fill("http://localhost:2583");
+    await page.getByTestId("admin-password-input").fill("admin-pass");
+    await page.getByTestId("remember-login-checkbox").check();
+    await page.getByTestId("login-button").click();
+  });
+
+  await test.step("Verify login successful and logged in view is visible", async () => {
+    await expect(page.getByTestId("create-account-button")).toBeVisible();
+  });
+
+  await test.step("Reload page and verify still logged in", async () => {
+    await page.reload();
+    await expect(page.getByTestId("create-account-button")).toBeVisible();
+  });
+});
+
+test("session-only storage when remember login is disabled", async ({
+  page,
+}) => {
+  await test.step("Go to login page and disable remember login", async () => {
+    await page.goto("/");
+    await page.getByTestId("pds-url-input").fill("http://localhost:2583");
+    await page.getByTestId("admin-password-input").fill("admin-pass");
+    await page.getByTestId("remember-login-checkbox").uncheck();
+    await page.getByTestId("login-button").click();
+  });
+
+  await test.step("Verify login successful and logged in view is visible", async () => {
+    await expect(page.getByTestId("create-account-button")).toBeVisible();
+  });
+
+  await test.step("Reload page and verify back to login form", async () => {
+    await page.reload();
+    await expect(page.getByTestId("pds-url-input")).toBeVisible();
+    await expect(page.getByTestId("admin-password-input")).toBeVisible();
+  });
+});

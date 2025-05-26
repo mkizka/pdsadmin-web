@@ -1,4 +1,4 @@
-import { atom, useAtomValue, useSetAtom } from "jotai";
+import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 type Session = {
@@ -6,11 +6,48 @@ type Session = {
   adminPassword: string;
 };
 
-const baseAtom = atomWithStorage<Session | null>("session", null, undefined, {
-  getOnInit: true,
-});
+const persistentSessionAtom = atomWithStorage<Session | null>(
+  "session",
+  null,
+  undefined,
+  {
+    getOnInit: true,
+  },
+);
 
-export const useSetSession = () => useSetAtom(baseAtom);
+const inMemorySessionAtom = atom<Session | null>(null);
+
+const rememberLoginAtom = atomWithStorage<boolean>(
+  "rememberLogin",
+  true,
+  undefined,
+  {
+    getOnInit: true,
+  },
+);
+
+const currentSessionAtom = atom(
+  (get) => {
+    const rememberLogin = get(rememberLoginAtom);
+    return rememberLogin
+      ? get(persistentSessionAtom)
+      : get(inMemorySessionAtom);
+  },
+  (get, set, newSession: Session | null) => {
+    const rememberLogin = get(rememberLoginAtom);
+    if (rememberLogin) {
+      set(persistentSessionAtom, newSession);
+      set(inMemorySessionAtom, null);
+    } else {
+      set(inMemorySessionAtom, newSession);
+      set(persistentSessionAtom, null);
+    }
+  },
+);
+
+export const useSetSession = () => useSetAtom(currentSessionAtom);
+
+export const useRememberLogin = () => useAtom(rememberLoginAtom);
 
 export const useLogout = () => {
   const setSession = useSetSession();
@@ -18,12 +55,12 @@ export const useLogout = () => {
 };
 
 export const useIsLoggedIn = () => {
-  const session = useAtomValue(baseAtom);
+  const session = useAtomValue(currentSessionAtom);
   return session !== null;
 };
 
 export const requiredSessionAtom = atom((get) => {
-  const session = get(baseAtom);
+  const session = get(currentSessionAtom);
   if (!session) {
     throw new Error("Session not found");
   }
