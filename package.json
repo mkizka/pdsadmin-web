@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@atcute/client": "^4.0.0",
+    "@conform-to/react": "^2.5.1",
+    "@conform-to/zod": "^2.5.1",
     "@tailwindcss/vite": "^4.1.6",
     "clsx": "^2.1.1",
     "i18next": "^25.2.1",
@@ -30,7 +32,8 @@
     "react-dom": "^19.1.0",
     "react-i18next": "^15.5.2",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.6"
+    "tailwindcss": "^4.1.6",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@atcute/atproto": "^3.0.0",
