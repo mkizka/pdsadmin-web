@@ -68,11 +68,11 @@
     }
   },
   "signin": {
-    "title": "PDSにサインイン",
+    "title": "PDSにログイン",
     "pds-url": "PDSのURL",
     "admin-password": "管理者パスワード",
     "remember-login": "ログイン情報をLocalStorageに保存する",
-    "button": "サインイン",
-    "toast": "正常にサインインしました"
+    "button": "ログイン",
+    "toast": "正常にログインしました"
   }
 }
