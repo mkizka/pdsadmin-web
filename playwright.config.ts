@@ -10,7 +10,7 @@ export default defineConfig({
     ["html", { open: "never" }],
   ],
   use: {
-    baseURL: "http://localhost:5173/pdsadmin-web/",
+    baseURL: "http://localhost:5173",
     video: "on",
     trace: "on",
   },

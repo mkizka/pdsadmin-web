@@ -20,7 +20,7 @@ pnpm i
 pnpm dev
 ```
 
-`pnpm dev`で Vite の開発サーバーが起動したら http://localhost:5173/pdsadmin-web/ を開いてください。
+`pnpm dev`で Vite の開発サーバーが起動したら http://localhost:5173 を開いてください。
 
 ローカル環境のPDSには以下でログインできます。
 

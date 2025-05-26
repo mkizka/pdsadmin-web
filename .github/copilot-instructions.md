@@ -32,7 +32,7 @@ pnpm setup-dev-env
 pnpm e2e
 ```
 
-開発サーバーの実行先: http://localhost:5173/pdsadmin-web/
+開発サーバーの実行先: http://localhost:5173
 
 ローカルPDSの認証情報:
 
