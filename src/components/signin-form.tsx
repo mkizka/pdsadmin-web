@@ -1,7 +1,11 @@
 import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useSetSession } from "../atoms/session";
+import {
+  useRememberLogin,
+  useSetRememberLogin,
+  useSetSession,
+} from "../atoms/session";
 import { useToast } from "../atoms/toast";
 import { PDS } from "../utils/pds";
 import { ErrorAlert } from "./alert-message";
@@ -50,6 +54,8 @@ export function SigninForm() {
   const form = useForm();
   const setSession = useSetSession();
   const toast = useToast();
+  const rememberLogin = useRememberLogin();
+  const setRememberLogin = useSetRememberLogin();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,6 +105,18 @@ export function SigninForm() {
             onChange={(e) => form.setAdminPassword(e.target.value)}
             data-testid="admin-password-input"
           />
+        </div>
+        <div className="form-control w-full">
+          <label className="label cursor-pointer">
+            <span className="label-text">{t("signin.remember-login")}</span>
+            <input
+              type="checkbox"
+              className="checkbox"
+              checked={rememberLogin}
+              onChange={(e) => setRememberLogin(e.target.checked)}
+              data-testid="remember-login-checkbox"
+            />
+          </label>
         </div>
         <div className="card-actions mt-4 justify-end">
           <Button
