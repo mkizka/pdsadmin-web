@@ -69,7 +69,11 @@ export function SigninForm() {
   };
 
   return (
-    <form className="card bg-base-100 shadow-xl" onSubmit={handleSubmit}>
+    <form
+      className="card bg-base-100 shadow-xl"
+      onSubmit={handleSubmit}
+      data-testid="signin-form"
+    >
       <div className="card-body">
         <h2 className="card-title">{t("signin.title")}</h2>
         <div className="form-control w-full">

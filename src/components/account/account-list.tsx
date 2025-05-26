@@ -60,7 +60,10 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
             @{repo.accountInfo.handle}
           </div>
           {repo.repoInfo.status === "takendown" && (
-            <div className="badge badge-error badge-sm font-bold whitespace-nowrap">
+            <div
+              className="badge badge-error badge-sm font-bold whitespace-nowrap"
+              data-testid="account-list-row__takedown-badge"
+            >
               Takedown
             </div>
           )}
@@ -94,7 +97,10 @@ export function AccountList() {
   ];
 
   return (
-    <ul className="list rounded-box bg-base-100 shadow-md">
+    <ul
+      className="list rounded-box bg-base-100 shadow-md"
+      data-testid="account-list"
+    >
       {accountList.isInitLoading
         ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
         : listedRepos.map((repo, i) => (
