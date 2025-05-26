@@ -1,11 +1,7 @@
 import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import {
-  useRememberLogin,
-  useSetRememberLogin,
-  useSetSession,
-} from "../atoms/session";
+import { useRememberLogin, useSetSession } from "../atoms/session";
 import { useToast } from "../atoms/toast";
 import { PDS } from "../utils/pds";
 import { ErrorAlert } from "./alert-message";
@@ -54,8 +50,7 @@ export function SigninForm() {
   const form = useForm();
   const setSession = useSetSession();
   const toast = useToast();
-  const rememberLogin = useRememberLogin();
-  const setRememberLogin = useSetRememberLogin();
+  const [rememberLogin, setRememberLogin] = useRememberLogin();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

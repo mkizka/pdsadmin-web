@@ -1,4 +1,4 @@
-import { atom, useAtomValue, useSetAtom } from "jotai";
+import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 type Session = {
@@ -15,9 +15,9 @@ const persistentSessionAtom = atomWithStorage<Session | null>(
   },
 );
 
-const sessionOnlyAtom = atom<Session | null>(null);
+const inMemorySessionAtom = atom<Session | null>(null);
 
-const useRememberLoginAtom = atomWithStorage<boolean>(
+const rememberLoginAtom = atomWithStorage<boolean>(
   "rememberLogin",
   true,
   undefined,
@@ -28,16 +28,18 @@ const useRememberLoginAtom = atomWithStorage<boolean>(
 
 const currentSessionAtom = atom(
   (get) => {
-    const useRememberLogin = get(useRememberLoginAtom);
-    return useRememberLogin ? get(persistentSessionAtom) : get(sessionOnlyAtom);
+    const rememberLogin = get(rememberLoginAtom);
+    return rememberLogin
+      ? get(persistentSessionAtom)
+      : get(inMemorySessionAtom);
   },
   (get, set, newSession: Session | null) => {
-    const useRememberLogin = get(useRememberLoginAtom);
-    if (useRememberLogin) {
+    const rememberLogin = get(rememberLoginAtom);
+    if (rememberLogin) {
       set(persistentSessionAtom, newSession);
-      set(sessionOnlyAtom, null);
+      set(inMemorySessionAtom, null);
     } else {
-      set(sessionOnlyAtom, newSession);
+      set(inMemorySessionAtom, newSession);
       set(persistentSessionAtom, null);
     }
   },
@@ -45,9 +47,7 @@ const currentSessionAtom = atom(
 
 export const useSetSession = () => useSetAtom(currentSessionAtom);
 
-export const useRememberLogin = () => useAtomValue(useRememberLoginAtom);
-
-export const useSetRememberLogin = () => useSetAtom(useRememberLoginAtom);
+export const useRememberLogin = () => useAtom(rememberLoginAtom);
 
 export const useLogout = () => {
   const setSession = useSetSession();
