@@ -64,45 +64,57 @@ export function CreateAccountModalBody() {
     >
       <span className="i-lucide-user-plus size-12"></span>
       <p className="text-center">{t("modal.create-account.title")}</p>
-      <label className="input input-bordered flex items-center gap-2">
-        <span className="i-lucide-at-sign size-4"></span>
-        <input
-          {...getInputProps(fields.handle, { type: "text" })}
-          placeholder={`example.${pdsHostname}`}
-          autoComplete="username"
-          className="grow"
-          data-testid="create-account-handle-input"
-        />
-      </label>
-      {fields.handle.errors && (
-        <p className="text-error text-sm">{fields.handle.errors[0]}</p>
-      )}
-      <label className="input input-bordered flex items-center gap-2">
-        <span className="i-lucide-mail size-4"></span>
-        <input
-          {...getInputProps(fields.email, { type: "email" })}
-          placeholder={t("modal.create-account.placeholder.email")}
-          autoComplete="email"
-          className="grow"
-          data-testid="create-account-email-input"
-        />
-      </label>
-      {fields.email.errors && (
-        <p className="text-error text-sm">{fields.email.errors[0]}</p>
-      )}
-      <label className="input input-bordered flex items-center gap-2">
-        <span className="i-lucide-lock size-4"></span>
-        <input
-          {...getInputProps(fields.password, { type: "password" })}
-          placeholder={t("modal.create-account.placeholder.password")}
-          autoComplete="new-password"
-          className="grow"
-          data-testid="create-account-password-input"
-        />
-      </label>
-      {fields.password.errors && (
-        <p className="text-error text-sm">{fields.password.errors[0]}</p>
-      )}
+      <div className="flex w-full flex-col items-center gap-1">
+        <label className="input input-bordered flex items-center gap-2">
+          <span className="i-lucide-at-sign size-4"></span>
+          <input
+            {...getInputProps(fields.handle, { type: "text" })}
+            placeholder={`example.${pdsHostname}`}
+            autoComplete="username"
+            className="grow"
+            data-testid="create-account-handle-input"
+          />
+        </label>
+        {fields.handle.errors && (
+          <p className="text-error self-start text-left text-xs">
+            {fields.handle.errors[0]}
+          </p>
+        )}
+      </div>
+      <div className="flex w-full flex-col items-center gap-1">
+        <label className="input input-bordered flex items-center gap-2">
+          <span className="i-lucide-mail size-4"></span>
+          <input
+            {...getInputProps(fields.email, { type: "email" })}
+            placeholder={t("modal.create-account.placeholder.email")}
+            autoComplete="email"
+            className="grow"
+            data-testid="create-account-email-input"
+          />
+        </label>
+        {fields.email.errors && (
+          <p className="text-error self-start text-left text-xs">
+            {fields.email.errors[0]}
+          </p>
+        )}
+      </div>
+      <div className="flex w-full flex-col items-center gap-1">
+        <label className="input input-bordered flex items-center gap-2">
+          <span className="i-lucide-lock size-4"></span>
+          <input
+            {...getInputProps(fields.password, { type: "password" })}
+            placeholder={t("modal.create-account.placeholder.password")}
+            autoComplete="new-password"
+            className="grow"
+            data-testid="create-account-password-input"
+          />
+        </label>
+        {fields.password.errors && (
+          <p className="text-error self-start text-left text-xs">
+            {fields.password.errors[0]}
+          </p>
+        )}
+      </div>
       <Button
         type="submit"
         className="btn btn-primary relative"
