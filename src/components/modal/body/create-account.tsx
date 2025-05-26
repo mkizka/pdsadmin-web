@@ -10,11 +10,27 @@ import { usePDS, usePDSHostname } from "../../../atoms/pds";
 import { useToast } from "../../../atoms/toast";
 import { Button } from "../../button";
 
-const schema = z.object({
-  handle: z.string().min(1, "Handle is required"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(1, "Password is required"),
-});
+const createSchema = (t: (key: string) => string, hostname: string) =>
+  z.object({
+    handle: z
+      .string({ required_error: t("modal.create-account.validation.required") })
+      .min(1, t("modal.create-account.errors.handle-required"))
+      .refine((value) => value.includes("."), {
+        message: t("modal.create-account.errors.handle-no-dot"),
+      })
+      .refine((value) => value.endsWith(`.${hostname}`), {
+        message: t("modal.create-account.errors.handle-wrong-domain").replace(
+          "{{hostname}}",
+          hostname,
+        ),
+      }),
+    email: z
+      .string({ required_error: t("modal.create-account.validation.required") })
+      .email(t("modal.create-account.errors.email-invalid")),
+    password: z
+      .string({ required_error: t("modal.create-account.validation.required") })
+      .min(1, t("modal.create-account.errors.password-required")),
+  });
 
 export function CreateAccountModalBody() {
   const { t } = useTranslation();
@@ -27,7 +43,7 @@ export function CreateAccountModalBody() {
 
   const [form, fields] = useForm({
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema });
+      return parseWithZod(formData, { schema: createSchema(t, pdsHostname) });
     },
     onSubmit: async (event, { submission }) => {
       event.preventDefault();
@@ -53,7 +69,7 @@ export function CreateAccountModalBody() {
       }
     },
     shouldValidate: "onBlur",
-    shouldRevalidate: "onInput",
+    shouldRevalidate: "onBlur",
   });
 
   return (

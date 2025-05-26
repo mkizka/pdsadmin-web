@@ -49,7 +49,17 @@
         "password": "Password"
       },
       "button": "Create Account",
-      "toast": "Account created successfully"
+      "toast": "Account created successfully",
+      "errors": {
+        "handle-required": "Handle is required",
+        "handle-no-dot": "Handle must contain at least one dot",
+        "handle-wrong-domain": "Handle must end with {{hostname}}",
+        "email-invalid": "Invalid email address",
+        "password-required": "Password is required"
+      },
+      "validation": {
+        "required": "Required"
+      }
     },
     "invite-code": {
       "message": "Invite code has been created!",
