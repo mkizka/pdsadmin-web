@@ -49,7 +49,17 @@
         "password": "パスワード"
       },
       "button": "アカウントを作成",
-      "toast": "アカウントが正常に作成されました"
+      "toast": "アカウントが正常に作成されました",
+      "errors": {
+        "handle-required": "ハンドルは必須です",
+        "handle-no-dot": "ハンドルには少なくとも1つのドットが必要です",
+        "handle-wrong-domain": "ハンドルは.{{hostname}}で終わる必要があります",
+        "email-invalid": "無効なメールアドレスです",
+        "password-required": "パスワードは必須です"
+      },
+      "validation": {
+        "required": "必須項目です"
+      }
     },
     "invite-code": {
       "message": "招待コードが作成されました！",
