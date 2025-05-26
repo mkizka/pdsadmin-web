@@ -10,6 +10,7 @@ import { Button } from "./button";
 const initialForm = {
   service: "",
   adminPassword: "",
+  savePassword: true,
   loading: false,
   error: "",
 };
@@ -27,6 +28,9 @@ const useForm = () => {
     },
     setAdminPassword: (adminPassword: string) => {
       setFormState((prev) => ({ ...prev, adminPassword }));
+    },
+    setSavePassword: (savePassword: boolean) => {
+      setFormState((prev) => ({ ...prev, savePassword }));
     },
     setLoading: (loading: boolean) => {
       setFormState((prev) => ({ ...prev, loading }));
@@ -99,6 +103,18 @@ export function SigninForm() {
             onChange={(e) => form.setAdminPassword(e.target.value)}
             data-testid="admin-password-input"
           />
+        </div>
+        <div className="form-control">
+          <label className="label cursor-pointer">
+            <span className="label-text">{t("signin.save-password")}</span>
+            <input
+              type="checkbox"
+              className="checkbox"
+              checked={form.state.savePassword}
+              onChange={(e) => form.setSavePassword(e.target.checked)}
+              data-testid="save-password-checkbox"
+            />
+          </label>
         </div>
         <div className="card-actions mt-4 justify-end">
           <Button

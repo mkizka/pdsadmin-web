@@ -5,6 +5,9 @@ import { requiredSessionAtom } from "./session";
 
 export const pdsAtom = atom((get) => {
   const session = get(requiredSessionAtom);
+  if (!session.adminPassword) {
+    throw new Error("Password not saved. Please log in again.");
+  }
   return new PDS(session);
 });
 
