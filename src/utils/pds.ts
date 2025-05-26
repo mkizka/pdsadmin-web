@@ -12,12 +12,12 @@ export class PDS {
     adminPassword,
   }: {
     service: string;
-    adminPassword: string;
+    adminPassword?: string;
   }) {
     const handler = simpleFetchHandler({ service });
     this.#rpc = new Client({ handler });
     this.#headers = {
-      Authorization: `Basic ${btoa(`admin:${adminPassword}`)}`,
+      Authorization: `Basic ${btoa(`admin:${adminPassword || ""}`)}`,
     };
     this.#service = service;
   }

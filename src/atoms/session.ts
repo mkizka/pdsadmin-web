@@ -3,7 +3,7 @@ import { atomWithStorage } from "jotai/utils";
 
 type Session = {
   service: string;
-  adminPassword: string;
+  adminPassword?: string;
   savePassword?: boolean;
 };
 
@@ -17,7 +17,6 @@ export const useSetSession = () => {
     if (session.savePassword === false) {
       const sessionWithoutPassword = {
         service: session.service,
-        adminPassword: "",
         savePassword: false,
       };
       setSessionAtom(sessionWithoutPassword);
