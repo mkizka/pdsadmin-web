@@ -59,12 +59,12 @@ export function CreateAccountModalBody() {
   return (
     <form
       {...getFormProps(form)}
-      className="flex flex-col items-center gap-4"
+      className="flex flex-col items-center justify-center gap-4"
       data-testid="create-account-form"
     >
       <span className="i-lucide-user-plus size-12"></span>
       <p className="text-center">{t("modal.create-account.title")}</p>
-      <div className="flex w-full flex-col items-center gap-1">
+      <div className="flex w-64 flex-col items-center gap-1">
         <label className="input input-bordered flex items-center gap-2">
           <span className="i-lucide-at-sign size-4"></span>
           <input
@@ -76,12 +76,12 @@ export function CreateAccountModalBody() {
           />
         </label>
         {fields.handle.errors && (
-          <p className="text-error self-start text-left text-xs">
+          <p className="text-error self-start text-xs">
             {fields.handle.errors[0]}
           </p>
         )}
       </div>
-      <div className="flex w-full flex-col items-center gap-1">
+      <div className="flex w-64 flex-col gap-1">
         <label className="input input-bordered flex items-center gap-2">
           <span className="i-lucide-mail size-4"></span>
           <input
@@ -93,12 +93,10 @@ export function CreateAccountModalBody() {
           />
         </label>
         {fields.email.errors && (
-          <p className="text-error self-start text-left text-xs">
-            {fields.email.errors[0]}
-          </p>
+          <p className="text-error text-xs">{fields.email.errors[0]}</p>
         )}
       </div>
-      <div className="flex w-full flex-col items-center gap-1">
+      <div className="flex w-64 flex-col gap-1">
         <label className="input input-bordered flex items-center gap-2">
           <span className="i-lucide-lock size-4"></span>
           <input
@@ -110,7 +108,7 @@ export function CreateAccountModalBody() {
           />
         </label>
         {fields.password.errors && (
-          <p className="text-error self-start text-left text-xs">
+          <p className="text-error self-start text-xs">
             {fields.password.errors[0]}
           </p>
         )}
