@@ -15,11 +15,7 @@ export const useSetSession = () => {
   const setSessionAtom = useSetAtom(baseAtom);
   return (session: Session) => {
     if (session.savePassword === false) {
-      const sessionWithoutPassword = {
-        service: session.service,
-        savePassword: false,
-      };
-      setSessionAtom(sessionWithoutPassword);
+      setSessionAtom(null);
     } else {
       setSessionAtom(session);
     }

@@ -114,7 +114,9 @@ test("can create a new account and then delete it", async ({ page }) => {
   });
 });
 
-test("password saving preference with checkbox ON keeps session after reload", async ({ page }) => {
+test("password saving preference with checkbox ON keeps session after reload", async ({
+  page,
+}) => {
   await test.step("Go to login page", async () => {
     await page.goto("/");
   });
@@ -139,7 +141,9 @@ test("password saving preference with checkbox ON keeps session after reload", a
   });
 });
 
-test("password saving preference with checkbox OFF requires re-login after reload", async ({ page }) => {
+test("password saving preference with checkbox OFF requires re-login after reload", async ({
+  page,
+}) => {
   await test.step("Go to login page", async () => {
     await page.goto("/");
   });
