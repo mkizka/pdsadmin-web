@@ -71,7 +71,7 @@
     "title": "Sign in to PDS",
     "pds-url": "PDS URL",
     "admin-password": "Admin Password",
-    "remember-login": "Remember sign in",
+    "remember-login": "Save sign in information in LocalStorage",
     "button": "Sign in",
     "toast": "Sign in successfully"
   }
