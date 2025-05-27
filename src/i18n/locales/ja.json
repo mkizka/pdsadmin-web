@@ -2,7 +2,7 @@
   "validation": {
     "required": "必須項目です"
   },
-  "pds-info": {
+  "pds-menu": {
     "buttons": {
       "create-account": "アカウント作成",
       "create-invite-code": "招待コード作成",

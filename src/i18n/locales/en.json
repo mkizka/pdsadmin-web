@@ -2,7 +2,7 @@
   "validation": {
     "required": "Required"
   },
-  "pds-info": {
+  "pds-menu": {
     "buttons": {
       "create-account": "Create Account",
       "create-invite-code": "Create Invite Code",
