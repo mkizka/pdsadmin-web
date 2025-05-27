@@ -71,7 +71,7 @@ export function SigninForm() {
   return (
     <form
       {...getFormProps(form)}
-      className="card bg-base-100 shadow-xl"
+      className="card bg-base-100 shadow-md"
       data-testid="signin-form"
     >
       <div className="card-body">
