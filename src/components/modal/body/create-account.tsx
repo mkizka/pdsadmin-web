@@ -18,7 +18,11 @@ const createSchema = (t: (key: string) => string) =>
       .refine((value) => value.includes("."), {
         message: t("modal.create-account.errors.handle-no-dot"),
       }),
-    email: z.email({ message: t("modal.create-account.errors.email-invalid") }),
+    email: z
+      .string({ message: t("modal.create-account.validation.required") })
+      .pipe(
+        z.email({ message: t("modal.create-account.errors.email-invalid") }),
+      ),
     password: z
       .string({ message: t("modal.create-account.validation.required") })
       .min(1, t("modal.create-account.errors.password-required")),
