@@ -2,7 +2,7 @@ import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account/account-list";
 import { ModalDialog } from "./components/modal/modal";
 import { Header } from "./components/module/header";
-import { PDSInfo } from "./components/module/pds-info";
+import { PDSMenu } from "./components/module/pds-menu";
 import { SigninForm } from "./components/module/signin-form";
 import { Toaster } from "./components/ui/toaster";
 
@@ -16,7 +16,7 @@ export function App() {
           {!isLoggedIn && <SigninForm />}
           {isLoggedIn && (
             <>
-              <PDSInfo />
+              <PDSMenu />
               <AccountList />
             </>
           )}

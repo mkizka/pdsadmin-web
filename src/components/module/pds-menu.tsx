@@ -67,7 +67,7 @@ function CreateInviteCodeButton() {
   );
 }
 
-export function PDSInfo() {
+export function PDSMenu() {
   const pdsHostname = usePDSHostname();
   const { t } = useTranslation();
 
