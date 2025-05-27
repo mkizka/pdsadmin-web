@@ -76,7 +76,14 @@
     "request-crawl": {
       "title": "Enter relay URL to request crawl",
       "button": "Request Crawl",
-      "toast": "Crawl request sent successfully"
+      "toast": "Crawl request sent successfully",
+      "errors": {
+        "url-required": "URL is required",
+        "url-invalid": "Please enter a valid URL"
+      },
+      "validation": {
+        "required": "Required"
+      }
     },
     "signout": {
       "message": "Are you sure you want to sign out?",

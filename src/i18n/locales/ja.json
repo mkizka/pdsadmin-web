@@ -76,7 +76,14 @@
     "request-crawl": {
       "title": "クロールをリクエストするリレーのURLを入力してください",
       "button": "クロールをリクエスト",
-      "toast": "クロールのリクエストが正常に送信されました"
+      "toast": "クロールのリクエストが正常に送信されました",
+      "errors": {
+        "url-required": "URLは必須です",
+        "url-invalid": "有効なURLを入力してください"
+      },
+      "validation": {
+        "required": "必須項目です"
+      }
     },
     "signout": {
       "message": "ログアウトしてもよろしいですか？",
