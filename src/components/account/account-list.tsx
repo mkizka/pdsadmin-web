@@ -77,24 +77,27 @@ function AccountListRow({ repo }: { repo: Repository | null }) {
   );
 }
 
+const nullArray = (length: number) => {
+  return Array.from({ length }).map(() => null);
+};
+
 export function AccountList() {
   const accountList = useAccountList();
   const initRepositories = useInitRepositories();
   const fetchMoreRepositories = useFetchMoreRepositories();
+
   useEffect(() => {
     void initRepositories();
   }, [initRepositories]);
 
-  // リロード時に追加読み込み後の長さでスケルトンを出すため
-  const skeltonLength = Math.max(INIT_PAGE_SIZE, accountList.repos.length);
-  const skeltonRepos = Array.from({ length: skeltonLength }).map(() => null);
+  const reposLength = accountList.repos?.length ?? 0;
+  // リロード時に追加読み込み後の長さでスケルトンを出すために、
+  // reposLengthが初回読み込みより長ければそちらを使う
+  const skeltons = nullArray(Math.max(INIT_PAGE_SIZE, reposLength));
 
-  const listedRepos = [
-    ...accountList.repos,
-    ...Array.from({
-      length: INIT_PAGE_SIZE - accountList.repos.length,
-    }).map(() => null),
-  ];
+  // 初回読み込みサイズより小さい場合は余った行数を「アカウントなし」で埋める
+  const noAccounts = nullArray(INIT_PAGE_SIZE - reposLength);
+  const listedRepos = [...(accountList.repos ?? []), ...noAccounts];
 
   return (
     <ul
@@ -102,7 +105,7 @@ export function AccountList() {
       data-testid="account-list"
     >
       {accountList.isInitLoading
-        ? skeltonRepos.map((_, i) => <SkeltonListRow key={i} />)
+        ? skeltons.map((_, i) => <SkeltonListRow key={i} />)
         : listedRepos.map((repo, i) => (
             <AccountListRow key={repo?.repoInfo.did ?? i} repo={repo} />
           ))}

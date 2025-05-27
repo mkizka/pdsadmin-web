@@ -7,7 +7,7 @@ export const INIT_PAGE_SIZE = 5;
 
 const FETCH_MORE_PAGE_SIZE = 10;
 
-const reposAtom = atom<Repository[]>([]);
+const reposAtom = atom<Repository[] | null>(null);
 
 const initLoadingAtom = atom(false);
 
@@ -37,7 +37,7 @@ const fetchMoreRepositoriesAtom = atom(null, async (get, set) => {
     limit: FETCH_MORE_PAGE_SIZE,
     cursor,
   });
-  set(reposAtom, (prev) => [...prev, ...repos]);
+  set(reposAtom, (prev) => [...(prev ?? []), ...repos]);
   // limitより少ない場合は次のページがないとみなす
   set(cursorAtom, repos.length < FETCH_MORE_PAGE_SIZE ? undefined : newCursor);
   set(fetchMoreLoadingAtom, false);
@@ -50,7 +50,7 @@ const accountListAtom = atom((get) => {
   const hasNextPage = get(cursorAtom) !== undefined;
   return {
     repos,
-    isInitLoading,
+    isInitLoading: repos === null || isInitLoading,
     isFetchMoreLoading,
     hasNextPage,
   };
@@ -71,5 +71,10 @@ export const useFetchMoreRepositories = () => {
 export const useReloadRepositories = () => {
   const accountList = useAccountList();
   const initRepositories = useInitRepositories();
-  return () => initRepositories(accountList.repos.length);
+  return async () => {
+    if (!accountList.repos) {
+      throw new Error("Repositories are not initialized");
+    }
+    await initRepositories(accountList.repos.length);
+  };
 };
