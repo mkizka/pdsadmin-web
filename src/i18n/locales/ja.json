@@ -40,7 +40,16 @@
     "reset-password": {
       "button": "パスワードをリセット",
       "message": "新しいパスワードを入力してください",
-      "toast": "パスワードが正常にリセットされました"
+      "placeholder": {
+        "password": "新しいパスワード"
+      },
+      "toast": "パスワードが正常にリセットされました",
+      "errors": {
+        "password-required": "パスワードは必須です"
+      },
+      "validation": {
+        "required": "必須項目です"
+      }
     },
     "create-account": {
       "title": "新しいアカウントを作成します",

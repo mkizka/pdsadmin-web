@@ -40,7 +40,16 @@
     "reset-password": {
       "button": "Reset Password",
       "message": "Enter new password",
-      "toast": "Password reset successfully"
+      "placeholder": {
+        "password": "New password"
+      },
+      "toast": "Password reset successfully",
+      "errors": {
+        "password-required": "Password is required"
+      },
+      "validation": {
+        "required": "Required"
+      }
     },
     "create-account": {
       "title": "Create new account",
