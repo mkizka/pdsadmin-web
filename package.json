@@ -39,6 +39,7 @@
     "@atcute/atproto": "^3.0.2",
     "@egoist/tailwindcss-icons": "^1.9.0",
     "@iconify-json/lucide": "^1.2.44",
+    "@iconify-json/simple-icons": "^1.2.36",
     "@mkizka/eslint-config": "^6.0.1",
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.21",

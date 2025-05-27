@@ -44,11 +44,11 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
 
 export function Header() {
   return (
-    <div className="card rounded-box bg-base-100 shadow-md">
+    <header className="card rounded-box bg-base-100 shadow-md">
       <div className="card-body relative items-center gap-4 text-center">
         <LanguageSwitcher className="absolute top-0 right-4 bottom-0 my-auto" />
         <h1 className="card-title text-2xl font-bold">pdsadmin-web</h1>
       </div>
-    </div>
+    </header>
   );
 }

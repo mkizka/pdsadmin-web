@@ -1,6 +1,7 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account/account-list";
 import { ModalDialog } from "./components/modal/modal";
+import { Footer } from "./components/module/footer";
 import { Header } from "./components/module/header";
 import { PDSMenu } from "./components/module/pds-menu";
 import { SigninForm } from "./components/module/signin-form";
@@ -20,6 +21,7 @@ export function App() {
               <AccountList />
             </>
           )}
+          <Footer />
         </div>
         <ModalDialog />
         <Toaster />
