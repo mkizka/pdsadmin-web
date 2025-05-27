@@ -1,17 +1,19 @@
 # pdsadmin-web
 
-[pdsadmin](https://github.com/bluesky-social/pds/tree/main/pdsadmin) コマンド相当の処理をブラウザ上で実行することが出来るWebアプリです。
+[pdsadmin](https://github.com/bluesky-social/pds/tree/main/pdsadmin) コマンド相当の処理をブラウザ上で実行することが出来るWebアプリ
+
+![](./screenshot.png)
 
 ## 機能
 
-- [x] PDSのURLとPDS_ADMIN_PASSWORDで疑似ログイン
-- [x] アカウント一覧を表示
-- [x] アカウントをTakedown
-- [x] アカウントをUntakedown
-- [x] アカウントを作成
-- [x] アカウントを削除
-- [x] 招待コードを発行
-- [x] リレーにクロールをリクエスト
+- [x] pdsadmin account list
+- [x] pdsadmin account create
+- [x] pdsadmin account delete
+- [x] pdsadmin account takedown
+- [x] pdsadmin account untakedown
+- [x] pdsadmin account reset-password
+- [x] pdsadmin create-invite-code
+- [x] pdsadmin request-crawl
 
 ## 開発
 
