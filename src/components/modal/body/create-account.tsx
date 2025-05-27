@@ -13,17 +13,17 @@ import { Button } from "../../ui/button";
 const createSchema = (t: (key: string) => string) =>
   z.object({
     handle: z
-      .string({ message: t("modal.create-account.validation.required") })
+      .string({ message: t("validation.required") })
       .refine((value) => value.includes("."), {
         message: t("modal.create-account.errors.handle-no-dot"),
       }),
     email: z
-      .string({ message: t("modal.create-account.validation.required") })
+      .string({ message: t("validation.required") })
       .pipe(
         z.email({ message: t("modal.create-account.errors.email-invalid") }),
       ),
     password: z.string({
-      message: t("modal.create-account.validation.required"),
+      message: t("validation.required"),
     }),
   });
 

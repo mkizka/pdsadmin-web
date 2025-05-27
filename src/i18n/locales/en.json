@@ -1,4 +1,7 @@
 {
+  "validation": {
+    "required": "Required"
+  },
   "pds-info": {
     "buttons": {
       "create-account": "Create Account",
@@ -43,10 +46,7 @@
       "placeholder": {
         "password": "New password"
       },
-      "toast": "Password reset successfully",
-      "validation": {
-        "required": "Required"
-      }
+      "toast": "Password reset successfully"
     },
     "create-account": {
       "title": "Create new account",
@@ -59,9 +59,6 @@
       "errors": {
         "handle-no-dot": "Handle must contain at least one dot",
         "email-invalid": "Invalid email address"
-      },
-      "validation": {
-        "required": "Required"
       }
     },
     "invite-code": {
@@ -74,9 +71,6 @@
       "toast": "Crawl request sent successfully",
       "errors": {
         "url-invalid": "Please enter a valid URL"
-      },
-      "validation": {
-        "required": "Required"
       }
     },
     "signout": {
@@ -96,9 +90,6 @@
     "errors": {
       "service-invalid": "Please enter a valid URL",
       "service-protocol": "URL must start with http:// or https://"
-    },
-    "validation": {
-      "required": "Required"
     }
   }
 }

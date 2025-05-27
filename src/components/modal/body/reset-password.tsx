@@ -14,7 +14,7 @@ import { Button } from "../../ui/button";
 const resetPasswordSchema = (t: (key: string) => string) =>
   z.object({
     newPassword: z.string({
-      message: t("modal.reset-password.validation.required"),
+      message: t("validation.required"),
     }),
   });
 

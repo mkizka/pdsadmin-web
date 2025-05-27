@@ -1,4 +1,7 @@
 {
+  "validation": {
+    "required": "必須項目です"
+  },
   "pds-info": {
     "buttons": {
       "create-account": "アカウント作成",
@@ -43,10 +46,7 @@
       "placeholder": {
         "password": "新しいパスワード"
       },
-      "toast": "パスワードが正常にリセットされました",
-      "validation": {
-        "required": "必須項目です"
-      }
+      "toast": "パスワードが正常にリセットされました"
     },
     "create-account": {
       "title": "新しいアカウントを作成します",
@@ -59,9 +59,6 @@
       "errors": {
         "handle-no-dot": "ハンドルには少なくとも1つのドットが必要です",
         "email-invalid": "無効なメールアドレスです"
-      },
-      "validation": {
-        "required": "必須項目です"
       }
     },
     "invite-code": {
@@ -74,9 +71,6 @@
       "toast": "クロールのリクエストが正常に送信されました",
       "errors": {
         "url-invalid": "有効なURLを入力してください"
-      },
-      "validation": {
-        "required": "必須項目です"
       }
     },
     "signout": {
@@ -96,9 +90,6 @@
     "errors": {
       "service-invalid": "有効なURLを入力してください",
       "service-protocol": "URLは http:// または https:// から始まる必要があります"
-    },
-    "validation": {
-      "required": "必須項目です"
     }
   }
 }

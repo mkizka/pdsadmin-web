@@ -12,13 +12,13 @@ import { Button } from "../ui/button";
 const createSchema = (t: (key: string) => string) =>
   z.object({
     service: z
-      .string({ message: t("signin.validation.required") })
+      .string({ message: t("validation.required") })
       .refine(
         (url) => url.startsWith("http://") || url.startsWith("https://"),
         { message: t("signin.errors.service-protocol") },
       )
       .pipe(z.url({ message: t("signin.errors.service-invalid") })),
-    adminPassword: z.string({ message: t("signin.validation.required") }),
+    adminPassword: z.string({ message: t("validation.required") }),
   });
 
 function Code({ children }: { children: string }) {

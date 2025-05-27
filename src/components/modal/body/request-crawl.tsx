@@ -12,7 +12,7 @@ import { Button } from "../../ui/button";
 const requestCrawlSchema = (t: (key: string) => string) =>
   z.object({
     relayService: z
-      .string({ message: t("modal.request-crawl.validation.required") })
+      .string({ message: t("validation.required") })
       .pipe(z.url({ message: t("modal.request-crawl.errors.url-invalid") })),
   });
 
