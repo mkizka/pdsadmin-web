@@ -25,4 +25,8 @@ export async function setupI18n() {
         escapeValue: false, // Reactが自動的にエスケープするため不要
       },
     });
+  document.documentElement.lang = i18next.language;
+  i18next.on("languageChanged", (lng) => {
+    document.documentElement.lang = lng;
+  });
 }
