@@ -14,7 +14,6 @@ const createSchema = (t: (key: string) => string) =>
   z.object({
     handle: z
       .string({ message: t("modal.create-account.validation.required") })
-      .min(1, t("modal.create-account.errors.handle-required"))
       .refine((value) => value.includes("."), {
         message: t("modal.create-account.errors.handle-no-dot"),
       }),
@@ -23,9 +22,9 @@ const createSchema = (t: (key: string) => string) =>
       .pipe(
         z.email({ message: t("modal.create-account.errors.email-invalid") }),
       ),
-    password: z
-      .string({ message: t("modal.create-account.validation.required") })
-      .min(1, t("modal.create-account.errors.password-required")),
+    password: z.string({
+      message: t("modal.create-account.validation.required"),
+    }),
   });
 
 export function CreateAccountModalBody() {

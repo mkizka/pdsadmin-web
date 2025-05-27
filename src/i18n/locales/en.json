@@ -44,9 +44,6 @@
         "password": "New password"
       },
       "toast": "Password reset successfully",
-      "errors": {
-        "password-required": "Password is required"
-      },
       "validation": {
         "required": "Required"
       }
@@ -60,10 +57,8 @@
       "button": "Create Account",
       "toast": "Account created successfully",
       "errors": {
-        "handle-required": "Handle is required",
         "handle-no-dot": "Handle must contain at least one dot",
-        "email-invalid": "Invalid email address",
-        "password-required": "Password is required"
+        "email-invalid": "Invalid email address"
       },
       "validation": {
         "required": "Required"
@@ -78,7 +73,6 @@
       "button": "Request Crawl",
       "toast": "Crawl request sent successfully",
       "errors": {
-        "url-required": "URL is required",
         "url-invalid": "Please enter a valid URL"
       },
       "validation": {
@@ -100,10 +94,8 @@
     "button": "Sign in",
     "toast": "Sign in successfully",
     "errors": {
-      "service-required": "PDS URL is required",
       "service-invalid": "Please enter a valid URL",
-      "service-protocol": "URL must start with http:// or https://",
-      "password-required": "Admin password is required"
+      "service-protocol": "URL must start with http:// or https://"
     },
     "validation": {
       "required": "Required"

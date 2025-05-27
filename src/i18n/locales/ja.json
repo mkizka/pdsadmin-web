@@ -44,9 +44,6 @@
         "password": "新しいパスワード"
       },
       "toast": "パスワードが正常にリセットされました",
-      "errors": {
-        "password-required": "パスワードは必須です"
-      },
       "validation": {
         "required": "必須項目です"
       }
@@ -60,10 +57,8 @@
       "button": "アカウントを作成",
       "toast": "アカウントが正常に作成されました",
       "errors": {
-        "handle-required": "ハンドルは必須です",
         "handle-no-dot": "ハンドルには少なくとも1つのドットが必要です",
-        "email-invalid": "無効なメールアドレスです",
-        "password-required": "パスワードは必須です"
+        "email-invalid": "無効なメールアドレスです"
       },
       "validation": {
         "required": "必須項目です"
@@ -78,7 +73,6 @@
       "button": "クロールをリクエスト",
       "toast": "クロールのリクエストが正常に送信されました",
       "errors": {
-        "url-required": "URLは必須です",
         "url-invalid": "有効なURLを入力してください"
       },
       "validation": {
@@ -100,10 +94,8 @@
     "button": "ログイン",
     "toast": "正常にログインしました",
     "errors": {
-      "service-required": "PDSのURLは必須です",
       "service-invalid": "有効なURLを入力してください",
-      "service-protocol": "URLは http:// または https:// から始まる必要があります",
-      "password-required": "管理者パスワードは必須です"
+      "service-protocol": "URLは http:// または https:// から始まる必要があります"
     },
     "validation": {
       "required": "必須項目です"

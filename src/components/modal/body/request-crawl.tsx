@@ -13,7 +13,6 @@ const requestCrawlSchema = (t: (key: string) => string) =>
   z.object({
     relayService: z
       .string({ message: t("modal.request-crawl.validation.required") })
-      .min(1, t("modal.request-crawl.errors.url-required"))
       .pipe(z.url({ message: t("modal.request-crawl.errors.url-invalid") })),
   });
 

@@ -13,9 +13,9 @@ import { Button } from "../../ui/button";
 
 const resetPasswordSchema = (t: (key: string) => string) =>
   z.object({
-    newPassword: z
-      .string({ message: t("modal.reset-password.validation.required") })
-      .min(1, t("modal.reset-password.errors.password-required")),
+    newPassword: z.string({
+      message: t("modal.reset-password.validation.required"),
+    }),
   });
 
 type Props = {
