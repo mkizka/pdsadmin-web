@@ -2,9 +2,9 @@ import type { MouseEvent } from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useOpenModal } from "../atoms/modal";
-import { usePDS, usePDSHostname } from "../atoms/pds";
-import { cn } from "../utils/cn";
+import { useOpenModal } from "../../atoms/modal";
+import { usePDS, usePDSHostname } from "../../atoms/pds";
+import { cn } from "../../utils/cn";
 
 type PDSButtonProps = {
   type: "request-crawl" | "logout" | "create-account";

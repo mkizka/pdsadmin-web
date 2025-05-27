@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { modal } from "../../../atoms/modal";
 import { useLogout } from "../../../atoms/session";
-import { Button } from "../../button";
+import { Button } from "../../ui/button";
 import { useModalHandler } from "../hooks";
 
 export function SignoutModalBody() {

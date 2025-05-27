@@ -2,7 +2,7 @@ import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { usePDS } from "../../../atoms/pds";
-import { Button } from "../../button";
+import { Button } from "../../ui/button";
 import { useModalHandler } from "../hooks";
 
 export function RequestCrawlModalBody() {

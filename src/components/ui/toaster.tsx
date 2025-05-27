@@ -1,5 +1,5 @@
-import { useToasts } from "../atoms/toast";
-import { cn } from "../utils/cn";
+import { useToasts } from "../../atoms/toast";
+import { cn } from "../../utils/cn";
 
 export function Toaster() {
   const toasts = useToasts();

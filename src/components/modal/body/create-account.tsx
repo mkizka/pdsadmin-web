@@ -8,7 +8,7 @@ import { useReloadRepositories } from "../../../atoms/account-list";
 import { useCloseModal } from "../../../atoms/modal";
 import { usePDS, usePDSHostname } from "../../../atoms/pds";
 import { useToast } from "../../../atoms/toast";
-import { Button } from "../../button";
+import { Button } from "../../ui/button";
 
 const createSchema = (t: (key: string) => string) =>
   z.object({

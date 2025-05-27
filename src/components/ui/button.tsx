@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 
-import { cn } from "../utils/cn";
+import { cn } from "../../utils/cn";
 
 type Props = ComponentProps<"button"> & {
   loading?: boolean;

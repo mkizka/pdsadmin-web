@@ -1,10 +1,10 @@
 import { useIsLoggedIn } from "./atoms/session";
 import { AccountList } from "./components/account/account-list";
-import { Header } from "./components/header";
 import { ModalDialog } from "./components/modal/modal";
-import { PDSInfo } from "./components/pds-info";
-import { SigninForm } from "./components/signin-form";
-import { Toaster } from "./components/toaster";
+import { Header } from "./components/module/header";
+import { PDSInfo } from "./components/module/pds-info";
+import { SigninForm } from "./components/module/signin-form";
+import { Toaster } from "./components/ui/toaster";
 
 export function App() {
   const isLoggedIn = useIsLoggedIn();

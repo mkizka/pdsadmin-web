@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { usePDS } from "../../../atoms/pds";
 import type { Did } from "../../../utils/types";
-import { Button } from "../../button";
+import { Button } from "../../ui/button";
 import { useModalHandler } from "../hooks";
 
 type Props = {
