@@ -1,41 +1,28 @@
-import { type FormEvent, useState } from "react";
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod/v4";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { z } from "zod/v4";
 
 import { useRememberLogin, useSetSession } from "../atoms/session";
 import { useToast } from "../atoms/toast";
 import { PDS } from "../utils/pds";
-import { ErrorAlert } from "./alert-message";
 import { Button } from "./button";
 
-const initialForm = {
-  service: "",
-  adminPassword: "",
-  loading: false,
-  error: "",
-};
-
-const useForm = () => {
-  const [formState, setFormState] = useState(initialForm);
-  return {
-    state: formState,
-    canSubmit:
-      !formState.loading &&
-      formState.service !== "" &&
-      formState.adminPassword !== "",
-    setService: (service: string) => {
-      setFormState((prev) => ({ ...prev, service }));
-    },
-    setAdminPassword: (adminPassword: string) => {
-      setFormState((prev) => ({ ...prev, adminPassword }));
-    },
-    setLoading: (loading: boolean) => {
-      setFormState((prev) => ({ ...prev, loading }));
-    },
-    setError: (error: string) => {
-      setFormState((prev) => ({ ...prev, error }));
-    },
-  };
-};
+const createSchema = (t: (key: string) => string) =>
+  z.object({
+    service: z
+      .string({ message: t("signin.validation.required") })
+      .min(1, t("signin.errors.service-required"))
+      .refine(
+        (url) => url.startsWith("http://") || url.startsWith("https://"),
+        { message: t("signin.errors.service-protocol") },
+      )
+      .pipe(z.url({ message: t("signin.errors.service-invalid") })),
+    adminPassword: z
+      .string({ message: t("signin.validation.required") })
+      .min(1, t("signin.errors.password-required")),
+  });
 
 function Code({ children }: { children: string }) {
   return (
@@ -47,31 +34,47 @@ function Code({ children }: { children: string }) {
 
 export function SigninForm() {
   const { t } = useTranslation();
-  const form = useForm();
   const setSession = useSetSession();
   const toast = useToast();
   const [rememberLogin, setRememberLogin] = useRememberLogin();
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    form.setLoading(true);
-    form.setError("");
-    try {
-      const pds = new PDS(form.state);
-      await pds.listRepos();
-      setSession(form.state);
-      toast.success(t("signin.toast"));
-    } catch (error) {
-      form.setError(String(error));
-    } finally {
-      form.setLoading(false);
-    }
-  };
+  const [form, fields] = useForm({
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: createSchema(t) });
+    },
+    onSubmit: async (event, { submission }) => {
+      event.preventDefault();
+      if (submission?.status === "success") {
+        setLoading(true);
+        setSubmitError("");
+        try {
+          const pds = new PDS({
+            service: submission.value.service,
+            adminPassword: submission.value.adminPassword,
+          });
+          await pds.listRepos();
+          setSession({
+            service: submission.value.service,
+            adminPassword: submission.value.adminPassword,
+          });
+          toast.success(t("signin.toast"));
+        } catch (error) {
+          setSubmitError(String(error));
+        } finally {
+          setLoading(false);
+        }
+      }
+    },
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onBlur",
+  });
 
   return (
     <form
+      {...getFormProps(form)}
       className="card bg-base-100 shadow-xl"
-      onSubmit={handleSubmit}
       data-testid="signin-form"
     >
       <div className="card-body">
@@ -83,13 +86,16 @@ export function SigninForm() {
             </span>
           </label>
           <input
-            type="url"
+            {...getInputProps(fields.service, { type: "url" })}
             placeholder="https://pds.example.com"
             className="input input-bordered w-full"
-            value={form.state.service}
-            onChange={(e) => form.setService(e.target.value)}
             data-testid="pds-url-input"
           />
+          {fields.service.errors && (
+            <p className="text-error mt-1 text-xs">
+              {fields.service.errors[0]}
+            </p>
+          )}
         </div>
         <div className="form-control w-full">
           <label className="label">
@@ -98,12 +104,15 @@ export function SigninForm() {
             </span>
           </label>
           <input
-            type="password"
+            {...getInputProps(fields.adminPassword, { type: "password" })}
             className="input input-bordered w-full"
-            value={form.state.adminPassword}
-            onChange={(e) => form.setAdminPassword(e.target.value)}
             data-testid="admin-password-input"
           />
+          {fields.adminPassword.errors && (
+            <p className="text-error mt-1 text-xs">
+              {fields.adminPassword.errors[0]}
+            </p>
+          )}
         </div>
         <div className="form-control w-full">
           <label className="label cursor-pointer">
@@ -121,14 +130,17 @@ export function SigninForm() {
           <Button
             type="submit"
             className="btn btn-primary"
-            loading={form.state.loading}
-            disabled={!form.canSubmit}
+            loading={loading}
             data-testid="login-button"
           >
             {t("signin.button")}
           </Button>
         </div>
-        {form.state.error && <ErrorAlert>{form.state.error}</ErrorAlert>}
+        {submitError && (
+          <div className="alert alert-error mt-4">
+            <span>{submitError}</span>
+          </div>
+        )}
       </div>
     </form>
   );

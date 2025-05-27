@@ -82,6 +82,15 @@
     "admin-password": "管理者パスワード",
     "remember-login": "入力内容をLocalStorageに保存する",
     "button": "ログイン",
-    "toast": "正常にログインしました"
+    "toast": "正常にログインしました",
+    "errors": {
+      "service-required": "PDSのURLは必須です",
+      "service-invalid": "有効なURLを入力してください",
+      "service-protocol": "URLは http:// または https:// から始まる必要があります",
+      "password-required": "管理者パスワードは必須です"
+    },
+    "validation": {
+      "required": "必須項目です"
+    }
   }
 }

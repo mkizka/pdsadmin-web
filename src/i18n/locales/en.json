@@ -82,6 +82,15 @@
     "admin-password": "Admin Password",
     "remember-login": "Save inputs in LocalStorage",
     "button": "Sign in",
-    "toast": "Sign in successfully"
+    "toast": "Sign in successfully",
+    "errors": {
+      "service-required": "PDS URL is required",
+      "service-invalid": "Please enter a valid URL",
+      "service-protocol": "URL must start with http:// or https://",
+      "password-required": "Admin password is required"
+    },
+    "validation": {
+      "required": "Required"
+    }
   }
 }
