@@ -53,7 +53,6 @@ export function CreateAccountModalBody() {
           closeModal();
           toast.success(t("modal.create-account.toast"));
           await reloadRepos();
-          form.reset();
         } catch (error) {
           // eslint-disable-next-line no-console
           console.error(error);
