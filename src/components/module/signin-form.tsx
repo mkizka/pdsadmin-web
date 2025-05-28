@@ -58,7 +58,9 @@ export function SigninForm() {
           });
           toast.success(t("signin.toast"));
         } catch (error) {
-          setSubmitError(String(error));
+          // eslint-disable-next-line no-console
+          console.error(error);
+          setSubmitError(t("signin.errors.login-failed"));
         } finally {
           setLoading(false);
         }
@@ -134,7 +136,7 @@ export function SigninForm() {
           </Button>
         </div>
         {submitError && (
-          <div className="alert alert-error mt-4">
+          <div className="alert alert-error mt-4" data-testid="signin-error">
             <span>{submitError}</span>
           </div>
         )}

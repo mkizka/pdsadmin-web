@@ -143,3 +143,22 @@ test("ログイン時に入力値をLocalStorageに保存せずログイン出�
     await expect(page.getByTestId("signin-form")).toBeVisible();
   });
 });
+
+test("ログイン失敗時にエラーメッセージが表示される", async ({ page }) => {
+  await test.step("ログインページにアクセス", async () => {
+    await page.goto("/");
+  });
+
+  await test.step("間違った認証情報でログインを試行", async () => {
+    await page.getByTestId("pds-url-input").fill("http://localhost:2583");
+    await page.getByTestId("admin-password-input").fill("wrong-password");
+    await page.getByTestId("login-button").click();
+  });
+
+  await test.step("ログイン失敗のエラーメッセージが表示されることを確認", async () => {
+    await expect(page.getByTestId("signin-error")).toBeVisible();
+    await expect(page.getByTestId("signin-error")).toContainText(
+      "Sign in failed",
+    );
+  });
+});

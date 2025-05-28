@@ -89,7 +89,8 @@
     "toast": "正常にログインしました",
     "errors": {
       "service-invalid": "有効なURLを入力してください",
-      "service-protocol": "URLは http:// または https:// から始まる必要があります"
+      "service-protocol": "URLは http:// または https:// から始まる必要があります",
+      "login-failed": "ログインに失敗しました"
     }
   }
 }

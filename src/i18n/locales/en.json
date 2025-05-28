@@ -89,7 +89,8 @@
     "toast": "Sign in successfully",
     "errors": {
       "service-invalid": "Please enter a valid URL",
-      "service-protocol": "URL must start with http:// or https://"
+      "service-protocol": "URL must start with http:// or https://",
+      "login-failed": "Sign in failed"
     }
   }
 }
