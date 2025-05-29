@@ -11,8 +11,8 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleLanguageChange = (language: string) => {
-    void i18n.changeLanguage(language);
+  const handleLanguageChange = async (language: string) => {
+    await i18n.changeLanguage(language);
     dropdownRef.current?.blur();
   };
 
