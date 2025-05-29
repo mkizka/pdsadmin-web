@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { cn } from "../../utils/cn";
@@ -8,9 +9,17 @@ type LanguageSwitcherProps = {
 
 function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleLanguageChange = (language: string) => {
+    void i18n.changeLanguage(language);
+    dropdownRef.current?.blur();
+  };
+
   return (
     <div className={cn("dropdown dropdown-end", className)}>
       <div
+        ref={dropdownRef}
         tabIndex={0}
         role="button"
         className="btn btn-square btn-ghost shadow"
@@ -24,7 +33,7 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         <li>
           <a
             className="btn btn-ghost h-12"
-            onClick={() => i18n.changeLanguage("en")}
+            onClick={() => handleLanguageChange("en")}
           >
             English
           </a>
@@ -32,7 +41,7 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         <li>
           <a
             className="btn btn-ghost h-12"
-            onClick={() => i18n.changeLanguage("ja")}
+            onClick={() => handleLanguageChange("ja")}
           >
             日本語
           </a>
