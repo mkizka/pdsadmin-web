@@ -75,5 +75,5 @@ jobs:
         uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          allowed_tools: "Bash(*)"
+          allowed_tools: "Bash(pnpm:*)"
           timeout_minutes: 5
