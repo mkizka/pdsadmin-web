@@ -15,6 +15,5 @@
       "Bash(git pull:*)"
     ],
     "deny": []
-  },
-  "enableAllProjectMcpServers": false
+  }
 }
