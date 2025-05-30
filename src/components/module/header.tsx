@@ -8,6 +8,14 @@ type LanguageSwitcherProps = {
 
 function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
+
+  const handleLanguageChange = async (language: string) => {
+    await i18n.changeLanguage(language);
+    if (document.activeElement) {
+      (document.activeElement as HTMLElement).blur();
+    }
+  };
+
   return (
     <div className={cn("dropdown dropdown-end", className)}>
       <div
@@ -24,7 +32,7 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         <li>
           <a
             className="btn btn-ghost h-12"
-            onClick={() => i18n.changeLanguage("en")}
+            onClick={() => handleLanguageChange("en")}
           >
             English
           </a>
@@ -32,7 +40,7 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         <li>
           <a
             className="btn btn-ghost h-12"
-            onClick={() => i18n.changeLanguage("ja")}
+            onClick={() => handleLanguageChange("ja")}
           >
             日本語
           </a>
