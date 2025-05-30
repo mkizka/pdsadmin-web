@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { cn } from "../../utils/cn";
@@ -9,17 +8,17 @@ type LanguageSwitcherProps = {
 
 function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleLanguageChange = async (language: string) => {
     await i18n.changeLanguage(language);
-    dropdownRef.current?.blur();
+    if (document.activeElement) {
+      (document.activeElement as HTMLElement).blur();
+    }
   };
 
   return (
     <div className={cn("dropdown dropdown-end", className)}>
       <div
-        ref={dropdownRef}
         tabIndex={0}
         role="button"
         className="btn btn-square btn-ghost shadow"
