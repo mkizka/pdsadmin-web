@@ -78,55 +78,43 @@ export function SigninForm() {
     >
       <div className="card-body">
         <h2 className="card-title">{t("signin.title")}</h2>
-        <div className="form-control w-full">
-          <label className="label">
-            <span className="label-text">
-              {t("signin.pds-url")} (<Code>{"https://${PDS_HOSTNAME}"}</Code>)
-            </span>
-          </label>
+        <label className="label">
+          {t("signin.pds-url")} (<Code>{"https://${PDS_HOSTNAME}"}</Code>)
+        </label>
+        <input
+          {...getInputProps(fields.service, { type: "text" })}
+          placeholder="https://pds.example.com"
+          className="input input-bordered w-full"
+          data-testid="pds-url-input"
+          autoComplete="username"
+        />
+        {fields.service.errors && (
+          <p className="text-error mt-1 text-xs">{fields.service.errors[0]}</p>
+        )}
+        <label className="label">
+          {t("signin.admin-password")} (<Code>PDS_ADMIN_PASSWORD</Code>)
+        </label>
+        <input
+          {...getInputProps(fields.adminPassword, { type: "password" })}
+          className="input input-bordered w-full"
+          data-testid="admin-password-input"
+          autoComplete="current-password"
+        />
+        {fields.adminPassword.errors && (
+          <p className="text-error mt-1 text-xs">
+            {fields.adminPassword.errors[0]}
+          </p>
+        )}
+        <label className="label">
           <input
-            {...getInputProps(fields.service, { type: "text" })}
-            placeholder="https://pds.example.com"
-            className="input input-bordered w-full"
-            data-testid="pds-url-input"
-            autoComplete="username"
+            type="checkbox"
+            className="checkbox"
+            checked={rememberLogin}
+            onChange={(e) => setRememberLogin(e.target.checked)}
+            data-testid="remember-login-checkbox"
           />
-          {fields.service.errors && (
-            <p className="text-error mt-1 text-xs">
-              {fields.service.errors[0]}
-            </p>
-          )}
-        </div>
-        <div className="form-control w-full">
-          <label className="label">
-            <span className="label-text">
-              {t("signin.admin-password")} (<Code>PDS_ADMIN_PASSWORD</Code>)
-            </span>
-          </label>
-          <input
-            {...getInputProps(fields.adminPassword, { type: "password" })}
-            className="input input-bordered w-full"
-            data-testid="admin-password-input"
-            autoComplete="current-password"
-          />
-          {fields.adminPassword.errors && (
-            <p className="text-error mt-1 text-xs">
-              {fields.adminPassword.errors[0]}
-            </p>
-          )}
-        </div>
-        <div className="form-control w-full">
-          <label className="label cursor-pointer">
-            <span className="label-text">{t("signin.remember-login")}</span>
-            <input
-              type="checkbox"
-              className="checkbox"
-              checked={rememberLogin}
-              onChange={(e) => setRememberLogin(e.target.checked)}
-              data-testid="remember-login-checkbox"
-            />
-          </label>
-        </div>
+          {t("signin.remember-login")}
+        </label>
         <div className="card-actions justify-end">
           <Button
             type="submit"
