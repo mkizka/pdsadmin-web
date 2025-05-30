@@ -21,14 +21,6 @@ const createSchema = (t: (key: string) => string) =>
     adminPassword: z.string({ message: t("validation.required") }),
   });
 
-function Code({ children }: { children: string }) {
-  return (
-    <code className="bg-base-200 rounded-md px-1 font-mono text-xs font-bold">
-      {children}
-    </code>
-  );
-}
-
 export function SigninForm() {
   const { t } = useTranslation();
   const setSession = useSetSession();
@@ -78,43 +70,47 @@ export function SigninForm() {
     >
       <div className="card-body">
         <h2 className="card-title">{t("signin.title")}</h2>
-        <label className="label">
-          {t("signin.pds-url")} (<Code>{"https://${PDS_HOSTNAME}"}</Code>)
-        </label>
-        <input
-          {...getInputProps(fields.service, { type: "text" })}
-          placeholder="https://pds.example.com"
-          className="input input-bordered w-full"
-          data-testid="pds-url-input"
-          autoComplete="username"
-        />
-        {fields.service.errors && (
-          <p className="text-error mt-1 text-xs">{fields.service.errors[0]}</p>
-        )}
-        <label className="label">
-          {t("signin.admin-password")} (<Code>PDS_ADMIN_PASSWORD</Code>)
-        </label>
-        <input
-          {...getInputProps(fields.adminPassword, { type: "password" })}
-          className="input input-bordered w-full"
-          data-testid="admin-password-input"
-          autoComplete="current-password"
-        />
-        {fields.adminPassword.errors && (
-          <p className="text-error mt-1 text-xs">
-            {fields.adminPassword.errors[0]}
-          </p>
-        )}
-        <label className="label">
+        <fieldset className="fieldset">
+          <legend className="fieldset-legend">{t("signin.pds-url")}</legend>
           <input
-            type="checkbox"
-            className="checkbox"
-            checked={rememberLogin}
-            onChange={(e) => setRememberLogin(e.target.checked)}
-            data-testid="remember-login-checkbox"
+            {...getInputProps(fields.service, { type: "text" })}
+            placeholder="https://${PDS_HOSTNAME}"
+            className="input input-bordered w-full"
+            data-testid="pds-url-input"
+            autoComplete="username"
           />
-          {t("signin.remember-login")}
-        </label>
+
+          {fields.service.errors && (
+            <p className="label text-error">{fields.service.errors[0]}</p>
+          )}
+        </fieldset>
+        <fieldset className="fieldset">
+          <legend className="fieldset-legend">
+            {t("signin.admin-password")}
+          </legend>
+          <input
+            {...getInputProps(fields.adminPassword, { type: "password" })}
+            placeholder="${PDS_ADMIN_PASSWORD}"
+            className="input input-bordered w-full"
+            data-testid="admin-password-input"
+            autoComplete="current-password"
+          />
+          {fields.adminPassword.errors && (
+            <p className="label text-error">{fields.adminPassword.errors[0]}</p>
+          )}
+        </fieldset>
+        <fieldset className="fieldset">
+          <label className="label cursor-pointer">
+            <input
+              type="checkbox"
+              className="checkbox"
+              checked={rememberLogin}
+              onChange={(e) => setRememberLogin(e.target.checked)}
+              data-testid="remember-login-checkbox"
+            />
+            <span>{t("signin.remember-login")}</span>
+          </label>
+        </fieldset>
         <div className="card-actions justify-end">
           <Button
             type="submit"
