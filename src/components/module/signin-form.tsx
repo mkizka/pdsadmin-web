@@ -89,6 +89,7 @@ export function SigninForm() {
             placeholder="https://pds.example.com"
             className="input input-bordered w-full"
             data-testid="pds-url-input"
+            autoComplete="url"
           />
           {fields.service.errors && (
             <p className="text-error mt-1 text-xs">
@@ -106,6 +107,7 @@ export function SigninForm() {
             {...getInputProps(fields.adminPassword, { type: "password" })}
             className="input input-bordered w-full"
             data-testid="admin-password-input"
+            autoComplete="current-password"
           />
           {fields.adminPassword.errors && (
             <p className="text-error mt-1 text-xs">
