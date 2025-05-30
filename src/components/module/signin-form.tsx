@@ -85,7 +85,7 @@ export function SigninForm() {
             </span>
           </label>
           <input
-            {...getInputProps(fields.service, { type: "url" })}
+            {...getInputProps(fields.service, { type: "text" })}
             placeholder="https://pds.example.com"
             className="input input-bordered w-full"
             data-testid="pds-url-input"
