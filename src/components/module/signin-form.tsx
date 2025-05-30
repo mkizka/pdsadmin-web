@@ -89,7 +89,7 @@ export function SigninForm() {
             placeholder="https://pds.example.com"
             className="input input-bordered w-full"
             data-testid="pds-url-input"
-            autoComplete="url"
+            autoComplete="username"
           />
           {fields.service.errors && (
             <p className="text-error mt-1 text-xs">
