@@ -88,3 +88,4 @@ pnpm e2e
 - コメントは出来るだけ書かない。コードの内容から意図が読み取れない場合のみ書く
 - ログイン関連の用語は日本語では「ログイン」、英語では「signin」を使用する
 - 新しくルールが指摘された場合は.github/copilot-instructions.mdに追記する
+- daisyuiについて分からないことがあれば https://daisyui.com/llms.txt を読むこと
