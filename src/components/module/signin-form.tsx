@@ -21,6 +21,14 @@ const createSchema = (t: (key: string) => string) =>
     adminPassword: z.string({ message: t("validation.required") }),
   });
 
+function Code({ children }: { children: string }) {
+  return (
+    <code className="bg-base-200 rounded-md px-1 font-mono text-xs font-bold">
+      {children}
+    </code>
+  );
+}
+
 export function SigninForm() {
   const { t } = useTranslation();
   const setSession = useSetSession();
@@ -74,12 +82,13 @@ export function SigninForm() {
           <legend className="fieldset-legend">{t("signin.pds-url")}</legend>
           <input
             {...getInputProps(fields.service, { type: "text" })}
-            placeholder="https://${PDS_HOSTNAME}"
             className="input input-bordered w-full"
             data-testid="pds-url-input"
             autoComplete="username"
           />
-
+          <p className="label">
+            <Code>{"https://${PDS_HOSTNAME}"}</Code>
+          </p>
           {fields.service.errors && (
             <p className="label text-error">{fields.service.errors[0]}</p>
           )}
@@ -90,11 +99,13 @@ export function SigninForm() {
           </legend>
           <input
             {...getInputProps(fields.adminPassword, { type: "password" })}
-            placeholder="${PDS_ADMIN_PASSWORD}"
             className="input input-bordered w-full"
             data-testid="admin-password-input"
             autoComplete="current-password"
           />
+          <p className="label">
+            <Code>{"${PDS_ADMIN_PASSWORD}"}</Code>
+          </p>
           {fields.adminPassword.errors && (
             <p className="label text-error">{fields.adminPassword.errors[0]}</p>
           )}
