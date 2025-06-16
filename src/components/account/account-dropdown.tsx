@@ -44,7 +44,10 @@ export function AccountDropdown({ repo }: AccountDropdownProps) {
           </li>
         )}
         <li>
-          <DeleteAccountButton did={repo.repoInfo.did} />
+          <DeleteAccountButton
+            did={repo.repoInfo.did}
+            handle={repo.accountInfo.handle}
+          />
         </li>
       </ul>
     </div>

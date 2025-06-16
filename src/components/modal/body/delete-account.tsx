@@ -7,9 +7,10 @@ import { useModalHandler } from "../hooks";
 
 type Props = {
   did: Did;
+  handle: string;
 };
 
-export function DeleteAccountModalBody({ did }: Props) {
+export function DeleteAccountModalBody({ did, handle }: Props) {
   const pds = usePDS();
   const { t } = useTranslation();
 
@@ -22,7 +23,7 @@ export function DeleteAccountModalBody({ did }: Props) {
   return (
     <div className="flex flex-col items-center gap-4">
       <span className="i-lucide-trash-2 text-error size-12"></span>
-      <p className="text-center">{t("modal.delete.message")}</p>
+      <p className="text-center">{t("modal.delete.message", { handle })}</p>
       <Button
         type="button"
         className="btn btn-error relative"

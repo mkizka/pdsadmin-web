@@ -21,7 +21,13 @@ export function ResetPasswordButton({ did }: { did: Did }) {
   );
 }
 
-export function DeleteAccountButton({ did }: { did: Did }) {
+export function DeleteAccountButton({
+  did,
+  handle,
+}: {
+  did: Did;
+  handle: string;
+}) {
   const openModal = useOpenModal();
   const { t } = useTranslation();
   return (
@@ -31,7 +37,7 @@ export function DeleteAccountButton({ did }: { did: Did }) {
       data-testid="delete-account-button"
       onClick={(e) => {
         e.stopPropagation();
-        openModal({ type: "delete", did });
+        openModal({ type: "delete", did, handle });
       }}
     >
       <span className="i-lucide-trash-2 size-4"></span>

@@ -5,8 +5,14 @@ import type { Repository } from "../utils/pds";
 import type { Did } from "../utils/types";
 
 type AccountOperationAction = {
-  type: "reset-password" | "takedown" | "untakedown" | "delete";
+  type: "reset-password" | "takedown" | "untakedown";
   did: Did;
+};
+
+type DeleteAccountAction = {
+  type: "delete";
+  did: Did;
+  handle: string;
 };
 
 type LogoutAction = {
@@ -33,6 +39,7 @@ type CreateAccountAction = {
 
 export type ModalAction =
   | AccountOperationAction
+  | DeleteAccountAction
   | AccountInfoAction
   | RequestCrawlAction
   | InviteCodeAction
