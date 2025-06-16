@@ -71,10 +71,10 @@ export const useFetchMoreRepositories = () => {
 export const useReloadRepositories = () => {
   const accountList = useAccountList();
   const initRepositories = useInitRepositories();
-  return async () => {
+  return async (offset: number = 0) => {
     if (!accountList.repos) {
       throw new Error("Repositories are not initialized");
     }
-    await initRepositories(accountList.repos.length);
+    await initRepositories(accountList.repos.length + offset);
   };
 };
