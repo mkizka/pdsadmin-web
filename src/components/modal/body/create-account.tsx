@@ -52,7 +52,7 @@ export function CreateAccountModalBody() {
           });
           closeModal();
           toast.success(t("modal.create-account.toast"));
-          await reloadRepos();
+          await reloadRepos(1);
         } catch (error) {
           // eslint-disable-next-line no-console
           console.error(error);
