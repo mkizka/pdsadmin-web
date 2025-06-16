@@ -101,6 +101,10 @@ test("新規アカウントの作成と削除ができる", async ({ page }) => 
   await test.step("アカウントを削除", async () => {
     await newAccount.getByTestId("account-dropdown-button").click();
     await newAccount.getByTestId("delete-account-button").click();
+    
+    // ハンドルが削除確認メッセージに表示されていることを確認
+    await expect(page.locator("text=@" + handle)).toBeVisible();
+    
     await page.getByTestId("delete-account-confirm-button").click();
   });
 
