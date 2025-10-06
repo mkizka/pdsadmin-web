@@ -30,7 +30,7 @@
     "jotai": "2.12.4",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "react-i18next": "15.5.2",
+    "react-i18next": "16.0.0",
     "tailwind-merge": "3.3.0",
     "tailwindcss": "4.1.13",
     "zod": "3.25.28"
