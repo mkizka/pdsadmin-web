@@ -105,7 +105,6 @@ export class PDS {
           password,
           inviteCode,
         },
-        headers: this.#headers,
         as: "json",
       },
     );
