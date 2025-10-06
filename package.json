@@ -57,7 +57,7 @@
     "prettier-plugin-pkg": "0.19.1",
     "prettier-plugin-tailwindcss": "0.6.11",
     "typescript": "5.8.3",
-    "vite": "6.3.5",
+    "vite": "7.1.7",
     "wait-on": "9.0.1"
   },
   "lint-staged": {
