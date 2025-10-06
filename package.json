@@ -33,7 +33,7 @@
     "react-i18next": "15.5.2",
     "tailwind-merge": "3.3.0",
     "tailwindcss": "4.1.13",
-    "zod": "3.25.28"
+    "zod": "4.1.11"
   },
   "devDependencies": {
     "@atcute/atproto": "3.0.2",
