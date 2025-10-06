@@ -47,7 +47,7 @@
     "@types/react-dom": "19.1.5",
     "@vitejs/plugin-react-swc": "4.1.0",
     "daisyui": "5.0.37",
-    "eslint": "9.27.0",
+    "eslint": "9.36.0",
     "eslint-plugin-react-refresh": "0.4.20",
     "giget": "2.0.0",
     "husky": "9.1.7",
