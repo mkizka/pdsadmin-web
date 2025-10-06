@@ -40,7 +40,7 @@
     "@egoist/tailwindcss-icons": "1.9.0",
     "@iconify-json/lucide": "1.2.44",
     "@iconify-json/simple-icons": "1.2.36",
-    "@mkizka/eslint-config": "6.0.1",
+    "@mkizka/eslint-config": "7.1.2",
     "@playwright/test": "1.55.1",
     "@types/node": "22.15.21",
     "@types/react": "19.1.5",
