@@ -16,7 +16,7 @@ importers:
         version: 1.6.0(react@19.1.1)
       '@conform-to/zod':
         specifier: 1.6.0
-        version: 1.6.0(zod@3.25.28)
+        version: 1.6.0(zod@4.1.11)
       '@tailwindcss/vite':
         specifier: 4.1.13
         version: 4.1.13(vite@6.3.5(@types/node@22.15.21)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.0))
@@ -48,8 +48,8 @@ importers:
         specifier: 4.1.13
         version: 4.1.13
       zod:
-        specifier: 3.25.28
-        version: 3.25.28
+        specifier: 4.1.11
+        version: 4.1.11
     devDependencies:
       '@atcute/atproto':
         specifier: 3.0.2
@@ -2520,8 +2520,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.25.28:
-    resolution: {integrity: sha512-/nt/67WYKnr5by3YS7LroZJbtcCBurDKKPBPWWzaxvVCGuG/NOsiKkrjoOhI8mJ+SQUXEbUzeB3S+6XDUEEj7Q==}
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
 snapshots:
 
@@ -2664,10 +2664,10 @@ snapshots:
       '@conform-to/dom': 1.6.0
       react: 19.1.1
 
-  '@conform-to/zod@1.6.0(zod@3.25.28)':
+  '@conform-to/zod@1.6.0(zod@4.1.11)':
     dependencies:
       '@conform-to/dom': 1.6.0
-      zod: 3.25.28
+      zod: 4.1.11
 
   '@dword-design/dedent@0.7.0':
     dependencies:
@@ -4972,4 +4972,4 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.25.28: {}
+  zod@4.1.11: {}
