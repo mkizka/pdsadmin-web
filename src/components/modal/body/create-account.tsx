@@ -46,6 +46,7 @@ export function CreateAccountModalBody() {
         setLoading(true);
         try {
           await pds.createAccount({
+            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
             handle: submission.value.handle as `${string}.${string}`,
             email: submission.value.email,
             password: submission.value.password,

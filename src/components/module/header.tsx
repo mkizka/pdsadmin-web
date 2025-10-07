@@ -12,6 +12,7 @@ function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const handleLanguageChange = async (language: string) => {
     await i18n.changeLanguage(language);
     if (document.activeElement) {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       (document.activeElement as HTMLElement).blur();
     }
   };

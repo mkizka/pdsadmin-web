@@ -56,6 +56,7 @@ class Modal {
   }
 
   #getDialog() {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const dialog = document.getElementById(
       this.#elementId,
     ) as HTMLDialogElement | null;
