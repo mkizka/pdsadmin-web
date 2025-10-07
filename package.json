@@ -20,7 +20,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@atcute/client": "4.0.3",
+    "@atcute/client": "4.0.2",
     "@conform-to/react": "1.11.0",
     "@conform-to/zod": "1.11.0",
     "@tailwindcss/vite": "4.1.13",

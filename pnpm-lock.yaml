@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@atcute/client':
-        specifier: 4.0.3
-        version: 4.0.3
+        specifier: 4.0.2
+        version: 4.0.2
       '@conform-to/react':
         specifier: 1.11.0
         version: 1.11.0(react@19.1.1)
@@ -136,14 +136,11 @@ packages:
   '@atcute/atproto@3.1.4':
     resolution: {integrity: sha512-v0/ue7mZYtjYw4vWbtda51bLwW88mqsUQB8F/UZNO18ANAQWmKq1HDceVqjvruaLe2QPqE43XM3WkEyZ2FhOrA==}
 
-  '@atcute/client@4.0.3':
-    resolution: {integrity: sha512-RIOZWFVLca/HiPAAUDqQPOdOreCxTbL5cb+WUf5yqQOKIu5yEAP3eksinmlLmgIrlr5qVOE7brazUUzaskFCfw==}
+  '@atcute/client@4.0.2':
+    resolution: {integrity: sha512-AOs6DEm59I0+wt8JOEOjKQLtBYZMML9p40pxaEWqP/ukAlhYUfLc9Geby5CMBmh7TchQCMCSHQzrY/lDs026Bw==}
 
   '@atcute/identity@1.0.2':
     resolution: {integrity: sha512-SrDPHuEarEHj9bx7NfYn7DYG6kIgJIMRU581iOCIaVaiZ1WhE9D8QxTxeYG/rbGNSa85E891ECp1sQcKiBN0kg==}
-
-  '@atcute/lexicons@1.0.3':
-    resolution: {integrity: sha512-R4xa3AMD+uMNn67/Nly0ohieT+vuN2qeV8Oq/mkpb0O3pFTuG7IkhXEGIXVnFY6I/NEQGhWB1FjHYpgRyL35Pw==}
 
   '@atcute/lexicons@1.1.1':
     resolution: {integrity: sha512-k6qy5p3j9fJJ6ekaMPfEfp3ni4TW/XNuH9ZmsuwC0fi0tOjp+Fa8ZQakHwnqOzFt/cVBfGcmYE/lKNAbeTjgUg==}
@@ -2565,19 +2562,15 @@ snapshots:
     dependencies:
       '@atcute/lexicons': 1.1.1
 
-  '@atcute/client@4.0.3':
+  '@atcute/client@4.0.2':
     dependencies:
       '@atcute/identity': 1.0.2
-      '@atcute/lexicons': 1.0.3
+      '@atcute/lexicons': 1.1.1
 
   '@atcute/identity@1.0.2':
     dependencies:
-      '@atcute/lexicons': 1.0.3
+      '@atcute/lexicons': 1.1.1
       '@badrap/valita': 0.4.5
-
-  '@atcute/lexicons@1.0.3':
-    dependencies:
-      esm-env: 1.2.2
 
   '@atcute/lexicons@1.1.1':
     dependencies:
