@@ -12,11 +12,11 @@ importers:
         specifier: 4.0.5
         version: 4.0.5
       '@conform-to/react':
-        specifier: 1.12.0
-        version: 1.12.0(react@19.2.0)
+        specifier: 1.12.1
+        version: 1.12.1(react@19.2.0)
       '@conform-to/zod':
-        specifier: 1.12.0
-        version: 1.12.0(zod@4.1.12)
+        specifier: 1.12.1
+        version: 1.12.1(zod@4.1.12)
       '@tailwindcss/vite':
         specifier: 4.1.14
         version: 4.1.14(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))
@@ -109,8 +109,8 @@ importers:
         specifier: 0.21.2
         version: 0.21.2(prettier@3.6.2)
       prettier-plugin-tailwindcss:
-        specifier: 0.7.0
-        version: 0.7.0(prettier@3.6.2)
+        specifier: 0.7.1
+        version: 0.7.1(prettier@3.6.2)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -216,16 +216,16 @@ packages:
     resolution: {integrity: sha512-4kdqcjyxo/8RQ8ayjms47HCWZIF5981oE5nIenbfThKDxWXtEHKipAOWlflpPJzZx9y/JWYQkp18Awr7VuepFg==}
     engines: {node: '>= 18'}
 
-  '@conform-to/dom@1.12.0':
-    resolution: {integrity: sha512-TKTic9bKm7uEuf3ntrs5VeD3iDeEpSnA5H2qnAfI9dbostEr2hNlXCjOEGKFBiBtx+aPjpHtt/e0rs0+t+vWxg==}
+  '@conform-to/dom@1.12.1':
+    resolution: {integrity: sha512-tAipL1ILa+rQWGhKeTAnqR0wI0L+2XIfOAB+tjy16de8d8E0HhSxyRP5RAI4bx8hqtcN+BFwKRKdqXamJ+zXLQ==}
 
-  '@conform-to/react@1.12.0':
-    resolution: {integrity: sha512-V4JkXTzRBEE8RbwKf4MzVykJI/kv9wu70qbiWnFgdlYbC0oA27iIN/7aAYKbTRXvzkWtoe6fpi5vjV0I9ikb5g==}
+  '@conform-to/react@1.12.1':
+    resolution: {integrity: sha512-YL/6bvJrecQGRjx5XbwtCikwBIlkMmCXw5Zeed9t4hZeN954d/U0d2zde/EddiqQXhzGa8dhJqsDwY/pSYeTtw==}
     peerDependencies:
       react: '>=18'
 
-  '@conform-to/zod@1.12.0':
-    resolution: {integrity: sha512-+teD2CFI0a3qvyi0SlL5l7YKkau2cb5PzBV2W/bh9xZqlM8jnaMIc03bWJegvbvL4yzkeUvNZwncw9hYcm6a6w==}
+  '@conform-to/zod@1.12.1':
+    resolution: {integrity: sha512-E8hQOVTtbuAJFxTyzWzTXvJ/e40b7nkuNwwHRI1F2BqPUqIDCGBN4lC1Iwbl7B3G/K1bfJJsvsflN7r52eFfcw==}
     peerDependencies:
       zod: ^3.21.0 || ^4.0.0
 
@@ -2040,8 +2040,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.3
 
-  prettier-plugin-tailwindcss@0.7.0:
-    resolution: {integrity: sha512-zpRZhkfwq1cNmbKhmKzXKuKFdkgXZXlf6p+KttD75v6pGz1FxmcKMc4RKdw97GYBKBbout4113HSLaBJAomFDw==}
+  prettier-plugin-tailwindcss@0.7.1:
+    resolution: {integrity: sha512-Bzv1LZcuiR1Sk02iJTS1QzlFNp/o5l2p3xkopwOrbPmtMeh3fK9rVW5M3neBQzHq+kGKj/4LGQMTNcTH4NGPtQ==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -2640,16 +2640,16 @@ snapshots:
 
   '@badrap/valita@0.4.6': {}
 
-  '@conform-to/dom@1.12.0': {}
+  '@conform-to/dom@1.12.1': {}
 
-  '@conform-to/react@1.12.0(react@19.2.0)':
+  '@conform-to/react@1.12.1(react@19.2.0)':
     dependencies:
-      '@conform-to/dom': 1.12.0
+      '@conform-to/dom': 1.12.1
       react: 19.2.0
 
-  '@conform-to/zod@1.12.0(zod@4.1.12)':
+  '@conform-to/zod@1.12.1(zod@4.1.12)':
     dependencies:
-      '@conform-to/dom': 1.12.0
+      '@conform-to/dom': 1.12.1
       zod: 4.1.12
 
   '@dword-design/defu@1.0.3':
@@ -4469,7 +4469,7 @@ snapshots:
     dependencies:
       prettier: 3.6.2
 
-  prettier-plugin-tailwindcss@0.7.0(prettier@3.6.2):
+  prettier-plugin-tailwindcss@0.7.1(prettier@3.6.2):
     dependencies:
       prettier: 3.6.2
 
