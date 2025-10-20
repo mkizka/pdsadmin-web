@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@atcute/client": "4.0.5",
-    "@conform-to/react": "1.12.0",
-    "@conform-to/zod": "1.12.0",
+    "@conform-to/react": "1.12.1",
+    "@conform-to/zod": "1.12.1",
     "@tailwindcss/vite": "4.1.14",
     "clsx": "2.1.1",
     "i18next": "25.6.0",
@@ -55,7 +55,7 @@
     "npm-run-all2": "8.0.4",
     "prettier": "3.6.2",
     "prettier-plugin-pkg": "0.21.2",
-    "prettier-plugin-tailwindcss": "0.7.0",
+    "prettier-plugin-tailwindcss": "0.7.1",
     "typescript": "5.9.3",
     "vite": "7.1.10",
     "wait-on": "9.0.1"
