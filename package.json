@@ -41,7 +41,7 @@
     "@iconify-json/lucide": "1.2.69",
     "@iconify-json/simple-icons": "1.2.54",
     "@mkizka/eslint-config": "7.1.2",
-    "@playwright/test": "1.56.0",
+    "@playwright/test": "1.56.1",
     "@types/node": "22.18.11",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
