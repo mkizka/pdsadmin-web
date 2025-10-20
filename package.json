@@ -42,7 +42,7 @@
     "@iconify-json/simple-icons": "1.2.54",
     "@mkizka/eslint-config": "7.1.2",
     "@playwright/test": "1.56.0",
-    "@types/node": "22.18.10",
+    "@types/node": "22.18.11",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@vitejs/plugin-react-swc": "4.1.0",
