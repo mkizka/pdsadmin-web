@@ -12,11 +12,11 @@ importers:
         specifier: 4.0.5
         version: 4.0.5
       '@conform-to/react':
-        specifier: 1.12.1
-        version: 1.12.1(react@19.2.0)
+        specifier: 1.13.0
+        version: 1.13.0(react@19.2.0)
       '@conform-to/zod':
-        specifier: 1.12.1
-        version: 1.12.1(zod@4.1.12)
+        specifier: 1.13.0
+        version: 1.13.0(zod@4.1.12)
       '@tailwindcss/vite':
         specifier: 4.1.14
         version: 4.1.14(vite@7.1.11(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)(yaml@2.8.1))
@@ -39,8 +39,8 @@ importers:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
       react-i18next:
-        specifier: 16.1.0
-        version: 16.1.0(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        specifier: 16.1.1
+        version: 16.1.1(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       tailwind-merge:
         specifier: 3.3.1
         version: 3.3.1
@@ -52,8 +52,8 @@ importers:
         version: 4.1.12
     devDependencies:
       '@atcute/atproto':
-        specifier: 3.1.7
-        version: 3.1.7
+        specifier: 3.1.8
+        version: 3.1.8
       '@egoist/tailwindcss-icons':
         specifier: 1.9.0
         version: 1.9.0(tailwindcss@4.1.14)
@@ -61,8 +61,8 @@ importers:
         specifier: 1.2.70
         version: 1.2.70
       '@iconify-json/simple-icons':
-        specifier: 1.2.54
-        version: 1.2.54
+        specifier: 1.2.55
+        version: 1.2.55
       '@mkizka/eslint-config':
         specifier: 7.1.2
         version: 7.1.2(@typescript-eslint/eslint-plugin@8.46.0(@typescript-eslint/parser@8.46.0(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3)
@@ -97,8 +97,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       lint-staged:
-        specifier: 16.2.4
-        version: 16.2.4
+        specifier: 16.2.5
+        version: 16.2.5
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
@@ -129,8 +129,8 @@ packages:
   '@antfu/utils@8.1.1':
     resolution: {integrity: sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==}
 
-  '@atcute/atproto@3.1.7':
-    resolution: {integrity: sha512-3Ym8qaVZg2vf8qw0KO1aue39z/5oik5J+UDoSes1vr8ddw40UVLA5sV4bXSKmLnhzQHiLLgoVZXe4zaKfozPoQ==}
+  '@atcute/atproto@3.1.8':
+    resolution: {integrity: sha512-Miu+S7RSgAYbmQWtHJKfSFUN5Kliqoo4YH0rILPmBtfmlZieORJgXNj9oO/Uive0/ulWkiRse07ATIcK8JxMnw==}
 
   '@atcute/client@4.0.5':
     resolution: {integrity: sha512-R8Qen8goGmEkynYGg2m6XFlVmz0GTDvQ+9w+4QqOob+XMk8/WDpF4aImev7WKEde/rV2gjcqW7zM8E6W9NShDA==}
@@ -216,16 +216,16 @@ packages:
     resolution: {integrity: sha512-4kdqcjyxo/8RQ8ayjms47HCWZIF5981oE5nIenbfThKDxWXtEHKipAOWlflpPJzZx9y/JWYQkp18Awr7VuepFg==}
     engines: {node: '>= 18'}
 
-  '@conform-to/dom@1.12.1':
-    resolution: {integrity: sha512-tAipL1ILa+rQWGhKeTAnqR0wI0L+2XIfOAB+tjy16de8d8E0HhSxyRP5RAI4bx8hqtcN+BFwKRKdqXamJ+zXLQ==}
+  '@conform-to/dom@1.13.0':
+    resolution: {integrity: sha512-5EeSBSatdP2aWrb8INBu8nD/kk8A2iQCzzyESGnU/Y9ccFFLzRgtT0MRKnoxQaVRVMzjodIXNb0qxiRx+I9m4A==}
 
-  '@conform-to/react@1.12.1':
-    resolution: {integrity: sha512-YL/6bvJrecQGRjx5XbwtCikwBIlkMmCXw5Zeed9t4hZeN954d/U0d2zde/EddiqQXhzGa8dhJqsDwY/pSYeTtw==}
+  '@conform-to/react@1.13.0':
+    resolution: {integrity: sha512-yxzKCClIEi5rCmQbQFbO76Yy11vcS+7CfKzOISV4M1tWyMoO4Lm1peDS7DSIv47QbY5tCJKLFwBjovmpa6GF+w==}
     peerDependencies:
       react: '>=18'
 
-  '@conform-to/zod@1.12.1':
-    resolution: {integrity: sha512-E8hQOVTtbuAJFxTyzWzTXvJ/e40b7nkuNwwHRI1F2BqPUqIDCGBN4lC1Iwbl7B3G/K1bfJJsvsflN7r52eFfcw==}
+  '@conform-to/zod@1.13.0':
+    resolution: {integrity: sha512-WAPzRICdOPmjnwUgXOAVXIfBUwI/TIETbTIPMoGri0X1K6doyNwWhmkKEpKLFk3KOMOHG00NCXJH64WFKgeI8g==}
     peerDependencies:
       zod: ^3.21.0 || ^4.0.0
 
@@ -488,8 +488,8 @@ packages:
   '@iconify-json/lucide@1.2.70':
     resolution: {integrity: sha512-56s9NdBKgshywVY1e4gOcxzAbU1J649e/jLHBJU1tyNqRs7mFLVEGwj2mmzHJ5YAZB5Tsngi4f/ocTBPlG06ZA==}
 
-  '@iconify-json/simple-icons@1.2.54':
-    resolution: {integrity: sha512-OQQYl8yC5j3QklZOYnK31QYe5h47IhyCoxSLd53f0e0nA4dgi8VOZS30SgSAbsecQ+S0xlGJMjXIHTIqZ+ML3w==}
+  '@iconify-json/simple-icons@1.2.55':
+    resolution: {integrity: sha512-9vc04pmup/zcef8hDypWU8nMwMaFVkWuUzWkxyL++DVp5AA8baoJHK6RyKN1v+cvfR2agxkUb053XVggzFFkTA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1765,8 +1765,8 @@ packages:
     resolution: {integrity: sha512-xi6IyHML+c9+Q3W0S4fCQJOym42pyurFiJUHEcEyHS0CeKzia4yZDEsLlqOFykxOdHpNy0NmvVO31vcSqAxJCg==}
     engines: {node: '>= 12.0.0'}
 
-  lint-staged@16.2.4:
-    resolution: {integrity: sha512-Pkyr/wd90oAyXk98i/2KwfkIhoYQUMtss769FIT9hFM5ogYZwrk+GRE46yKXSg2ZGhcJ1p38Gf5gmI5Ohjg2yg==}
+  lint-staged@16.2.5:
+    resolution: {integrity: sha512-o36wH3OX0jRWqDw5dOa8a8x6GXTKaLM+LvhRaucZxez0IxA+KNDUCiyjBfNgsMNmchwSX6urLSL7wShcUqAang==}
     engines: {node: '>=20.17'}
     hasBin: true
 
@@ -2125,8 +2125,8 @@ packages:
     peerDependencies:
       react: ^19.2.0
 
-  react-i18next@16.1.0:
-    resolution: {integrity: sha512-10qpoODc0ntrWpZdko9CQnl2Xf4VJXUAS9sa7WOkTrQzbbfyoSSUZ3Rsnpgt8la6qCxeB61yzYjyW8U1g3hUUg==}
+  react-i18next@16.1.1:
+    resolution: {integrity: sha512-Uw8Ui10S0At+LWhWRYAVaJvZjdIM8G8YKjdhRgM9yNRuVlPTm+tD+RSDIVBxmnsUxB+4F+UH3PXqiL2DWxsL6w==}
     peerDependencies:
       i18next: '>= 25.5.2'
       react: '>= 16.8.0'
@@ -2521,7 +2521,7 @@ snapshots:
 
   '@antfu/utils@8.1.1': {}
 
-  '@atcute/atproto@3.1.7':
+  '@atcute/atproto@3.1.8':
     dependencies:
       '@atcute/lexicons': 1.2.2
 
@@ -2644,16 +2644,16 @@ snapshots:
 
   '@badrap/valita@0.4.6': {}
 
-  '@conform-to/dom@1.12.1': {}
+  '@conform-to/dom@1.13.0': {}
 
-  '@conform-to/react@1.12.1(react@19.2.0)':
+  '@conform-to/react@1.13.0(react@19.2.0)':
     dependencies:
-      '@conform-to/dom': 1.12.1
+      '@conform-to/dom': 1.13.0
       react: 19.2.0
 
-  '@conform-to/zod@1.12.1(zod@4.1.12)':
+  '@conform-to/zod@1.13.0(zod@4.1.12)':
     dependencies:
-      '@conform-to/dom': 1.12.1
+      '@conform-to/dom': 1.13.0
       zod: 4.1.12
 
   '@dword-design/defu@1.0.3':
@@ -2838,7 +2838,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.54':
+  '@iconify-json/simple-icons@1.2.55':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4193,7 +4193,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
 
-  lint-staged@16.2.4:
+  lint-staged@16.2.5:
     dependencies:
       commander: 14.0.1
       listr2: 9.0.4
@@ -4499,7 +4499,7 @@ snapshots:
       react: 19.2.0
       scheduler: 0.27.0
 
-  react-i18next@16.1.0(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3):
+  react-i18next@16.1.1(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.28.4
       html-parse-stringify: 3.0.1
