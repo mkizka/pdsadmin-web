@@ -23,6 +23,7 @@ export class PDS {
   }
 
   async listRepos(params?: { limit?: number; cursor?: string }) {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.get("com.atproto.sync.listRepos", {
       params: {
         limit: params?.limit,
@@ -55,6 +56,7 @@ export class PDS {
   }
 
   async #getAccountInfos(dids: Did[]) {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.get(
       "com.atproto.admin.getAccountInfos",
       {
@@ -71,6 +73,7 @@ export class PDS {
   }
 
   async createInviteCode() {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.post(
       "com.atproto.server.createInviteCode",
       {
@@ -96,6 +99,7 @@ export class PDS {
     password: string;
   }) {
     const inviteCode = await this.createInviteCode();
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.post(
       "com.atproto.server.createAccount",
       {
@@ -115,6 +119,7 @@ export class PDS {
   }
 
   async resetPassword(did: Did, password: string) {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.updateAccountPassword",
       {
@@ -132,6 +137,7 @@ export class PDS {
   }
 
   async takedown(did: Did, ref: string) {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.updateSubjectStatus",
       {
@@ -155,6 +161,7 @@ export class PDS {
   }
 
   async untakedown(did: Did) {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.updateSubjectStatus",
       {
@@ -177,6 +184,7 @@ export class PDS {
   }
 
   async deleteAccount(did: Did) {
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await this.#rpc.post(
       "com.atproto.admin.deleteAccount",
       {
@@ -197,6 +205,7 @@ export class PDS {
       service: relayService,
     });
     const rpc = new Client({ handler });
+    // @ts-expect-error - @atcute/client v4.1+ type inference issue
     const { data, ok } = await rpc.post("com.atproto.sync.requestCrawl", {
       input: {
         hostname: new URL(this.#service).hostname,
