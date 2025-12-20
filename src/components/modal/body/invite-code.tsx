@@ -16,7 +16,7 @@ export function InviteCodeModalBody({ code }: Props) {
       await navigator.clipboard.writeText(code);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
-    } catch (err) {
+    } catch {
       alert(t("modal.invite-code.clipboard-error"));
     }
   };
