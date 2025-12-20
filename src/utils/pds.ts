@@ -1,4 +1,14 @@
 import { Client, simpleFetchHandler } from "@atcute/client";
+import type {
+  ComAtprotoAdminDeleteAccount,
+  ComAtprotoAdminGetAccountInfos,
+  ComAtprotoAdminUpdateAccountPassword,
+  ComAtprotoAdminUpdateSubjectStatus,
+  ComAtprotoServerCreateAccount,
+  ComAtprotoServerCreateInviteCode,
+  ComAtprotoSyncListRepos,
+  ComAtprotoSyncRequestCrawl,
+} from "@atcute/atproto/types";
 
 import type { Did } from "./types";
 
@@ -23,13 +33,16 @@ export class PDS {
   }
 
   async listRepos(params?: { limit?: number; cursor?: string }) {
-    const { data, ok } = await this.#rpc.get("com.atproto.sync.listRepos", {
-      params: {
-        limit: params?.limit,
-        cursor: params?.cursor,
+    const { data, ok } = await this.#rpc.get<ComAtprotoSyncListRepos.Output>(
+      "com.atproto.sync.listRepos",
+      {
+        params: {
+          limit: params?.limit,
+          cursor: params?.cursor,
+        },
+        headers: this.#headers,
       },
-      headers: this.#headers,
-    });
+    );
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
@@ -55,15 +68,14 @@ export class PDS {
   }
 
   async #getAccountInfos(dids: Did[]) {
-    const { data, ok } = await this.#rpc.get(
-      "com.atproto.admin.getAccountInfos",
-      {
-        params: {
-          dids,
-        },
-        headers: this.#headers,
+    const { data, ok } = await this.#rpc.get<
+      ComAtprotoAdminGetAccountInfos.Output
+    >("com.atproto.admin.getAccountInfos", {
+      params: {
+        dids,
       },
-    );
+      headers: this.#headers,
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
@@ -71,15 +83,14 @@ export class PDS {
   }
 
   async createInviteCode() {
-    const { data, ok } = await this.#rpc.post(
-      "com.atproto.server.createInviteCode",
-      {
-        input: {
-          useCount: 1,
-        },
-        headers: this.#headers,
+    const { data, ok } = await this.#rpc.post<
+      ComAtprotoServerCreateInviteCode.Output
+    >("com.atproto.server.createInviteCode", {
+      input: {
+        useCount: 1,
       },
-    );
+      headers: this.#headers,
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
@@ -96,18 +107,17 @@ export class PDS {
     password: string;
   }) {
     const inviteCode = await this.createInviteCode();
-    const { data, ok } = await this.#rpc.post(
-      "com.atproto.server.createAccount",
-      {
-        input: {
-          handle,
-          email,
-          password,
-          inviteCode,
-        },
-        as: "json",
+    const { data, ok } = await this.#rpc.post<
+      ComAtprotoServerCreateAccount.Output
+    >("com.atproto.server.createAccount", {
+      input: {
+        handle,
+        email,
+        password,
+        inviteCode,
       },
-    );
+      as: "json",
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
@@ -115,78 +125,74 @@ export class PDS {
   }
 
   async resetPassword(did: Did, password: string) {
-    const { data, ok } = await this.#rpc.post(
-      "com.atproto.admin.updateAccountPassword",
-      {
-        input: {
-          did,
-          password,
-        },
-        headers: this.#headers,
-        as: "blob",
+    const { data, ok } = await this.#rpc.post<
+      ComAtprotoAdminUpdateAccountPassword.Output
+    >("com.atproto.admin.updateAccountPassword", {
+      input: {
+        did,
+        password,
       },
-    );
+      headers: this.#headers,
+      as: "blob",
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
   }
 
   async takedown(did: Did, ref: string) {
-    const { data, ok } = await this.#rpc.post(
-      "com.atproto.admin.updateSubjectStatus",
-      {
-        input: {
-          subject: {
-            $type: "com.atproto.admin.defs#repoRef",
-            did,
-          },
-          takedown: {
-            applied: true,
-            ref,
-          },
+    const { data, ok } = await this.#rpc.post<
+      ComAtprotoAdminUpdateSubjectStatus.Output
+    >("com.atproto.admin.updateSubjectStatus", {
+      input: {
+        subject: {
+          $type: "com.atproto.admin.defs#repoRef",
+          did,
         },
-        headers: this.#headers,
-        as: "json",
+        takedown: {
+          applied: true,
+          ref,
+        },
       },
-    );
+      headers: this.#headers,
+      as: "json",
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
   }
 
   async untakedown(did: Did) {
-    const { data, ok } = await this.#rpc.post(
-      "com.atproto.admin.updateSubjectStatus",
-      {
-        input: {
-          subject: {
-            $type: "com.atproto.admin.defs#repoRef",
-            did,
-          },
-          takedown: {
-            applied: false,
-          },
+    const { data, ok } = await this.#rpc.post<
+      ComAtprotoAdminUpdateSubjectStatus.Output
+    >("com.atproto.admin.updateSubjectStatus", {
+      input: {
+        subject: {
+          $type: "com.atproto.admin.defs#repoRef",
+          did,
         },
-        headers: this.#headers,
-        as: "json",
+        takedown: {
+          applied: false,
+        },
       },
-    );
+      headers: this.#headers,
+      as: "json",
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
   }
 
   async deleteAccount(did: Did) {
-    const { data, ok } = await this.#rpc.post(
-      "com.atproto.admin.deleteAccount",
-      {
-        input: {
-          did,
-        },
-        headers: this.#headers,
-        as: "blob",
+    const { data, ok } = await this.#rpc.post<
+      ComAtprotoAdminDeleteAccount.Output
+    >("com.atproto.admin.deleteAccount", {
+      input: {
+        did,
       },
-    );
+      headers: this.#headers,
+      as: "blob",
+    });
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
@@ -197,13 +203,16 @@ export class PDS {
       service: relayService,
     });
     const rpc = new Client({ handler });
-    const { data, ok } = await rpc.post("com.atproto.sync.requestCrawl", {
-      input: {
-        hostname: new URL(this.#service).hostname,
+    const { data, ok } = await rpc.post<ComAtprotoSyncRequestCrawl.Output>(
+      "com.atproto.sync.requestCrawl",
+      {
+        input: {
+          hostname: new URL(this.#service).hostname,
+        },
+        headers: this.#headers,
+        as: "blob",
       },
-      headers: this.#headers,
-      as: "blob",
-    });
+    );
     if (!ok) {
       throw new Error(data.message ?? data.error);
     }
