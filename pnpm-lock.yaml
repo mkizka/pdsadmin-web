@@ -24,14 +24,14 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       i18next:
-        specifier: 25.10.5
-        version: 25.10.5(typescript@5.9.3)
+        specifier: 25.10.10
+        version: 25.10.10(typescript@5.9.3)
       i18next-browser-languagedetector:
         specifier: 8.2.1
         version: 8.2.1
       jotai:
-        specifier: 2.18.1
-        version: 2.18.1(@babel/core@7.29.0)(@babel/template@7.28.6)(@types/react@19.2.14)(react@19.2.4)
+        specifier: 2.19.0
+        version: 2.19.0(@babel/core@7.29.0)(@babel/template@7.28.6)(@types/react@19.2.14)(react@19.2.4)
       react:
         specifier: 19.2.4
         version: 19.2.4
@@ -39,8 +39,8 @@ importers:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
       react-i18next:
-        specifier: 16.6.2
-        version: 16.6.2(i18next@25.10.5(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+        specifier: 16.6.6
+        version: 16.6.6(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       tailwind-merge:
         specifier: 3.5.0
         version: 3.5.0
@@ -58,8 +58,8 @@ importers:
         specifier: 1.9.2
         version: 1.9.2(tailwindcss@4.2.2)
       '@iconify-json/lucide':
-        specifier: 1.2.98
-        version: 1.2.98
+        specifier: 1.2.100
+        version: 1.2.100
       '@iconify-json/simple-icons':
         specifier: 1.2.75
         version: 1.2.75
@@ -489,8 +489,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/lucide@1.2.98':
-    resolution: {integrity: sha512-Lx2464W8Tty/QEnZ2UPb73nPdML/HpGCj0J0w37jP3/jx3l4fniZBjDxe1TgHiIL5XW9QO3vlx53ZQZ5JsNpzQ==}
+  '@iconify-json/lucide@1.2.100':
+    resolution: {integrity: sha512-vCrhQ/6T530HEMkWOkSyedvMiuQdVU1tMHEs32k4tklJmCmjokH3Dej6ycvfLt7kftBSQ2kPSUiyOpoW3uOF5g==}
 
   '@iconify-json/simple-icons@1.2.75':
     resolution: {integrity: sha512-KvcCUbvcBWb0sbqLIxHoY8z5/piXY08wcY9gfMhF+ph3AfzGMaSmZFkUY71HSXAljQngXkgs4bdKdekO0HQWvg==}
@@ -1508,10 +1508,10 @@ packages:
   i18next-browser-languagedetector@8.2.1:
     resolution: {integrity: sha512-bZg8+4bdmaOiApD7N7BPT9W8MLZG+nPTOFlLiJiT8uzKXFjhxw4v2ierCXOwB5sFDMtuA5G4kgYZ0AznZxQ/cw==}
 
-  i18next@25.10.5:
-    resolution: {integrity: sha512-jRnF7eRNsdcnh7AASSgaU3lj/8lJZuHkfsouetnLEDH0xxE1vVi7qhiJ9RhdSPUyzg4ltb7P7aXsFlTk9sxL2w==}
+  i18next@25.10.10:
+    resolution: {integrity: sha512-cqUW2Z3EkRx7NqSyywjkgCLK7KLCL6IFVFcONG7nVYIJ3ekZ1/N5jUsihHV6Bq37NfhgtczxJcxduELtjTwkuQ==}
     peerDependencies:
-      typescript: ^5
+      typescript: ^5 || ^6
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -1658,8 +1658,8 @@ packages:
     resolution: {integrity: sha512-RuCOQMIt78LWnktPoeBL0GErkNaJPTBGcYuyaBvUOQSpcpcLfWrHPPihYdOGbV5pam9VTWbeoF7TsGiHugcjGA==}
     engines: {node: '>= 20'}
 
-  jotai@2.18.1:
-    resolution: {integrity: sha512-e0NOzK+yRFwHo7DOp0DS0Ycq74KMEAObDWFGmfEL28PD9nLqBTt3/Ug7jf9ca72x0gC9LQZG9zH+0ISICmy3iA==}
+  jotai@2.19.0:
+    resolution: {integrity: sha512-r2wwxEXP1F2JteDLZEOPoIpAHhV89paKsN5GWVYndPNMMP/uVZDcC+fNj0A8NjKgaPWzdyO8Vp8YcYKe0uCEqQ==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@babel/core': '>=7.0.0'
@@ -2125,14 +2125,14 @@ packages:
     peerDependencies:
       react: ^19.2.4
 
-  react-i18next@16.6.2:
-    resolution: {integrity: sha512-/S/GPzElTqEi5o2kzd0/O2627hPDmE6OGhJCCwCfUaQ3syyu+kaYH8/PYFtZeWc25NzfxTN/2fD1QjvrTgrFfA==}
+  react-i18next@16.6.6:
+    resolution: {integrity: sha512-ZgL2HUoW34UKUkOV7uSQFE1CDnRPD+tCR3ywSuWH7u2iapnz86U8Bi3Vrs620qNDzCf1F47NxglCEkchCTDOHw==}
     peerDependencies:
-      i18next: '>= 25.6.2'
+      i18next: '>= 25.10.9'
       react: '>= 16.8.0'
       react-dom: '*'
       react-native: '*'
-      typescript: ^5
+      typescript: ^5 || ^6
     peerDependenciesMeta:
       react-dom:
         optional: true
@@ -2841,7 +2841,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify-json/lucide@1.2.98':
+  '@iconify-json/lucide@1.2.100':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -3927,7 +3927,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.29.2
 
-  i18next@25.10.5(typescript@5.9.3):
+  i18next@25.10.10(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.29.2
     optionalDependencies:
@@ -4087,7 +4087,7 @@ snapshots:
       '@hapi/topo': 6.0.2
       '@standard-schema/spec': 1.1.0
 
-  jotai@2.18.1(@babel/core@7.29.0)(@babel/template@7.28.6)(@types/react@19.2.14)(react@19.2.4):
+  jotai@2.19.0(@babel/core@7.29.0)(@babel/template@7.28.6)(@types/react@19.2.14)(react@19.2.4):
     optionalDependencies:
       '@babel/core': 7.29.0
       '@babel/template': 7.28.6
@@ -4458,11 +4458,11 @@ snapshots:
       react: 19.2.4
       scheduler: 0.27.0
 
-  react-i18next@16.6.2(i18next@25.10.5(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
+  react-i18next@16.6.6(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.29.2
       html-parse-stringify: 3.0.1
-      i18next: 25.10.5(typescript@5.9.3)
+      i18next: 25.10.10(typescript@5.9.3)
       react: 19.2.4
       use-sync-external-store: 1.6.0(react@19.2.4)
     optionalDependencies:
