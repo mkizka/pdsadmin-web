@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@atcute/client": "4.2.1",
-    "@conform-to/react": "1.17.1",
-    "@conform-to/zod": "1.17.1",
+    "@conform-to/react": "1.18.0",
+    "@conform-to/zod": "1.18.0",
     "@tailwindcss/vite": "4.2.2",
     "clsx": "2.1.1",
     "i18next": "25.10.10",
@@ -36,13 +36,13 @@
     "zod": "4.3.6"
   },
   "devDependencies": {
-    "@atcute/atproto": "3.1.10",
+    "@atcute/atproto": "3.1.11",
     "@egoist/tailwindcss-icons": "1.9.2",
-    "@iconify-json/lucide": "1.2.100",
-    "@iconify-json/simple-icons": "1.2.75",
+    "@iconify-json/lucide": "1.2.101",
+    "@iconify-json/simple-icons": "1.2.76",
     "@mkizka/eslint-config": "7.2.0",
     "@playwright/test": "1.58.2",
-    "@types/node": "22.19.15",
+    "@types/node": "22.19.17",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react-swc": "4.3.0",
@@ -54,10 +54,10 @@
     "lint-staged": "16.4.0",
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",
-    "prettier-plugin-pkg": "0.22.0",
+    "prettier-plugin-pkg": "0.22.1",
     "prettier-plugin-tailwindcss": "0.7.2",
     "typescript": "5.9.3",
-    "vite": "7.3.1",
+    "vite": "7.3.2",
     "wait-on": "9.0.4"
   },
   "lint-staged": {
