@@ -12,11 +12,11 @@ importers:
         specifier: 4.2.1
         version: 4.2.1
       '@conform-to/react':
-        specifier: 1.18.0
-        version: 1.18.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: 1.19.0
+        version: 1.19.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@conform-to/zod':
-        specifier: 1.18.0
-        version: 1.18.0(zod@4.3.6)
+        specifier: 1.19.0
+        version: 1.19.0(zod@4.3.6)
       '@tailwindcss/vite':
         specifier: 4.2.2
         version: 4.2.2(vite@7.3.2(@types/node@22.19.17)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
@@ -61,8 +61,8 @@ importers:
         specifier: 1.2.102
         version: 1.2.102
       '@iconify-json/simple-icons':
-        specifier: 1.2.78
-        version: 1.2.78
+        specifier: 1.2.79
+        version: 1.2.79
       '@mkizka/eslint-config':
         specifier: 7.2.0
         version: 7.2.0(@typescript-eslint/eslint-plugin@8.58.2(@typescript-eslint/parser@8.58.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
@@ -103,14 +103,14 @@ importers:
         specifier: 8.0.4
         version: 8.0.4
       prettier:
-        specifier: 3.8.2
-        version: 3.8.2
+        specifier: 3.8.3
+        version: 3.8.3
       prettier-plugin-pkg:
         specifier: 0.22.1
-        version: 0.22.1(prettier@3.8.2)
+        version: 0.22.1(prettier@3.8.3)
       prettier-plugin-tailwindcss:
         specifier: 0.7.2
-        version: 0.7.2(prettier@3.8.2)
+        version: 0.7.2(prettier@3.8.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -219,17 +219,17 @@ packages:
     resolution: {integrity: sha512-4kdqcjyxo/8RQ8ayjms47HCWZIF5981oE5nIenbfThKDxWXtEHKipAOWlflpPJzZx9y/JWYQkp18Awr7VuepFg==}
     engines: {node: '>= 18'}
 
-  '@conform-to/dom@1.18.0':
-    resolution: {integrity: sha512-luccJjJJgvePp8mmU1plwEcofP0Gk/7a54ukSX1ta7K6J0Ep37nm18WK7gowrVCIHzCnR7iAdyjd+vGTpuI4zw==}
+  '@conform-to/dom@1.19.0':
+    resolution: {integrity: sha512-2qegTdMy3ZT+SzzD8YyUWupAEhLl3X248bhrbhXdRsWjFdGSnTz12YB9j/f1MZ27A1LnmijKYiz2mgMdlblPAA==}
 
-  '@conform-to/react@1.18.0':
-    resolution: {integrity: sha512-k5CnPa/a6YOv1+cavx5DiW4yh9RxC148Xxir5p3dqJ6r20WD9MvhVDOSJ/qmIegkYoLKQhxnOw3RJoNFfEDKPw==}
+  '@conform-to/react@1.19.0':
+    resolution: {integrity: sha512-xK6+d2hHhiypLOpXIGLw9tD57N0GJFtmHBceaumS45tSV5Hr/bRiz1kioymJJrUUwV0bT+f1sTmHQZD6YJDOiw==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  '@conform-to/zod@1.18.0':
-    resolution: {integrity: sha512-ombphsARN/7QpjOOsk7QPHDvCK1dLr4PlTz6styUQoh9vt8FxTOuH64XdY0XGtwUCTSJ5/9lvBa75cyhDbYm1Q==}
+  '@conform-to/zod@1.19.0':
+    resolution: {integrity: sha512-kqwuubmJPcyDlf3gXLWjKsWhTiox4ICL/eXLFZONjnEAOHGP1sUvfhvuYwJpH0PJu82kgz9JZG5iuVOcZGsygw==}
     peerDependencies:
       zod: ^3.21.0 || ^4.0.0
 
@@ -497,8 +497,8 @@ packages:
   '@iconify-json/lucide@1.2.102':
     resolution: {integrity: sha512-Dm3EEqu5NrmzyDMB2U1+8yroEj2/dB9V4KlH0m/szwwF/ofSf0cPaGTZqkd1aExXjCor+vU53ttRMCGuXf+/cg==}
 
-  '@iconify-json/simple-icons@1.2.78':
-    resolution: {integrity: sha512-I3lkNp0Qu7q2iZWkdcf/I2hqGhzK6qxdILh9T7XqowQrnpmG/BayDsiCf6PktDoWlW0U971xA5g+panm+NFrfQ==}
+  '@iconify-json/simple-icons@1.2.79':
+    resolution: {integrity: sha512-aNyO7Fd1qej9oQfIyohYFRv0lhQLaZ+6UkK1c1qwax0MDPUOZOdq65MlU500kow97pD/W+b2u1And3e25eE24Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2110,8 +2110,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.8.2:
-    resolution: {integrity: sha512-8c3mgTe0ASwWAJK+78dpviD+A8EqhndQPUBpNUIPt6+xWlIigCwfN01lWr9MAede4uqXGTEKeQWTvzb3vjia0Q==}
+  prettier@3.8.3:
+    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2657,17 +2657,17 @@ snapshots:
 
   '@badrap/valita@0.4.6': {}
 
-  '@conform-to/dom@1.18.0': {}
+  '@conform-to/dom@1.19.0': {}
 
-  '@conform-to/react@1.18.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@conform-to/react@1.19.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
-      '@conform-to/dom': 1.18.0
+      '@conform-to/dom': 1.19.0
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
-  '@conform-to/zod@1.18.0(zod@4.3.6)':
+  '@conform-to/zod@1.19.0(zod@4.3.6)':
     dependencies:
-      '@conform-to/dom': 1.18.0
+      '@conform-to/dom': 1.19.0
       zod: 4.3.6
 
   '@dword-design/defu@1.0.3':
@@ -2857,7 +2857,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.78':
+  '@iconify-json/simple-icons@1.2.79':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4444,15 +4444,15 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-pkg@0.22.1(prettier@3.8.2):
+  prettier-plugin-pkg@0.22.1(prettier@3.8.3):
     dependencies:
-      prettier: 3.8.2
+      prettier: 3.8.3
 
-  prettier-plugin-tailwindcss@0.7.2(prettier@3.8.2):
+  prettier-plugin-tailwindcss@0.7.2(prettier@3.8.3):
     dependencies:
-      prettier: 3.8.2
+      prettier: 3.8.3
 
-  prettier@3.8.2: {}
+  prettier@3.8.3: {}
 
   prop-types@15.8.1:
     dependencies:
