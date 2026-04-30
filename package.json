@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8",
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "run-s -sl setup-dev-env reset-dev-env && run-p -srl run-dev-env dev:vite",
@@ -38,8 +38,8 @@
   "devDependencies": {
     "@atcute/atproto": "3.1.11",
     "@egoist/tailwindcss-icons": "1.9.2",
-    "@iconify-json/lucide": "1.2.102",
-    "@iconify-json/simple-icons": "1.2.79",
+    "@iconify-json/lucide": "1.2.104",
+    "@iconify-json/simple-icons": "1.2.80",
     "@mkizka/eslint-config": "7.2.0",
     "@playwright/test": "1.59.1",
     "@types/node": "22.19.17",
@@ -55,7 +55,7 @@
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.3",
     "prettier-plugin-pkg": "0.22.1",
-    "prettier-plugin-tailwindcss": "0.7.2",
+    "prettier-plugin-tailwindcss": "0.8.0",
     "typescript": "5.9.3",
     "vite": "7.3.2",
     "wait-on": "9.0.5"
