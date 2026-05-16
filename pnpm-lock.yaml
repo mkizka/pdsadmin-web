@@ -12,11 +12,11 @@ importers:
         specifier: 4.2.2
         version: 4.2.2(@atcute/lexicons@1.3.0)
       '@conform-to/react':
-        specifier: 1.19.0
-        version: 1.19.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: 1.19.2
+        version: 1.19.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@conform-to/zod':
-        specifier: 1.19.0
-        version: 1.19.0(zod@4.4.3)
+        specifier: 1.19.2
+        version: 1.19.2(zod@4.4.3)
       '@tailwindcss/vite':
         specifier: 4.2.2
         version: 4.2.2(vite@7.3.3(@types/node@22.19.19)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
@@ -67,8 +67,8 @@ importers:
         specifier: 10.0.0
         version: 10.0.0(@typescript-eslint/eslint-plugin@8.59.0(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       '@playwright/test':
-        specifier: 1.59.1
-        version: 1.59.1
+        specifier: 1.60.0
+        version: 1.60.0
       '@types/node':
         specifier: 22.19.19
         version: 22.19.19
@@ -225,17 +225,17 @@ packages:
     resolution: {integrity: sha512-4kdqcjyxo/8RQ8ayjms47HCWZIF5981oE5nIenbfThKDxWXtEHKipAOWlflpPJzZx9y/JWYQkp18Awr7VuepFg==}
     engines: {node: '>= 18'}
 
-  '@conform-to/dom@1.19.0':
-    resolution: {integrity: sha512-2qegTdMy3ZT+SzzD8YyUWupAEhLl3X248bhrbhXdRsWjFdGSnTz12YB9j/f1MZ27A1LnmijKYiz2mgMdlblPAA==}
+  '@conform-to/dom@1.19.2':
+    resolution: {integrity: sha512-CzuY8tP2hp4K15NpvVRHn4O5LE8QVT6I5D3Cjns8/4JMJ8AnlUmswhj3O5dcPWA3vJcTJgNhI/4xDjd4bN4Pwg==}
 
-  '@conform-to/react@1.19.0':
-    resolution: {integrity: sha512-xK6+d2hHhiypLOpXIGLw9tD57N0GJFtmHBceaumS45tSV5Hr/bRiz1kioymJJrUUwV0bT+f1sTmHQZD6YJDOiw==}
+  '@conform-to/react@1.19.2':
+    resolution: {integrity: sha512-SCGunoi4pC/et0cxhV1H3BlzjerBufVGXSQrxA9qSFCBgAi7MKpRohOV3MhdMIY16T0TLdAShuib/CL8yqe+zw==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  '@conform-to/zod@1.19.0':
-    resolution: {integrity: sha512-kqwuubmJPcyDlf3gXLWjKsWhTiox4ICL/eXLFZONjnEAOHGP1sUvfhvuYwJpH0PJu82kgz9JZG5iuVOcZGsygw==}
+  '@conform-to/zod@1.19.2':
+    resolution: {integrity: sha512-+gHFXv/U54hWhH0fKWG1so+JY+XBrSUtdNueW1YZhcMJ2BqOuT5ieiWgXQtj+B2KCKsNCc48Gk7s4phNoNdEJQ==}
     peerDependencies:
       zod: ^3.21.0 || ^4.0.0
 
@@ -575,8 +575,8 @@ packages:
     peerDependencies:
       eslint: '>= 10'
 
-  '@playwright/test@1.59.1':
-    resolution: {integrity: sha512-PG6q63nQg5c9rIi4/Z5lR5IVF7yU5MqmKaPOe0HSc0O2cX1fPi96sUQu5j7eo4gKCkB2AnNGoWt7y4/Xx3Kcqg==}
+  '@playwright/test@1.60.0':
+    resolution: {integrity: sha512-O71yZIbAh/PxDMNGns37GHBIfrVkEVyn+AXyIa5dOTfb4/xNvRWV+Vv/NMbNCtODB/pO7vLlF2OTmMVLhmr7Ag==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1778,13 +1778,13 @@ packages:
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
 
-  playwright-core@1.59.1:
-    resolution: {integrity: sha512-HBV/RJg81z5BiiZ9yPzIiClYV/QMsDCKUyogwH9p3MCP6IYjUFu/MActgYAvK0oWyV9NlwM3GLBjADyWgydVyg==}
+  playwright-core@1.60.0:
+    resolution: {integrity: sha512-9bW6zvX/m0lEbgTKJ6YppOKx8H3VOPBMOCFh2irXFOT4BbHgrx5hPjwJYLT40Lu+4qtD36qKc/Hn56StUW57IA==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.59.1:
-    resolution: {integrity: sha512-C8oWjPR3F81yljW9o5OxcWzfh6avkVwDD2VYdwIGqTkl+OGFISgypqzfu7dOe4QNLL2aqcWBmI3PMtLIK233lw==}
+  playwright@1.60.0:
+    resolution: {integrity: sha512-hheHdokM8cdqCb0lcE3s+zT4t4W+vvjpGxsZlDnikarzx8tSzMebh3UiFtgqwFwnTnjYQcsyMF8ei2mCO/tpeA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2290,17 +2290,17 @@ snapshots:
 
   '@badrap/valita@0.4.6': {}
 
-  '@conform-to/dom@1.19.0': {}
+  '@conform-to/dom@1.19.2': {}
 
-  '@conform-to/react@1.19.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@conform-to/react@1.19.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
-      '@conform-to/dom': 1.19.0
+      '@conform-to/dom': 1.19.2
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
-  '@conform-to/zod@1.19.0(zod@4.4.3)':
+  '@conform-to/zod@1.19.2(zod@4.4.3)':
     dependencies:
-      '@conform-to/dom': 1.19.0
+      '@conform-to/dom': 1.19.2
       zod: 4.4.3
 
   '@egoist/tailwindcss-icons@1.9.2(tailwindcss@4.2.2)':
@@ -2609,9 +2609,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@playwright/test@1.59.1':
+  '@playwright/test@1.60.0':
     dependencies:
-      playwright: 1.59.1
+      playwright: 1.60.0
 
   '@rolldown/pluginutils@1.0.0-rc.7': {}
 
@@ -3742,11 +3742,11 @@ snapshots:
       mlly: 1.8.2
       pathe: 2.0.3
 
-  playwright-core@1.59.1: {}
+  playwright-core@1.60.0: {}
 
-  playwright@1.59.1:
+  playwright@1.60.0:
     dependencies:
-      playwright-core: 1.59.1
+      playwright-core: 1.60.0
     optionalDependencies:
       fsevents: 2.3.2
 
