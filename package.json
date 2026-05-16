@@ -20,7 +20,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@atcute/client": "4.2.2",
+    "@atcute/client": "5.0.0",
     "@conform-to/react": "1.19.2",
     "@conform-to/zod": "1.19.2",
     "@tailwindcss/vite": "4.3.0",
@@ -36,7 +36,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "@atcute/atproto": "3.1.12",
+    "@atcute/atproto": "4.0.0",
     "@egoist/tailwindcss-icons": "1.9.2",
     "@iconify-json/lucide": "1.2.107",
     "@iconify-json/simple-icons": "1.2.82",
