@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@atcute/client": "5.0.0",
-    "@conform-to/react": "1.19.2",
-    "@conform-to/zod": "1.19.2",
+    "@conform-to/react": "1.19.3",
+    "@conform-to/zod": "1.19.3",
     "@tailwindcss/vite": "4.3.0",
     "clsx": "2.1.1",
     "i18next": "25.10.10",
