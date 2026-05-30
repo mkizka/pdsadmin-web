@@ -36,7 +36,7 @@ jobs:
       - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /home/runner/.cache/pdsadmin-web
-          key: atproto-${{ env.ATPROTO_SHA }}
+          key: atproto-${{ env.ATPROTO_SHA }}-${{ hashFiles('mise.toml') }}
       - run: pnpm setup-dev-env
       - run: pnpm e2e
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
