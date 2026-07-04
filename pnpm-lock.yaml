@@ -82,8 +82,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1(vite@8.1.2(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0))
       daisyui:
-        specifier: 5.6.6
-        version: 5.6.6
+        specifier: 5.6.7
+        version: 5.6.7
       eslint:
         specifier: 10.6.0
         version: 10.6.0(jiti@2.7.0)
@@ -811,8 +811,8 @@ packages:
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
-  daisyui@5.6.6:
-    resolution: {integrity: sha512-UFiuIZYucF7ylrnY3PT1SqwaEbVB10mqTZRyeRchZk0bud+HihYLLhXdxGDVmR/ftrM9G9YVr9FFPRVVIZJ5hA==}
+  daisyui@5.6.7:
+    resolution: {integrity: sha512-FVpuUbesyAUBWNp5pXn9JDF1EWt3IZJzp5Staw1YqfP0MwL36sv3wtmfWeuEBkZcazaQbeZXA91oW5dSB+TUEg==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -2386,7 +2386,7 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  daisyui@5.6.6: {}
+  daisyui@5.6.7: {}
 
   debug@4.4.3:
     dependencies:
