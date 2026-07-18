@@ -56,7 +56,7 @@
     "prettier": "3.9.5",
     "prettier-plugin-pkg": "0.22.1",
     "prettier-plugin-tailwindcss": "0.8.0",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vite": "8.1.4",
     "wait-on": "9.0.10"
   },
