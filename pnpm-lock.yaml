@@ -12,11 +12,11 @@ importers:
         specifier: 5.1.1
         version: 5.1.1(@atcute/lexicons@2.0.2)(typescript@6.0.3)
       '@conform-to/react':
-        specifier: 1.21.0
-        version: 1.21.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: 1.21.1
+        version: 1.21.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@conform-to/zod':
-        specifier: 1.21.0
-        version: 1.21.0(zod@4.4.3)
+        specifier: 1.21.1
+        version: 1.21.1(zod@4.4.3)
       '@tailwindcss/vite':
         specifier: 4.3.3
         version: 4.3.3(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))
@@ -58,8 +58,8 @@ importers:
         specifier: 1.9.2
         version: 1.9.2(tailwindcss@4.3.3)
       '@iconify-json/lucide':
-        specifier: 1.2.123
-        version: 1.2.123
+        specifier: 1.2.124
+        version: 1.2.124
       '@iconify-json/simple-icons':
         specifier: 1.2.93
         version: 1.2.93
@@ -82,8 +82,8 @@ importers:
         specifier: 4.3.3
         version: 4.3.3(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))
       daisyui:
-        specifier: 5.7.16
-        version: 5.7.16
+        specifier: 5.7.18
+        version: 5.7.18
       eslint:
         specifier: 10.8.1
         version: 10.8.1(jiti@2.7.0)
@@ -154,17 +154,17 @@ packages:
     resolution: {integrity: sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==}
     engines: {node: '>=6.9.0'}
 
-  '@conform-to/dom@1.21.0':
-    resolution: {integrity: sha512-Z4mZkWfFpKjD7/yDOPu/NFp2UEW3+Cc62Ox3WCyJI2kUcUILYrXfwwm9l0n+/+xBtMbDHatAPKMLaFMpJ0ajEQ==}
+  '@conform-to/dom@1.21.1':
+    resolution: {integrity: sha512-pYnhrJoM1xDbAx36rVxxm4643TFWwquTDoI8abtgnC40XIHDZDUhy3pIrZrv+QjwtLEgSWGP5GX/LqJ+IDfe/Q==}
 
-  '@conform-to/react@1.21.0':
-    resolution: {integrity: sha512-DIjEHrxzwhzIORvU+/7VLXZn6V6LdDThzgDb+1MlPZPVdMJqaHVwQxH6LJ1zeAb40LnSitqBR6s0xxmsaghULg==}
+  '@conform-to/react@1.21.1':
+    resolution: {integrity: sha512-q0kzC5dEHL4okfmdbih95OfuelXw6xlLeN9WvtxQ7CP047D6A5lRK+0DykZZHCFP4idsQzC8NUBQd/tkKXPukg==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  '@conform-to/zod@1.21.0':
-    resolution: {integrity: sha512-TN0tDFC+A5AXpkGXV43J3aTjGIwvidHzlPgpfJxcyZzJwWdsh5K0hBSuGA7ZfK/i7x/yAAC8zY/FVoO8VKIaJA==}
+  '@conform-to/zod@1.21.1':
+    resolution: {integrity: sha512-VqMuYoUVtZJ57P1EYD4tDuOyOaN5jiep1Ui6BRl7aP1m6tA8Do+mKioR7WXkGKULiNsjgPR7/FyWLtMUmtJNHg==}
     peerDependencies:
       zod: ^3.21.0 || ^4.0.0
 
@@ -303,8 +303,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/lucide@1.2.123':
-    resolution: {integrity: sha512-0CozmpKXEOEEhltrfT2zt+/t1hez67Y+hM2VJWoIcBKdBrb83VYuKf+b5A0QU9HfQm+RNn2GjFWlTOwi+Ss6IA==}
+  '@iconify-json/lucide@1.2.124':
+    resolution: {integrity: sha512-mO6JyBVNER7uXEkW2bXiN9Rrm6w91IXxwnNmIMbu2KZX0ZPcVZH1xDUTw94pryxESUIpBhinkOUIZIav+TA9ng==}
 
   '@iconify-json/simple-icons@1.2.93':
     resolution: {integrity: sha512-/XhANjfGYOuqvSR3TmUnkQkINvQ4GVjVuukvymRbxtVFBvIq/yiXJqCDycKcQPT401OYT9H2vIY6ihAlz1QIAw==}
@@ -772,8 +772,8 @@ packages:
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
-  daisyui@5.7.16:
-    resolution: {integrity: sha512-V9CJxvrWIXTDuP/0tpijjWaKaKJNYo2IrULJfTWs3/DjW9rPqswk1n8NCLQRLrTutmlG2Ech7nkJDpCnF+6Dzw==}
+  daisyui@5.7.18:
+    resolution: {integrity: sha512-ucODxcoGsL5oqMMiO5SzX++cAuNiko4S3XipKtEtq4c1t8tpeetcCBJSVe1t+C/q2oXgRv/wYz5yu1rXE5Cl1A==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -1714,17 +1714,17 @@ snapshots:
 
   '@babel/runtime@7.29.7': {}
 
-  '@conform-to/dom@1.21.0': {}
+  '@conform-to/dom@1.21.1': {}
 
-  '@conform-to/react@1.21.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+  '@conform-to/react@1.21.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@conform-to/dom': 1.21.0
+      '@conform-to/dom': 1.21.1
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
-  '@conform-to/zod@1.21.0(zod@4.4.3)':
+  '@conform-to/zod@1.21.1(zod@4.4.3)':
     dependencies:
-      '@conform-to/dom': 1.21.0
+      '@conform-to/dom': 1.21.1
       zod: 4.4.3
 
   '@egoist/tailwindcss-icons@1.9.2(tailwindcss@4.3.3)':
@@ -1885,7 +1885,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify-json/lucide@1.2.123':
+  '@iconify-json/lucide@1.2.124':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -2294,7 +2294,7 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  daisyui@5.7.16: {}
+  daisyui@5.7.18: {}
 
   debug@4.4.3:
     dependencies:
