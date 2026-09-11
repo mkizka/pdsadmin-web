@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@11.25.0",
+  "packageManager": "pnpm@12.4.0",
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "run-s -sl setup-dev-env reset-dev-env && run-p -srl run-dev-env dev:vite",
