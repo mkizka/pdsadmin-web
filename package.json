@@ -6,17 +6,12 @@
   "packageManager": "pnpm@12.17.0",
   "scripts": {
     "build": "tsc -b && vite build",
-    "dev": "run-s -sl setup-dev-env reset-dev-env && run-p -srl run-dev-env dev:vite",
-    "dev:vite": "wait-on http://localhost:2583 && vite --host",
+    "dev": "node ./scripts/dev-env.ts vite --host",
     "e2e": "playwright test",
     "format": "eslint . --fix && prettier . --write",
     "lint": "eslint . && prettier . --check",
     "prepare": "husky",
-    "preview": "pnpm reset-dev-env && run-p -srl run-dev-env preview:vite",
-    "preview:vite": "wait-on http://localhost:2583 && sleep 30 && vite preview",
-    "reset-dev-env": "./scripts/reset-dev-env.sh",
-    "run-dev-env": "./scripts/run-dev-env.sh",
-    "setup-dev-env": "./scripts/setup-dev-env.sh",
+    "preview": "node ./scripts/dev-env.ts vite preview",
     "typecheck": "tsc -b"
   },
   "dependencies": {
@@ -37,6 +32,7 @@
   },
   "devDependencies": {
     "@atcute/atproto": "4.0.4",
+    "@atproto/dev-env": "0.7.1",
     "@egoist/tailwindcss-icons": "1.9.2",
     "@iconify-json/lucide": "1.2.151",
     "@iconify-json/simple-icons": "1.2.101",
@@ -49,16 +45,13 @@
     "daisyui": "5.7.50",
     "eslint": "10.14.0",
     "eslint-plugin-react-refresh": "0.5.7",
-    "giget": "3.3.1",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "npm-run-all2": "9.0.4",
     "prettier": "3.9.10",
     "prettier-plugin-pkg": "0.22.1",
     "prettier-plugin-tailwindcss": "0.8.1",
     "typescript": "6.0.3",
-    "vite": "8.3.5",
-    "wait-on": "9.5.1"
+    "vite": "8.3.5"
   },
   "lint-staged": {
     "*.{js,mjs,ts,tsx}": "eslint --fix",
