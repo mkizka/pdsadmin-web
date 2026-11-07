@@ -10,7 +10,7 @@
 # 依存関係をインストール
 pnpm i
 
-# 開発サーバーを起動（ローカルPDSのセットアップを含む）
+# 開発サーバーを起動（ローカルPDSの起動を含む）
 pnpm dev
 
 # 本番用ビルド
@@ -25,10 +25,7 @@ pnpm format
 # 型チェックを実行
 pnpm typecheck
 
-# ローカルPDSのセットアップ
-pnpm setup-dev-env
-
-# エンドツーエンドテストを実行(事前にpnpm buildとpnpm setup-dev-envが必要)
+# エンドツーエンドテストを実行(事前にpnpm buildが必要)
 pnpm e2e
 ```
 
@@ -67,8 +64,7 @@ pnpm e2e
 
 ### 開発環境
 
-- ローカル AT Protocol 開発環境を自動的にセットアップして実行
-- ローカル PDS インスタンスを管理するために `scripts/` ディレクトリのスクリプトを使用
+- `scripts/dev-env.ts` で @atproto/dev-env を使ってローカル PDS を起動し、その後に Vite を起動
 - React と TypeScript による Vite ベースの開発
 - スタイリングに TailwindCSS + DaisyUI を使用
 
